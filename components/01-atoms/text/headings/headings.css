@@ -5,7 +5,7 @@
 
 $color-heading: $gray-darker;
 
-@define-mixin heading-xl $font-family: $font-heading, $font-size: 2rem, $line-height: 1.4, $color: $color-heading, $color-link: inherit, $color-link-hover: inherit, $font-weight: 700, $margin: 0 0 0.5em {
+@define-mixin heading-xl $font-family: $font-heading, $font-size: 2rem, $line-height: 1.4, $color: $color-heading, $margin: 0 0 0.5em, $color-link: inherit, $color-link-hover: inherit, $font-weight: 700 {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
@@ -24,7 +24,7 @@ $color-heading: $gray-darker;
   }
 }
 
-@define-mixin heading-large $font-family: $font-heading, $font-size: 1.8rem, $line-height: 1.4, $color: $color-heading, $color-link: inherit, $color-link-hover: inherit, $font-weight: 700, $margin: 0 0 0.5em {
+@define-mixin heading-large $font-family: $font-heading, $font-size: 1.8rem, $line-height: 1.4, $color: $color-heading, $margin: 0 0 0.5em, $color-link: inherit, $color-link-hover: inherit, $font-weight: 700 {
   color: $color;
   font-family: $font-family;
   font-weight: $font-weight;
