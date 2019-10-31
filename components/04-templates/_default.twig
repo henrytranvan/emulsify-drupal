@@ -1,34 +1,105 @@
-{% set layout_modifiers = [] %}
+{% if not layout_modifiers %}
+  {% set layout_modifiers = [] %}
+{% endif %}
+
+{% if not main_inner_modifiers %}
+  {% set main_inner_modifiers = [] %}
+{% endif %}
+
+{% if not main_inner_content_modifiers %}
+  {% set main_inner_content_modifiers = [] %}
+{% endif %}
+
+{% if not pre_content_modifiers %}
+  {% set pre_content_modifiers = [] %}
+{% endif %}
+
+{% if (node.bundle() != 'section_page') and
+      (node.bundle() != 'page') and
+      (page.hero != TRUE) and
+      (view_page != 'events') and
+      (view_page != 'faculty') and
+      (view_page != 'news') and
+      (view_page != 'program_list') and
+      (view_page != 'course_views') %}
+  {% set main_inner_modifiers = main_inner_modifiers|merge(['contained']) %}
+{% endif %}
+
+{% if view_page == 'acquia_search' %}
+  {% set main_inner_content_modifiers = main_inner_content_modifiers|merge(['contained']) %}
+{% endif %}
+
+{% if (view_page == 'events') or (view_page == 'course_views') or (view_page == 'news') or (view_page == 'faculty') or (view_page == 'program_list') %}
+  {% set pre_content_modifiers = pre_content_modifiers|merge(['open']) %}
+{% endif %}
+
+{% if node.bundle() == 'news' %}
+  {% set main_inner_modifiers = main_inner_modifiers|merge(['space-top']) %}
+{% endif %}
 
 {% set main_base_class = main_base_class|default('main') %}
+
 {% set main_modifiers = [] %}
 
 {% set main_content_base_class = main_content_base_class|default('main-content') %}
+
 {% set main_content_modifiers = [] %}
+
+{% set main_sidebar_base_class = 'main-sidebar' %}
 
 {% if sidebar %}
   {% set main_modifiers = main_modifiers|merge(['with-sidebar']) %}
   {% set main_content_modifiers = main_content_modifiers|merge(['with-sidebar']) %}
 {% endif %}
 
-<div {{ bem('layout-container', layout_modifiers) }}>
+<div {{ bem('layout-container', (layout_modifiers)) }}>
   {% block page_header %}
-    {% include "@organisms/site/site-header/site-header.twig" %}
+    {% include "@organisms/site/full-header/full-header.twig" %}
   {% endblock %}
+
+  {% block page_search %}
+  {% endblock %}
+
+  {% block page_menu %}
+  {% endblock %}
+
   {% block page_system %}
   {% endblock %}
-  <div {{ bem(main_base_class, main_modifiers, main_blockname) }}>
+
+
+  <main role="main" {{ bem(main_base_class, (main_modifiers), main_blockname) }}>
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-    {% if sidebar %}
-      <aside class="main-sidebar" role="complementary">
-        {% block page_sidebar %}{% endblock %}
-      </aside>
-    {% endif %}
-    <main role="main" {{ bem(main_content_base_class, main_content_modifiers, main_content_blockname) }}>
-      {% block page_content %}{% endblock %}
-    </main>
-  </div>
-  {% block page_footer %}
-    {% include "@organisms/site/site-footer/site-footer.twig" %}
-  {% endblock %}
+    <div {{ bem('inner', main_inner_modifiers, main_base_class) }}>
+      {% if page.hero %}
+        {% block hero %}
+        {% endblock %}
+      {% endif %}
+
+      {% if page.pre_content %}
+        <div {{ bem('pre-content', pre_content_modifiers, main_blockname) }}>
+          {% block pre_content %}
+          {% endblock %}
+        </div>
+      {% endif %}
+
+      <div {{ bem('inner-content', main_inner_content_modifiers, main_base_class) }}>
+        {% if sidebar %}
+          <aside {{ bem(main_sidebar_base_class) }} role="complementary">
+            <div {{ bem('contents', [], main_sidebar_base_class) }}>
+              {% block page_sidebar %}{% endblock %}
+            </div>
+          </aside>
+        {% endif %}
+
+        <div {{ bem(main_content_base_class, (main_content_modifiers), main_content_blockname) }}>
+          {% block page_content %}{% endblock %}
+        </div>
+      </div>
+
+      {% block page_footer %}
+        {% include "@organisms/site/site-footer/site-footer.twig" %}
+      {% endblock %}
+    </div>
+  </main>
+
 </div>

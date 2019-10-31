@@ -1,0 +1,40 @@
+# Copy
+featured_title: 'Human Development'
+featured_subtitle: 'At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
+
+# Link
+featured_link_text: 'See Human Development Programs and Degrees'
+featured_link_url: '#'
+
+# Cards
+card_grid_blockname: 'card-grid'
+card_grid_modifiers:
+  - 'small'
+  - 'no-bg'
+cards:
+  - card_modifiers:
+      1: "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is a title too"
+    card_title_modifiers:
+      1: "no-space"
+    card_link_url: "#"
+    card_link_text: "Read More"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus."
+  - card_modifiers:
+      1: "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is a title too"
+    card_title_modifiers:
+      1: 'no-space'
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat."
+  - card_modifiers:
+      1: "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is a title too"
+    card_title_modifiers:
+      1: 'no-space'
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada."

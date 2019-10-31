@@ -1,0 +1,109 @@
+# Hero
+hero_title: "Undergraduate Admissions"
+hero_subtitle: "The heart of a movement—education for social change."
+hero_img_src: "https://placeimg.com/400/400"
+hero_img_alt: "Filler"
+hero_img_src_large: "https://placeimg.com/1200/400/nature"
+
+# Text Section
+text_modifiers:
+  - "gray"
+  - "space"
+  - "margin"
+text_inner_modifiers:
+  - "contained"
+text_extra_classes:
+  - "has-bg"
+paragraph1_modifiers:
+  - "lead"
+paragraph1:
+  "Gain the skills, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+paragraph2:
+  "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+
+# Card Grid
+card_grid_label: "This is a Card Grid Title"
+card_grid_blockname: "card"
+card_grid_modifiers: 
+  - 'small'
+  - 'purple'
+cards:
+  - card_modifiers: 
+      - "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is the first featured item"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+    card_link_url: "#"
+    card_link_text: "Read More"
+  - card_modifiers: 
+      - "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is the second"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+    card_link_url: "#"
+    card_link_text: "Read More"
+  - card_modifiers: 
+      - "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "The Final"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+    card_link_url: "#"
+    card_link_text: "Read More"
+
+# CTA
+cta_modifiers:
+  - "gray"
+cta_title: "Call to Action"
+cta_link_text: "Learn More"
+cta_link_url: "#"
+
+# Text Columns
+text_columns_heading: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis."
+text_columns_items:
+  -
+  -
+  -
+
+# CTA 2
+cta_2_bg_color: "purple"
+cta_2_title: "Call to Action"
+cta_2_link_text: "Learn More"
+cta_2_link_url: "#"
+
+# Image
+img_src: "https://placeimg.com/1200/800"
+img_caption: "This is an Image Caption"
+img_alt: "Filler"
+
+# Text With Media
+text_with_media_src: "https://placeimg.com/1200/640"
+text_with_media_alt: "Filler"
+text_with_media_caption: "This is the media caption"
+text_with_media_text: "<p>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p><p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.</p><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>"
+text_with_media_direction:
+  - "right"
+
+# Video
+video_content_title: 'Component-Based Theming Video One'
+video_content: "<iframe title='Test Video' width='854' height='480' frameborder='0' allowfullscreen='allowfullscreen' src='https://www.youtube.com/embed/YRnVnlhjOBs?autoplay=0&amp;start=0'></iframe>"
+video_content_description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore."
+video_content_transcript_url: "#"
+
+# Side by Side
+sbs_title: "What's Special About NYU"
+sbs_text: "Undergraduate Study at NYU?"
+sbs_link_url: "#"
+sbs_link_text: "Read More"
+sbs_video_content:
+  "<iframe title='Test Video' width='854' height='480' frameborder='0' allowfullscreen='allowfullscreen' src='https://www.youtube.com/embed/YRnVnlhjOBs?autoplay=0&amp;start=0'></iframe>"
+
+
+# Final CTA
+cta_3_bg_color: "purple"
+cta_3_title: "Call to Action"
+cta_3_text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+cta_3_link_text: "Learn More"
+cta_3_link_url: "#"

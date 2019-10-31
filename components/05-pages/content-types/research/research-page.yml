@@ -1,0 +1,14 @@
+# Hero
+page_hero_title: "Aggressive Policing and Academic Outcomes"
+page_hero_image_src: "https://placeimg.com/600/406"
+attachments:
+  - icon_name: 'pdf-solid'
+    icon_label: 'Full Report'
+    icon_href: '#'
+  - icon_name: 'globe'
+    icon_label: 'Policy Brief that is long and awebsite'
+    icon_href: '#'
+  - icon_name: 'pdf-solid'
+    icon_label: 'Another Document'
+    icon_href: '#'
+research_page_subtitle: "This is the subtitle of the research article"

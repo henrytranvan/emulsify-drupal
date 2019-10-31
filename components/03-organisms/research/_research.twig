@@ -1,0 +1,34 @@
+{% set research_base_class = research_base_class|default('research') %}
+
+<div {{ bem(research_base_class, research_modifiers, research_blockname) }}>
+  <div {{ bem('attachments', [], research_base_class) }}>
+    {% include '@atoms/02-text/00-headings/_heading.twig' with {
+      heading: research_attachments_heading,
+      heading_level: 1
+    } %}
+
+    <div {{ bem('container', [], 'research__attachments') }}>
+      {% block attachments %}{% endblock %}
+    </div>
+  </div>
+
+  {% if research_doi %}
+    <div {{ bem('doi', [], research_base_class) }}>
+      <strong>DOI:</strong> {{ research_doi }}
+    </div>
+  {% endif %}
+
+  {% if research_has_image %}
+    {% embed '@base/layouts/_wrap.twig' with {
+      wrap_modifiers: ['contained']
+    } %}
+      {% block wrap_content %}
+        {% include '@atoms/02-text/00-headings/_heading.twig' with {
+          heading: research_subtitle,
+          heading_level: 2,
+          heading_blockname: research_base_class
+        } %}
+      {% endblock %}
+    {% endembed %}
+  {% endif %}
+</div>

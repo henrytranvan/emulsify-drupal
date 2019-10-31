@@ -1,0 +1,25 @@
+{% set text_with_media_base_class_var = text_with_media_base_class|default('text-with-media') %}
+{% set text_with_media_media_modifiers = text_with_media_direction %}
+
+<div {{ bem(text_with_media_base_class_var, text_with_media_modifiers, text_with_media_blockname) }}>
+  <div {{ bem('media', text_with_media_media_modifiers, text_with_media_base_class_var) }}>
+    {% block text_with_media_media %}
+      {% if text_with_media_src %}
+        {% include "@atoms/04-images/00-image/figure.twig" with {
+          img_src: text_with_media_src,
+          img_alt: text_with_media_alt,
+          img_caption: text_with_media_caption,
+          image_figure_blockname: text_with_media_base_class_var,
+          responsive_image_blockname: text_with_media_base_class_var,
+          figcaption_blockname: text_with_media_base_class_var
+        } %}
+      {% endif %}
+    {% endblock %}
+  </div>
+  {% include "@atoms/02-text/text/_text.twig" with {
+    text_base_class: "text",
+    text_blockname: text_with_media_base_class_var,
+    text_content: text_with_media_text,
+  } %}
+  <span class="text-with-media-clear"></span>
+</div>

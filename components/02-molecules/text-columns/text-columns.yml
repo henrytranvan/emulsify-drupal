@@ -1,0 +1,7 @@
+text_columns_modifiers:
+  1: 'pl'
+text_columns_heading: 
+  "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis."
+text_columns_items:
+  - 1
+  - 2

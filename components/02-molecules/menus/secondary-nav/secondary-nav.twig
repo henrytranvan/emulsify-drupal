@@ -1,0 +1,12 @@
+{% set secondary_nav_base_class = 'secondary-nav' %}
+
+<nav {{ bem(secondary_nav_base_class, secondary_nav_modifiers, secondary_nav_blockname) }}>
+  {% block menu %}
+    {% include "@molecules/menus/_menu-inpage.twig" with {
+      menu_class: "secondary-nav__menu",
+      items: header.secondary_nav_items,
+    } %}
+  {% endblock %}
+</nav>
+
+{{ attach_library('nyusteinhardt/secondary-nav') }}

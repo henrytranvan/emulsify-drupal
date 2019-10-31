@@ -1,0 +1,57 @@
+{% set card_grid_base_class = card_grid_base_class|default('card-grid') %}
+
+{% if not card_grid_heading_modifiers %}
+  {% set card_grid_heading_modifiers = [] %}
+{% endif %}
+
+{% set grid_extra_classes = ['has-bg'] %}
+
+{% if 'purple' in card_grid_modifiers %}
+  {% set card_grid_heading_modifiers = card_grid_heading_modifiers|merge(['white']) %}
+{% endif %}
+
+{% if ('no-bg' in card_grid_modifiers) or ('white' in card_grid_modifiers) %}
+  {% set grid_extra_classes = [] %}
+{% endif %}
+
+{% if 'white' in card_grid_modifiers %}
+  {% set card_grid_heading_modifiers = card_grid_heading_modifiers|merge(['large']) %}
+{% endif %}
+
+{% set card_grid_block_content %}
+  {% block card_grid_content %}
+    {% for card in cards %}
+      {% include "@molecules/card/01-card.twig" with {
+        card_blockname: card.blockname,
+        card_modifiers: card.card_modifiers,
+        card_img_src: card.card_img_src,
+        card_tag_text: card.card_tag_text,
+        card_tag_url: card.card_tag_url,
+        card_date_month: card.card_date_month,
+        card_date_day: card.card_date_day,
+        card_date_modifiers: card.card_date_modifiers,
+        card_img_alt: 'alt',
+        card_title: card.card_title,
+        card_subtitle: card.card_subtitle,
+        card_body: card.card_body,
+        card_link_url: card.card_link_url,
+        card_link_text: card.card_link_text,
+        card_image_output_image_tag: card.card_image_output_image_tag,
+      } %}
+    {% endfor %}
+  {% endblock %}
+{% endset %}
+
+{% embed "@base/layouts/grid/00-grid.twig" with {
+  grid_heading_blockname: card_grid_base_class,
+  grid_heading_modifiers: card_grid_heading_modifiers,
+  grid_modifiers: card_grid_modifiers,
+  grid_label: card_grid_label,
+  grid_blockname: card_grid_base_class,
+} %}
+
+  {% block grid_content %}
+    {{ card_grid_block_content }}
+  {% endblock %}
+
+{% endembed %}

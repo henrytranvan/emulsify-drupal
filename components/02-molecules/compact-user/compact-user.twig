@@ -1,0 +1,18 @@
+{% set compact_user_base_class = compact_user_base_class|default('compact-user') %}
+
+<div {{ bem(compact_user_base_class, compact_user_modifiers, compact_user_blockname) }}>
+  <div {{ bem('image', [], compact_user_base_class)}}>
+    {% block user_image %}
+      {% include "@atoms/04-images/00-image/_image.twig" with {
+        img_src: compact_user_image,
+        img_alt: compact_user_name
+    } %}
+    {% endblock %}
+  </div>
+
+  {% include "@atoms/02-text/text/_text.twig" with {
+    text_base_class: 'name',
+    text_content: compact_user_name,
+    text_blockname: compact_user_base_class
+  } %}
+</div>

@@ -1,0 +1,75 @@
+// Custom Links
+.btn-group {
+  background-color: $gray-lighter;
+  border-radius: 3px;
+  color: $purple;
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: $space;
+  padding: $space-one-half $space;
+  position: relative;
+
+  @include medium {
+    display: inline-block;
+  }
+
+  @include large {
+    margin-bottom: 0;
+  }
+
+  &--light {
+    background-color: transparent;
+    border: 1px solid $gray-lighter;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+
+    span {
+      color: $gray-dark;
+    }
+  }
+
+  span {
+    display: block;
+    margin-right: $space-one-fourth;
+
+    @include medium {
+      display: inline;
+    }
+  }
+}
+
+.btn-group__icon {
+  float: left;
+  fill: $gray-dark;
+  height: 17px;
+  margin-right: $space-one-fourth;
+  position: relative;
+  top: 5px;
+  width: 17px;
+
+  &--purple {
+    fill: $purple;
+  }
+}
+
+.btn-group__custom-link {
+  color: $gray-dark;
+  text-decoration: none;
+
+  &--purple {
+    color: $purple;
+  }
+
+  & + .btn-group__custom-link {
+    &::before {
+      content: "|";
+      padding: $space-one-fourth;
+    }
+  }
+
+  &:hover {
+    color: $black;
+    text-decoration: underline;
+  }
+}

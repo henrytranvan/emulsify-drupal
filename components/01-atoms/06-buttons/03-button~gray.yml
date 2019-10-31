@@ -1,0 +1,5 @@
+button_url: "#"
+button_content: "Big Gray Button"
+button_modifiers:
+  - "gray"
+  - "big"

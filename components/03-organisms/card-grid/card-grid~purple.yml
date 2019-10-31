@@ -1,0 +1,41 @@
+grid_label: "Card Grid Purple Background"
+grid_blockname: 'card-grid'
+card_grid_modifiers:
+  1: 'purple'
+cards:
+  - card_modifiers:
+      1: "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is a title too"
+    card_title_modifiers:
+      1: "no-space"
+    card_link_url: "#"
+    card_link_text: "Read More"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus."
+  - card_modifiers:
+      1: "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is a title too"
+    card_title_modifiers:
+      1: 'no-space'
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat."
+  - card_modifiers:
+      2: "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is a title too"
+    card_title_modifiers:
+      1: "no-space"
+    card_link_url: "#"
+    card_link_text: "Read More"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus."
+  - card_modifiers:
+      1: "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is a title too"
+    card_title_modifiers:
+      1: 'no-space'
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat."

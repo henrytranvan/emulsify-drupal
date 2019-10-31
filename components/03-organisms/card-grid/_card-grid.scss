@@ -1,0 +1,82 @@
+.card-grid__wrap {
+  @include margin;
+
+  background-color: $gray-lighter;
+  padding: $space-triple 0 $space;
+
+  @include large {
+    padding: $space-triple 0;
+  }
+
+  &--purple {
+    background-color: $purple;
+  }
+
+  &--no-bg {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  &--white {
+    @include margin(0, 0);
+
+    background-color: $white;
+
+    .card {
+      background-color: $gray-lighter;
+    }
+
+    .date {
+      background-color: $white;
+      color: $purple;
+    }
+  }
+}
+
+.card-grid__wrap-inner {
+  @include wrapper($h-padding-max: $space-double);
+}
+
+.card-grid__grid {
+  @include grid;
+}
+
+.card-grid__h2 {
+  @include heading-xl($margin-mobile: 0 auto $space-double, $margin: 0 auto $space-triple);
+
+  text-align: center;
+
+  @include medium {
+    max-width: 80%;
+  }
+
+  &--white {
+    color: $white;
+  }
+
+  &--large {
+    @include heading-xl($font-size-mobile: 2rem, $font-size-medium: 2.5rem, $font-size: 3rem, $margin-mobile: 0 0 $space-triple, $margin: 0 0 $space-triple);
+
+    @include medium {
+      max-width: none;
+    }
+  }
+}
+
+.card--grid-item {
+  @include medium {
+    @include grid-item(2);
+
+    flex-grow: initial;
+  }
+}
+
+.card-grid__wrap--small {
+  .card--grid-item {
+    @include large {
+      @include grid-item(3);
+
+      flex-grow: initial;
+    }
+  }
+}

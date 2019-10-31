@@ -1,22 +1,295 @@
+$sh-breakpoint: $large;
+
 .header {
-  margin-bottom: 4em;
+  background-color: $purple;
 
-  &__inner {
-    @include wrapper;
+  &--simple {
+    #GN-sub-nav #GN-banner #GN-icons-layer #GN-toggle-global-nav,
+    .toggle-expand {
+      display: none;
+    }
 
+    #GN-sub-nav #GN-banner #GN-icons-layer #GN-logo:hover {
+      background-color: transparent;
+
+      &::after {
+        display: none;
+      }
+
+      a {
+        cursor: default;
+      }
+    }
+  }
+}
+
+.header__inner {
+  @include wrapper($h-padding-med: $space-double, $h-padding-max: 0);
+
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  @include breakpoint($sh-breakpoint) {
+    display: block;
+  }
+}
+
+.header__right {
+  display: none;
+
+  @include breakpoint($sh-breakpoint) {
+    align-items: center;
     display: flex;
-    flex-flow: column nowrap;
+    position: absolute;
+    right: 145px;
+    top: 17.5px;
+    z-index: 99;
   }
 
-  &__primary {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    padding: $space 0;
+  @include max-width {
+    right: 117px;
   }
 
-  &__branding {
-    margin-right: $space;
-    max-width: 300px;
+  &--hidden {
+    display: none;
+  }
+}
+
+.GN-reveal-global {
+  .header__right {
+    @include breakpoint(max-height 753px) {
+      z-index: 97;
+    }
+  }
+
+  &.toolbar-fixed .header__right {
+    @include breakpoint(max-height 910px) {
+      z-index: 97;
+    }
+  }
+
+  #GN-sub-nav #GN-global-nav {
+    z-index: 100;
+  }
+}
+
+.GN-mquery-desktop #GN-sub-nav #GN-banner {
+  width: 100% !important;
+}
+
+#GN-sub-nav #GN-banner #GN-icons-layer #GN-logo a {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+#GN-sub-nav #GN-banner #GN-icons-layer #GN-toggle-global-nav {
+  display: none;
+
+  @include breakpoint($sh-breakpoint) {
+    display: block;
+  }
+}
+
+.GN-mquery-tablet #GN-container #GN-sub-nav #GN-banner #GN-icons-layer #GN-logo {
+  margin-left: 0;
+}
+
+#GN-container #GN-sub-nav {
+  background-color: transparent;
+  z-index: 98;
+}
+
+.GN-mquery-desktop #GN-sub-nav #GN-banner #GN-icons-layer {
+  background-color: transparent;
+}
+
+#GN-sub-nav #GN-banner #GN-icons-layer #GN-logo {
+  max-height: 60px;
+  max-width: 250px;
+  overflow: hidden;
+  width: 95%;
+
+  @include medium {
+    width: auto;
+  }
+}
+
+// Buttons & Icons General
+.header__search,
+.header__all-nyu {
+  @include button-reset;
+
+  color: white;
+  display: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.8;
+  margin-left: $space;
+
+  @include small {
+    display: block;
+  }
+
+  @include max-width {
+    margin-left: 1.65rem;
+  }
+}
+
+.header__search {
+  &:focus,
+  &:hover {
+    color: $purple-light;
+
+    .header__search-icon {
+      fill: $purple-light;
+    }
+  }
+}
+
+.header__search-icon,
+.header__all-nyu-icon {
+  fill: white;
+  height: 18px;
+  margin-right: 2px;
+  position: relative;
+  top: 4px;
+  width: 18px;
+
+  & + span {
+    display: none;
+
+    @include xl {
+      display: inline;
+    }
+  }
+}
+
+// All NYU Button
+.header__all-nyu {
+  @include button-reset;
+
+  border-left: 1px solid;
+  padding-left: $space;
+  margin-left: $space;
+}
+
+// Search
+.search-region {
+  position: relative;
+  // Mobile
+  h2,
+  label,
+  &__close {
+    @include visually-hidden;
+  }
+
+  background: $purple-dark;
+  padding: $space;
+
+  //Desktop
+  @include breakpoint($main-menu-medium) {
+    padding: 0;
+
+    h2 {
+      height: auto;
+      position: static !important;
+      margin-bottom: $space;
+      width: auto;
+    }
+
+    h2,
+    &__close {
+      display: block;
+      overflow: visible;
+      clip: unset;
+    }
+
+    &__overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(68, 0, 120, 0.9);
+      padding-top: 120px;
+      z-index: 102;
+
+      h2 {
+        color: $white;
+        font-size: 1.2rem;
+      }
+    }
+
+    &__inner {
+      position: relative;
+      width: 520px;
+      margin: 0 auto;
+    }
+
+    &__close {
+      position: absolute;
+      top: -$space-one-half;
+      right: -$space-one-fourth;
+      fill: $white;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+    }
+  }
+
+  &__search {
+    width: 25px;
+    height: 25px;
+    fill: $purple-dark;
+    position: absolute;
+    right: 25px;
+    top: 27px;
+
+    @include breakpoint($main-menu-medium) {
+      display: none;
+    }
+  }
+
+  form#views-exposed-form-acquia-search-page {
+    display: flex;
+
+    .form-item {
+      margin-bottom: 0;
+      width: 100%;
+      max-width: 100%;
+
+      input[type='text'] {
+        width: 100%;
+        background: $gray-lighter;
+      }
+    }
+
+    #edit-reset {
+      display: none;
+    }
+
+    .form-actions {
+      // Hide submit button for mobile since it will use native keyboard "go".
+      .button {
+        display: none;
+
+        @include breakpoint($main-menu-medium) {
+          display: block;
+          border: none;
+          box-shadow: none;
+          background: #000;
+          line-height: 1.25;
+
+          &:hover {
+            background: #333;
+          }
+        }
+      }
+    }
   }
 }

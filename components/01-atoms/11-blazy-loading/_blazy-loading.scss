@@ -1,0 +1,61 @@
+/* The lazyloaded element: IMG, IFRAME, DIV. */
+$blazy-size: 50px;
+
+.b-lazy,
+.b-responsive {
+  display: block;
+  opacity: 0.5;
+  transition: opacity 500ms ease-in-out;
+}
+
+/* Needed to display preloader with CSS BG image, otherwise hidden. */
+.b-loaded,
+.media--loading.media--background {
+  opacity: 1;
+}
+
+.media--loading {
+  position: relative;
+  margin: 0 auto;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 30%;
+    left: calc((100% - #{$blazy-size}) / 2);
+    border-radius: 100%;
+    border: 10px solid transparent;
+    border-top-color: $purple-light;
+    width: $blazy-size;
+    height: $blazy-size;
+    background: transparent;
+    margin: 0;
+    max-width: $blazy-size;
+  }
+
+  &::before {
+    z-index: 100;
+    animation: spin 1s infinite;
+  }
+
+  &::after {
+    border: 10px solid $purple;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.media--background {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}

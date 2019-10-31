@@ -1,0 +1,113 @@
+.page-hero {
+  background: $purple;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+
+  // Breadcrumbs if present
+  .breadcrumb__item,
+  .breadcrumb__link,
+  .breadcrumb__link-icon {
+    color: $purple-light;
+    fill: $purple-light;
+  }
+
+  &--no-image {
+    background: none;
+    color: $gray-dark;
+    display: block;
+
+    .breadcrumb__item,
+    .breadcrumb__link,
+    .breadcrumb__link-icon {
+      color: $gray-dark;
+      fill: $gray-dark;
+    }
+  }
+
+  @include large {
+    align-items: center;
+    flex-direction: row;
+    max-height: 380px;
+    overflow: hidden;
+  }
+
+  > div:first-child {
+    flex-basis: 47%;
+  }
+
+  > div:last-child {
+    flex-basis: 53%;
+  }
+
+  &__info {
+    @include wrapper($v-padding: $space-double, $h-padding: $space);
+
+    @include small {
+      padding: $space-triple;
+      order: 1;
+    }
+
+    @include breakpoint($large $xxl) {
+      padding: $space-double;
+    }
+
+    @include breakpoint($xxl) {
+      padding: $space-sextuple $space-triple $space-sextuple $space-sextuple;
+    }
+
+    &--no-image {
+      @include wrapper($v-padding: $space-double, $h-padding: $space);
+
+      @include breakpoint($large) {
+        padding: $space-double $space-sextuple;
+      }
+    }
+  }
+
+  h1 {
+    color: $white;
+    font-size: 1.7rem;
+    line-height: 1;
+
+    @include breakpoint($large $xxl) {
+      font-size: 2.5rem;
+    }
+
+    @include xxl {
+      font-size: 3rem;
+    }
+  }
+
+  &__title--no-image {
+    h1 {
+      color: $purple;
+      margin-bottom: $space-one-half;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    line-height: 1.2;
+    font-weight: bold;
+    margin-bottom: 0;
+
+    @include breakpoint($large $xxl) {
+      font-size: 1.3rem;
+    }
+
+    @include xxl {
+      font-size: 1.7rem;
+    }
+  }
+
+  &__image {
+    @include large {
+      order: 2;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}

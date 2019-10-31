@@ -1,0 +1,14 @@
+<nav class="slick__arrow">
+  <button type="button" data-role="none" class="slick-prev-arrow slick-arrow {{ prev_class }}" aria-label="Previous" role="button" style="">
+  {% include "@atoms/04-images/icons/_icon.twig" with {
+    icon_name: 'left',
+    icon_blockname: 'slick-arrow',
+  } %}
+  </button>
+  <button type="button" data-role="none" class="slick-next-arrow slick-arrow {{ next_class }}" aria-label="Next" role="button" style="">
+  {% include "@atoms/04-images/icons/_icon.twig" with {
+    icon_name: 'right',
+    icon_blockname: 'slick-arrow',
+  } %}
+  </button>
+</nav>

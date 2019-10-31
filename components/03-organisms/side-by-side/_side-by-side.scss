@@ -1,0 +1,237 @@
+// SBS Styles
+.sbs {
+  &--gray {
+    @include margin;
+
+    background-color: $gray-lighter;
+  }
+
+  &--purple {
+    @include margin;
+
+    background-color: $purple;
+  }
+
+  &--no-top {
+    @include margin(0, 0);
+  }
+
+  // Switch ordering every other one.
+  &--alternate {
+    .sbs__inner {
+      padding-bottom: 0;
+    }
+
+    &:nth-child(2n) {
+      @include large {
+        .sbs__copy {
+          order: 2;
+        }
+      }
+    }
+  }
+}
+
+.sbs__inner {
+  @include wrapper(
+    $v-padding: $space-quadruple
+  );
+
+  display: flex;
+  flex-direction: column-reverse;
+
+  &--default-order {
+    flex-direction: column;
+  }
+
+  @include large {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &.has-bg {
+    margin-top: 0;
+  }
+}
+
+.sbs__copy {
+  color: $white;
+  flex: 0 1 42%;
+
+  .sbs--gray & {
+    .text-long {
+      color: $gray;
+    }
+  }
+}
+
+// Pretitle
+.sbs__pre-title {
+  color: $gray;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-bottom: $space-one-half;
+
+  &--purple {
+    color: $purple-light;
+  }
+}
+
+.sbs__pre-title-1 {
+  display: block;
+
+  @include small {
+    display: inline;
+    margin-right: 10px;
+  }
+}
+
+.sbs__icon {
+  fill: $gray-dark;
+  height: 14px;
+  position: relative;
+  top: 2px;
+  width: 14px;
+
+  &--white {
+    fill: $white;
+  }
+}
+
+// Title
+.sbs__h2 {
+  color: $purple;
+  font-size: 1.9rem;
+  line-height: 1.2;
+  margin: 0 0 $space-one-half;
+
+  @include large {
+    font-size: 1.8rem;
+  }
+
+  &-link {
+    color: $purple;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &--gray {
+    color: $gray-darker;
+
+    .sbs__h2-link {
+      color: $gray-darker;
+    }
+  }
+
+  &--white {
+    color: $white;
+
+    .sbs__h2-link {
+      color: $white;
+    }
+  }
+}
+
+.sbs__text,
+.sbs__pre-text {
+  color: $gray-dark;
+
+  &--white {
+    color: $white;
+  }
+}
+
+.sbs__pre-text {
+  margin: $space-one-half 0;
+}
+
+.sbs__text {
+  margin-bottom: 2.2rem;
+
+  @include large {
+    margin-top: $space-one-half;
+  }
+}
+
+.sbs__link {
+  @include button;
+
+  margin-bottom: 1rem;
+  width: 100%;
+
+  @include small {
+    margin-bottom: 0;
+    margin-right: $space;
+    width: auto;
+  }
+
+  &--gray {
+    @include button($bg:$gray-lighter, $color:$gray-darker, $hoverBg:$white, $hoverColor:$purple);
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.sbs__extra-link {
+  @include button($bg:$gray-lighter, $color:$gray-darker, $hoverBg:$gray-lighter, $hoverColor:$black);
+  @include button-small;
+
+  margin-top: $space;
+
+  & + span {
+    color: $gray-dark;
+    display: block;
+    font-size: 0.7rem;
+  }
+
+  &--white {
+    @include button($bg:$gray-light, $color:$black, $hoverBg:$white, $hoverColor:$purple);
+    @include button-small;
+
+    & + span {
+      color: $white;
+    }
+  }
+
+  &--gray {
+    @include button($bg:$gray-dark, $color:$white, $hoverBg:$gray, $hoverColor:$white);
+    @include button-small;
+
+    .sbs__extra-link-icon {
+      fill: $white;
+    }
+  }
+}
+
+.sbs__extra-link-icon {
+  height: 18px;
+  position: relative;
+  top: 3px;
+  width: 18px;
+}
+
+.sbs__media {
+  margin-bottom: $space;
+
+  &--form {
+    margin-bottom: 0;
+    margin-top: $space-triple;
+  }
+
+  @include large {
+    flex: 0 1 50%;
+    margin-bottom: 0;
+    max-width: 50%;
+  }
+
+  // Specific to sbs that use embeds.
+  iframe {
+    width: 100%;
+  }
+}

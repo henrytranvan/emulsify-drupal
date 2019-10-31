@@ -1,0 +1,91 @@
+items:
+  1:
+    name: "Bars"
+    value: "bars"
+  2:
+    name: "Globe"
+    value: "globe"
+  3:
+    name: "Search"
+    value: "search"
+  4:
+    name: "Right"
+    value: "right"
+  5:
+    name: "Left"
+    value: "left"
+  6:
+    name: "Caret Down"
+    value: "caret-down"
+  7:
+    name: "Keyboard"
+    value: "keyboard"
+  8:
+    name: "Close"
+    value: "close"
+  9:
+    name: "Facebook"
+    value: "facebook"
+  10:
+    name: "Instagram"
+    value: "instagram"
+  11:
+    name: "LinkedIn"
+    value: "linkedin"
+  12:
+    name: "Quote"
+    value: "quote"
+  13:
+    name: "Twitter"
+    value: "twitter"
+  14:
+    name: "YouTube"
+    value: "youtube"
+  15:
+    name: "Mail"
+    value: "mail"
+  16:
+    name: "Home"
+    value: "home"
+  17:
+    name: "Star"
+    value: "star"
+  18:
+    name: "External Link"
+    value: "external-link"
+  19:
+    name: "Wi-fi"
+    value: "wifi"
+  20:
+    name: "Special Doc"
+    value: "special-doc"
+  18:
+    name: "PDF"
+    value: "pdf"
+  19:
+    name: "Word Doc"
+    value: "doc"
+  20:
+    name: "Powerpoint"
+    value: "ppt"
+  21:
+    name: "Text"
+    value: "txt"
+  22:
+    name: "CSV"
+    value: "csv"
+  23:
+    name: "Zip"
+    value: "zip"
+  24:
+    name: "Excel"
+    value: "xls"
+  25:
+    name: "Ribbon"
+    value: "ribbon"
+  26:
+    name: "Wifi"
+    value: "wifi"
+  27:
+    name: "Info"
+    value: "info"

@@ -1,0 +1,19 @@
+// Course specific
+.node--course {
+  .node-content {
+    .wrap--margin:first-child {
+      margin-top: $space;
+    }
+  }
+}
+
+.node--frontpage {
+  background-color: $purple;
+}
+
+.microsite__header {
+  picture,
+  img {
+    width: 100%;
+  }
+}

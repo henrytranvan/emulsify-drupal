@@ -1,0 +1,58 @@
+$microsite-footer--large-max: max-width 1023px;
+$microsite-footer--large: 1024px;
+
+@mixin microsite-footer--flow {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+
+  @include breakpoint($microsite-footer--large) {
+    flex-direction: row;
+  }
+}
+
+.microsite-footer {
+  @include microsite-footer--flow;
+
+  background-color: $purple-dark;
+  color: $gray-lightest;
+  padding: $space-double;
+}
+
+.microsite-footer__links {
+  @include microsite-footer--flow;
+
+  @include breakpoint($microsite-footer--large-max) {
+    margin-bottom: 1rem;
+  }
+
+  @include breakpoint($microsite-footer--large) {
+    order: 2;
+    margin-left: 1rem;
+  }
+}
+
+.microsite-footer__link {
+  &,
+  &:hover {
+    color: $gray-lightest;
+
+    @include breakpoint($microsite-footer--large) {
+      font-weight: 500;
+    }
+  }
+
+  & + & {
+    @include breakpoint($microsite-footer--large-max) {
+      margin-top: 0.25rem;
+    }
+
+    @include breakpoint($microsite-footer--large) {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.microsite-footer__copy {
+  font-size: 0.8rem;
+}

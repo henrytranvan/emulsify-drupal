@@ -1,0 +1,45 @@
+.tabs__li {
+  @include large {
+    margin-right: 0.3rem;
+  }
+}
+
+.tabs__link,
+.tabs__link--local-tasks {
+  background-color: $gray-lighter;
+  border: 1px solid $gray-lighter;
+  color: $gray-dark;
+  display: block;
+  font-weight: 600;
+  padding: 1em 2.4em;
+  text-align: center;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  @include large {
+    border-radius: 3px 3px 0 0;
+    border: none;
+    border-bottom: 1px solid #d2d5d0;
+    display: inline-block;
+    padding: 0.6em 1.7em;
+    position: relative;
+    top: 1px;
+    width: auto;
+  }
+
+  &:hover {
+    background-color: $gray-lightest;
+    color: $gray-darker;
+    text-decoration: underline;
+  }
+
+  &.is-active {
+    background-color: $white;
+    color: $purple;
+
+    @include large {
+      border: 1px solid $gray;
+      border-bottom: 1px solid $white;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{% set downloads_file_base_class = downloads_file_base_class|default('downloads-file') %}
+
+<span {{ bem(downloads_file_base_class) }}>
+  {% embed "@atoms/01-links/link/link.twig" with {
+    link_url: file_url,
+    link_blockname: downloads_file_base_class,
+  } %}
+    {% block link_content %}
+      {{ file_name }}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_name: file_icon,
+        icon_blockname: downloads_file_base_class
+      } %}
+    {% endblock %}
+  {% endembed %}
+</span>

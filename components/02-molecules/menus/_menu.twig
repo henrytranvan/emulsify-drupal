@@ -18,13 +18,23 @@
  *   - in_active_trail: TRUE if the link is in the active trail.
  */
 #}
+{% import _self as menus %}
+
+{# Set Twig block to a variable to pass in special content. #}
+{% set pre_menu %}
+  {# This is the block that can be filled in a file embedding this file. #}
+  {% block menu_special_content %}
+  {% endblock %}
+{% endset %}
 
 {#
   We call a macro which calls itself to render the full tree.
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
 
-{% macro menu_links(items, attributes, menu_level, menu_class, menu_modifiers, menu_blockname, item_base_class, item_modifiers, item_blockname) %}
+{{ menus.menu_links(items, attributes, 0, menu_class, menu_modifiers, menu_blockname, item_base_class, item_modifiers, item_blockname, menu_icon_url, pre_menu, li_key, icon_url, parent_item) }}
+
+{% macro menu_links(items, attributes, menu_level, menu_class, menu_modifiers, menu_blockname, item_base_class, item_modifiers, item_blockname, menu_icon_url, pre_menu, li_key, icon_url, parent_item) %}
   {% import _self as menus %}
   {% if items %}
 
@@ -33,29 +43,62 @@
     {% if not menu_modifiers %}
       {% set menu_modifiers = [] %}
     {% endif %}
+    {% if not main_menu_sub_wrap_modifiers %}
+      {% set main_menu_sub_wrap_modifiers = [] %}
+    {% endif %}
     {% if menu_level > 0 %}
       {% set menu_modifiers = menu_modifiers|merge(['sub', 'sub-' ~ menu_level]) %}
+      {% set menu_modifiers = menu_modifiers|merge([items|length ~ '-items']) %}
+      {% set main_menu_sub_wrap_modifiers = main_menu_sub_wrap_modifiers|merge([items|length ~ '-items']) %}
     {% endif %}
 
     {# List #}
-    {% embed "@atoms/lists/ul.twig" with {
+    {% if parent_item %}
+    <div {{ bem('sub-wrap', main_menu_sub_wrap_modifiers, menu_class) }}>
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading_level: 3,
+        heading: parent_item,
+        heading_blockname: menu_class,
+        heading_base_class: 'sub-h3',
+      } %}
+      {% embed "@atoms/06-buttons/01-button.twig" with {
+        button_blockname: menu_class,
+        button_base_class: 'sub-wrap-btn'
+      } %}
+        {% block button_content %}
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_name: "caret-down",
+          } %}
+          <span {{ bem('sub-wrap-btn-back', [], menu_class) }}>Back</span>
+        {% endblock %}
+      {% endembed %}
+    {% endif %}
+
+    {% embed "@atoms/03-lists/00-ul.twig" with {
       ul_base_class: menu_class,
       ul_modifiers: menu_modifiers,
       ul_blockname: menu_blockname
     } %}
       {% block list_content %}
         {% for item in items %}
-          {% include "@molecules/menus/_menu-item.twig" with {
+          {% embed "@molecules/menus/_menu-item.twig" with {
             li_base_class: item_base_class,
             li_modifiers: item_modifiers,
             li_blockname: item_blockname,
+            li_key: loop.index,
           } %}
+            {% block menu_item_content %}
+              {# Only open the ability to pass in special content to the very first menu item. #}
+              {% if loop.first %}
+                {{ pre_menu }}
+              {% endif %}
+            {% endblock %}
+          {% endembed %}
         {% endfor %}
       {% endblock %}
     {% endembed %}
+    {% if parent_item %}
+      </div>
+    {% endif %}
   {% endif %}
 {% endmacro %}
-
-{% import _self as menus %}
-
-{{ menus.menu_links(items, attributes, 0, menu_class, menu_modifiers, menu_blockname, item_base_class, item_modifiers, item_blockname) }}

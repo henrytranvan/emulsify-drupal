@@ -1,0 +1,15 @@
+{% set video_content_base_class = video_content_base_class|default('video-content') %}
+
+<div {{ bem(video_content_base_class, video_content_modifiers) }}>
+  {% if video_content_title %}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      heading_level: 2,
+      heading: video_content_title,
+      heading_blockname: video_content_base_class,
+      heading_base_class: 'title',
+    } %}
+  {% endif %}
+  {% block video_media %}
+    {% include "@molecules/video-content/_video-media.twig" %}
+  {% endblock %}
+</div>

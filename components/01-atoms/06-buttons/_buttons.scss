@@ -1,0 +1,94 @@
+@mixin button-reset {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+@mixin button($bg: $purple, $color: $white, $hoverBg: $purple-dark, $hoverColor: $white, $focusColor: lighten($bg, 10%), $activeColor: darken($bg, 15%)) {
+  background-color: $bg;
+  border: none;
+  border-radius: 3px;
+  color: $color;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 0.7rem 1.65rem;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+
+  &:hover {
+    background-color: $hoverBg;
+    color: $hoverColor;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    background-color: $focusColor;
+  }
+
+  &:active,
+  &:visited {
+    background-color: $activeColor;
+  }
+}
+
+// Colors first, then size.
+@mixin button-gray {
+  @include button($bg:$gray-lighter, $color:$gray-darker, $hoverBg:$white, $hoverColor:$purple, $activeColor: lighten($gray-lighter, 10%));
+}
+
+@mixin button-big {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.8rem 1.9rem;
+}
+
+@mixin button-medium {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.7rem 1rem;
+  line-height: 1;
+}
+
+@mixin button-small {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem $space;
+}
+
+@mixin button-transparent {
+  background-color: transparent;
+  border: 1px solid $purple;
+  color: $purple;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+
+  &:focus,
+  &:active {
+    color: $white;
+
+    svg {
+      fill: $white;
+    }
+  }
+}
+
+.button {
+  @include button;
+
+  &--gray {
+    @include button-gray;
+  }
+
+  &--big {
+    @include button-big;
+  }
+
+  &--small {
+    @include button-small;
+  }
+}

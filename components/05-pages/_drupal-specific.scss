@@ -1,0 +1,53 @@
+// Drupal-specific CMS styles
+
+.skip-to-content {
+  background-color: $white;
+  padding: $space-one-half;
+  display: block;
+  font-weight: 500;
+}
+
+// Node Preview form styles
+.node-preview-container {
+  background-color: rgba(251, 209, 209, 0.92);
+  padding: $space;
+
+  &::before {
+    content: "Currently in preview mode";
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: black;
+  }
+
+  @include medium {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.node-preview-form-select .form-item {
+  display: none;
+}
+
+.node-preview-backlink {
+  @include button;
+
+  position: relative;
+
+  &::before {
+    border: 7px solid $white;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-radius: 3px;
+    content: "";
+    display: inline-block;
+    position: relative;
+    left: -10px;
+    top: 1px;
+  }
+}

@@ -1,0 +1,49 @@
+{% embed "@templates/_default.twig" with {
+  menu_items: header.menu_items,
+  footer_menu_items: footer.menu_items,
+  page: {
+    hero: TRUE,
+    pre_content: TRUE,
+  },
+} %}
+
+  {% block hero %}
+    {% include "@molecules/page-hero/_page-hero.twig" %}
+  {% endblock %}
+
+  {% block pre_content %}
+    {% include "@molecules/menus/secondary-nav/secondary-nav.twig" %}
+  {% endblock %}
+
+  {% block page_content %}
+
+    {% embed "@base/layouts/_wrap.twig" with {
+      wrap_modifiers: ['contained']
+    } %}
+      {% block wrap_content %}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading: "Department Title",
+          heading_level: 2
+        } %}
+        {% embed "@atoms/02-text/text/paragraphs/_paragraph.twig" %}
+          {% block paragraph_content %}
+            Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+          {% endblock %}
+        {% endembed %}
+      {% endblock %}
+    {% endembed %}
+
+    {% include "@organisms/card-grid/card-grid.twig" %}
+
+    {% include "@molecules/cta/cta.twig" with {
+      cta_modifiers: cta_3_modifiers,
+      cta_bg_color: cta_3_bg_color,
+      cta_title: cta_3_title,
+      cta_text: cta_3_text,
+      cta_link_text: cta_3_link_text,
+      cta_link_url: cta_3_link_url,
+    } %}
+
+  {% endblock %}
+
+{% endembed %}

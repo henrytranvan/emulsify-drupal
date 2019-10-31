@@ -1,0 +1,113 @@
+.degree-details {
+  background-color: $gray-lighter;
+  text-align: center;
+}
+
+.degree-details__inner {
+  @include wrapper($v-padding: $space-triple, $h-padding: $space, $h-padding-med: $space-quadruple, $h-padding-max: 8rem);
+}
+
+.degree-details__title {
+  @include heading-xl($margin: 0 0 0.7rem);
+}
+
+.degree-details__subtitle {
+  @include heading-xxs($color: $gray-darker, $margin: $space 0);
+}
+
+.degree-details__text {
+  margin: 0;
+}
+
+// Licensure
+.degree-details__licensure {
+  color: $gray-darker;
+  display: block;
+  font-size: 0.9rem;
+  margin: $space 0 $space-double;
+}
+
+.degree-details__licensure-star {
+  height: 18px;
+  fill: $green;
+  position: relative;
+  top: 3px;
+  width: 18px;
+}
+
+// Bottom (online and link)
+.degree-details__bottom {
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  @include medium {
+    display: flex;
+  }
+}
+
+.degree-details__online {
+  display: block;
+  overflow: hidden;
+  margin-bottom: $space;
+
+  @include medium {
+    width: 375px;
+    margin-bottom: 0;
+  }
+}
+
+.degree-details__wifi-icon {
+  height: 30px;
+  fill: $purple;
+  width: 30px;
+
+  @include medium {
+    float: left;
+    height: 60px;
+    margin-right: $space;
+    width: 60px;
+  }
+}
+
+.degree-details__online-text {
+  @include heading-xs($color: $purple, $font-size: 1.3rem, $font-weight: 600, $line-height: 1, $margin: 0);
+
+  @include medium {
+    float: left;
+    margin: 0.7rem 0 0;
+  }
+}
+
+.degree-details__online-subtext {
+  font-size: 0.8rem;
+  line-height: 1.3;
+  margin: $space-one-half 0 0;
+
+  @include medium {
+    float: left;
+    margin: 0;
+  }
+}
+
+.degree-details__link {
+  @include button;
+  @include button-transparent;
+
+  @include medium {
+    display: inline;
+  }
+}
+
+.degree-details__external-icon {
+  fill: $purple;
+  height: 18px;
+  margin-left: 4px;
+  position: relative;
+  top: 4px;
+  width: 18px;
+
+  .degree-details__link:hover & {
+    fill: $white;
+  }
+}

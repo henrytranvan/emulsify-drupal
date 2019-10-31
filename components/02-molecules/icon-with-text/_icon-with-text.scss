@@ -1,0 +1,59 @@
+.icon-with-text {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-right: $space;
+
+  a.icon-link {
+    display: flex;
+    color: $gray;
+    text-decoration: none;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid $gray-light;
+    border-radius: 3px;
+    background: $white;
+    transition: background 0.2s;
+
+    &:hover {
+      background: $gray-lightest;
+    }
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &__link {
+    @include link;
+
+    text-decoration: none;
+  }
+
+  &__icon {
+    width: 23px;
+    height: 23px;
+    margin-right: $space;
+    color: $purple-dark;
+    fill: $purple-dark;
+
+    &--btn {
+      color: $gray-light;
+      fill: $gray-light;
+      margin-right: $space-one-half;
+    }
+  }
+
+  &__text {
+    &--btn {
+      font-size: 0.8rem;
+      line-height: 1;
+      font-weight: bold;
+    }
+  }
+
+  &--stacked {
+    margin-right: 0;
+    margin-bottom: $space-one-half;
+  }
+}

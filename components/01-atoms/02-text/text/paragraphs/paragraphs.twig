@@ -1,0 +1,13 @@
+{% embed "@base/layouts/_wrap.twig" with {
+  wrap_modifiers: paragraph_wrap_modifiers
+} %}
+  {% block wrap_content %}
+    {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+      paragraph_modifiers: paragraph1_modifiers,
+      paragraph_content: paragraph1,
+    } %}
+    {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+      paragraph_content: paragraph1,
+    } %}
+  {% endblock %}
+{% endembed %}

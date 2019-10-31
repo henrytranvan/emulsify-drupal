@@ -1,20 +1,51 @@
-{% set footer__base_class = 'footer' %}
+{% set footer_base_class = 'footer' %}
+{% set site_logo = site_logo|default('/themes/custom/nyusteinhardt/images/logo.svg') %}
 
-<footer {{ bem(footer__base_class) }}>
-  <dov {{ bem('inner', [], footer__base_class) }}>
-    <div {{ bem('social', [], footer__base_class) }}>
-      {% block footer__social %}
-        {% include "@molecules/menus/social/social-menu.twig" with {
-          items: social_menu__items,
+<footer {{ bem(footer_base_class) }}>
+  <div {{ bem('inner', footer_inner_modifiers, footer_base_class) }}>
+    <div {{ bem('left', [], footer_base_class) }}>
+      {% include "@atoms/04-images/00-image/figure.twig" with {
+        img_src: site_logo,
+        img_alt: 'Logo',
+        img_url: logo_link_url|default('/'),
+        image_figure_base_class: 'logo',
+        image_figure_blockname: footer_base_class,
+      } %}
+
+      {% block footer_menu %}
+        {% include "@molecules/menus/inline-menu/inline-menu.twig" with {
+          items: footer_menu_items
         } %}
       {% endblock %}
+
     </div>
-    <div {{ bem('menu', [], footer__base_class) }}>
-      {% block footer__menu %}
-        {% include "@molecules/menus/inline/inline-menu.twig" with {
-          items: footer_menu__items,
-        } %}
+
+
+    <div {{ bem('right', [], footer_base_class) }}>
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading_level: 2,
+        heading: "Follow NYU Steinhardt",
+        heading_blockname: footer_base_class
+      } %}
+
+      <div {{ bem('social-icons', [], footer_base_class) }}>
+        <a href="https://www.facebook.com/NYUSteinhardt/" target="_blank" {{ bem('social-icon', [], footer_base_class) }}>{% include "@atoms/04-images/icons/_icon.twig" with {icon_name: 'facebook',} %}<span>Facebook</span></a>
+        <a href="https://twitter.com/nyusteinhardt?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" {{ bem('social-icon', [], footer_base_class) }}>{% include "@atoms/04-images/icons/_icon.twig" with {icon_name: 'twitter',} %}<span>Twitter</span></a>
+        <a href="https://www.youtube.com/user/nyusteinhardt" target="_blank" {{ bem('social-icon', [], footer_base_class) }}>{% include "@atoms/04-images/icons/_icon.twig" with {icon_name: 'youtube',} %}<span>YouTube</span></a>
+        <a href="https://ca.linkedin.com/school/nyu-steinhardt-school-of-culture-education-and-human-development/" target="_blank" {{ bem('social-icon', [], footer_base_class) }}>{% include "@atoms/04-images/icons/_icon.twig" with {icon_name: 'linkedin',} %}<span>LinkedIn</span></a>
+        <a href="https://www.instagram.com/nyusteinhardt/?hl=en" target="_blank" {{ bem('social-icon', [], footer_base_class) }}>{% include "@atoms/04-images/icons/_icon.twig" with {icon_name: 'instagram',} %}<span>Instagram</span></a>
+      </div>
+    </div>
+
+    {% embed "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+      paragraph_base_class: 'copyright',
+      paragraph_blockname: footer_base_class
+    } %}
+      {% block paragraph_content %}
+        This site, and all its contents, are Copyright &copy; {{ "now"|date("Y") }} by New York University. All rights reserved.
       {% endblock %}
-    </div>
+    {% endembed %}
+
   </div>
+
 </footer>

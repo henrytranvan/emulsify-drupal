@@ -1,0 +1,41 @@
+{% embed "@templates/_default.twig" with {
+  menu_items: header.menu_items,
+  footer_menu_items: footer.menu_items,
+  page: {
+    hero: TRUE,
+    pre_content: TRUE,
+  },
+} %}
+
+  {% block hero %}
+    {% include "@molecules/page-hero/_page-hero.twig" with {
+      page_hero_has_image: page_hero_image_src ? true : false
+    } %}
+  {% endblock %}
+
+  {% block page_content %}
+    {% embed '@organisms/research/_research.twig' with {
+      research_attachments_heading: 'Downloads',
+      research_doi: '1233243'
+    } %}
+
+      {% block attachments %}
+        {% for attachment in attachments %}
+          {% include '@molecules/icon-with-text/icon-with-text.twig' with {
+            icon_with_text_icon_name: attachment.icon_name,
+            icon_with_text_label: attachment.icon_label,
+            icon_with_text_href: attachment.icon_href,
+            icon_with_text_modifiers: ['btn']
+          } %}
+        {% endfor %}
+      {% endblock %}
+
+    {% endembed %}
+
+    {% include "@molecules/text-with-media/text-with-media.twig" %}
+
+    {% include "@molecules/text-columns/text-columns.twig" %}
+
+  {% endblock %}
+
+{% endembed %}

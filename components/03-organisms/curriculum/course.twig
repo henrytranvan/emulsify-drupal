@@ -1,0 +1,18 @@
+{% set course_base_class = course_base_class|default('course') %}
+
+<div {{ bem(course_base_class, course_modifiers, course_blockname) }}>
+  <div {{ bem('container', [], course_base_class) }}>
+    <div {{ bem('number', [], course_base_class)}}>{{ course_number }}</div>
+    <div {{ bem('title', [], course_base_class)}}>
+      {% if course_show_link %}
+        {% include "@atoms/01-links/link/link.twig" with {
+          link_url: course_url,
+          link_content: course_title
+        } %}
+      {% else %}
+        {{ course_title }}
+      {% endif %}
+    </div>
+    <div {{ bem('credits', [], course_base_class)}}>{{ course_credits}} Units</div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+# Text Section
+text_modifiers:
+  - "margin"
+  - ""
+  - ""
+text_extra_classes:
+  - ""
+
+# Card Grid
+card_grid_modifiers: 
+  - 'small'
+  - 'gray'
+
+# CTA
+cta_modifiers:
+  - "purple"
+
+# CTA 2
+cta_2_bg_color: "gray"
+
+#SBS
+sbs_bg_color: "purple"
+
+# Final CTA
+cta_3_bg_color: "white"
+cta_3_modifiers:
+  - ""

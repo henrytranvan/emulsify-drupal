@@ -1,0 +1,174 @@
+{#
+/**
+ * Available variables:
+ * - card_base_class - base classname of the wrapper
+ * - card_modifiers - array of modifiers to add to the base classname of the wrapper
+ * - card_blockname - blockname prepended to the base classname of the wrapper(s) and each component
+ *
+ * - card_img_src - the actual image file location
+ * - card_img_alt - (optional) the alt text for screen readers and when the image cannot load
+ * - card_img_url - Url the image should link to. Defaults to card_link_url
+ * - card_image_output_image_tag: whether to print the picture element or not
+ *
+ * - card_copy_base_class - base classname of the copy wrapper - defaults to 'card__copy'
+ * - card_copy_modifiers - array of modifiers to add to the base classname of the copy wrapper
+ * - card_copy_blockname - blockname prepended to the base classname of the copy wrapper
+ *
+ * - card_title - the content of the title component
+ * - card_title_link - (optional) the url the title should link to. Defaults to card_link_url.
+ * - card_title_base_class - base classname of the title component. Defaults to "title"
+ * - card_title_blockname - blockname to add to the base classname of the title - defaults to card_base_class
+ * - card_title_modifiers - array of modifiers to add to the base classname of the title
+ * - card_title_link_base_class - base class to add to the title link - defaults to 'title-link'
+ *
+ * - card_subtitle - the content of the subtitle component
+ * - card_subtitle_link - (optional) the url the subtitle should link to
+ * - card_subtitle_base_class - base classname of the subtitle component. Defaults to "subtitle"
+ * - card_subtitle_modifiers - array of modifiers to add to the base classname of the subtitle
+ *
+ * - card_body - the content of the body component
+ * - card_body_base_class - base classname of the body component. Defaults to "body"
+ * - card_body_modifiers - array of modifiers to add to the base classname of the body
+ *
+ * - card_link_text - the content of the link component
+ * - card_link_url - the url the link should link to
+ * - card_link_base_class - base classname of the link component. Defaults to "link"
+ * - card_link_blockname - override link blockname. Defaults to card_base_class
+ * - card_link_attributes - array of attribute,value pairs for the link attribute
+ * - card_link_modifiers - array of modifiers to add to the base classname of the link
+ *
+ * - card_button_content - the content of the button component
+ * - card_button_url - the url the button should link to
+ * - card_button_base_class - base classname of the button component. Defaults to "button"
+ * - card_button_attributes - array of attribute,value pairs for the button attribute
+ * - card_button_modifiers - array of modifiers to add to the base classname of the button
+ */
+#}
+{% set card_base_class = 'card' %}
+
+{% if card_pl %}
+  {% set card_modifiers = card_modifiers|default(['pl']) %}
+{% endif %}
+
+{% if not card_title_modifiers %}
+  {% set card_title_modifiers = [] %}
+{% endif %}
+
+{% if not card_image_modifiers %}
+  {% set card_image_modifiers = [] %}
+{% endif %}
+
+{% if card_subtitle %}
+  {% set card_title_modifiers = card_title_modifiers|merge(['no-margin']) %}
+{% endif %}
+
+{% if card_date_month %}
+  {% set card_image_modifiers = card_image_modifiers|merge(['with-date']) %}
+{% endif %}
+
+{% set card_img_attributes = {
+  class: bem('image', card_image_modifiers, card_base_class),
+  "aria-hidden": "true",
+} %}
+
+{% if card_pl %}<div {{ bem('wrap', [], card_base_class) }}>{% endif %}
+<div {{ bem(card_base_class, (card_modifiers), card_blockname) }}>
+  <div {{ add_attributes(card_img_attributes) }}>
+    {% if card_link_url %}<a href="{{ card_link_url }}" tabindex="-1">{% endif %}
+      {% block card_img %}
+        {% include "@atoms/04-images/00-image/responsive-image.twig" with {
+          img_url: card_img_url|default(card_link_url),
+          img_src: card_img_src,
+          img_alt: card_img_alt,
+          image_link_blockname: card_base_class,
+          image_blockname: card_base_class,
+          output_image_tag: card_image_output_image_tag,
+        } %}
+      {% endblock %}
+    {% if card_link_url %}</a>{% endif %}
+
+    {% if card_has_tag %}
+      {% block card_tag %}
+        {% include "@atoms/01-links/link/link.twig" with {
+          link_content: card_tag_text,
+          link_url: card_tag_url,
+          link_attributes: card_tag_attributes,
+          link_blockname: 'tag',
+          link_base_class: card_tag_base_class,
+        } %}
+      {% endblock %}
+    {% endif %}
+
+    {% if card_date_month %}
+        <div {{ bem('date', [], card_base_class) }}>
+          {% include "@atoms/10-date/date.twig" with {
+            date_modifiers: card_date_modifiers,
+            date_month: card_date_month,
+            date_day: card_date_day,
+          } %}
+        </div>
+      {% endif %}
+  </div>
+  <div {{ bem(card_copy_base_class|default('card__copy'), (card_copy_modifiers), card_copy_blockname) }}>
+    {% if card_eyebrow %}
+      {% include "@atoms/02-text/text/_text.twig" with {
+        text_content: card_eyebrow,
+        text_blockname: card_base_class,
+        text_base_class: 'eyebrow',
+      } %}
+    {% endif %}
+    {% if card_title %}
+      {{ title_prefix }}
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading_level: 2,
+        heading: card_title,
+        heading_url: card_title_link|default(card_link_url),
+        heading_blockname: card_title_blockname|default(card_base_class),
+        heading_modifiers: card_title_modifiers,
+        heading_link_base_class: card_title_link_base_class|default('title-link'),
+        heading_link_blockname: card_base_class,
+        heading_base_class: card_title_base_class|default('title'),
+      } %}
+      {{ title_suffix }}
+    {% endif %}
+
+    {% block card_info %}
+    {% endblock %}
+
+    {% if card_subtitle %}
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading_level: 3,
+        heading: card_subtitle,
+        heading_url: card_subtitle_link,
+        heading_blockname: card_subtitle_blockname|default(card_base_class),
+        heading_modifiers: card_subtitle_modifiers,
+        heading_base_class: card_subtitle_base_class|default('subtitle'),
+      } %}
+    {% endif %}
+    <div {{ bem('body-wrap', [], card_base_class) }}>
+      {% block card_body_block %}
+        {% if card_body %}
+          {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+            paragraph_content: card_body,
+          } %}
+        {% endif %}
+      {% endblock %}
+    </div>
+  </div>
+
+  <div {{ bem('bottom', [], card_base_class) }}>
+    {% block card_bottom %}
+      {% if card_link_text %}
+        {% include "@atoms/01-links/link/link.twig" with {
+          link_content: card_link_text,
+          link_url: card_link_url,
+          link_attributes: card_link_attributes,
+          link_blockname: card_link_blockname|default(card_base_class),
+          link_base_class: card_link_base_class|default('link'),
+        } %}
+      {% endif %}
+    {% endblock %}
+  </div>
+
+</div>
+{% if card_pl %}</div>{% endif %}

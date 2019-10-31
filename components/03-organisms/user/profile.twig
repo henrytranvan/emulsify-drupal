@@ -1,0 +1,115 @@
+{% set profile_base_class = 'profile' %}
+
+<div {{ bem(profile_base_class, profile_modifiers, profile_blockname) }}>
+  <div {{ bem('header', [], profile_base_class) }}>
+    <div {{ bem('image', [], profile_base_class) }}>
+      {% block profile_image %}
+        {% include "@atoms/04-images/00-image/responsive-image.twig" with {
+          img_src: profile_image_src,
+          img_alt: "Profile image",
+        } %}
+      {% endblock %}
+    </div>
+    <div {{ bem('info', [], profile_base_class) }}>
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading_level: 1,
+        heading: profile_name,
+        heading_modifiers: ['large'],
+      } %}
+
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading: profile_job_title,
+        heading_level: 2,
+      } %}
+
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading: profile_department,
+        heading_level: 3,
+        heading_blockname: profile_base_class
+      } %}
+
+      {% if profile_email %}
+        {% embed "@molecules/icon-with-text/icon-with-text.twig" with {
+          icon_with_text_icon_name: 'mail',
+          icon_with_text_modifiers: ['stacked']
+        } %}
+
+        {% block text %}
+          <a href="mailto:{{ profile_email }}" target="_blank">{{ profile_email }}</a>
+        {% endblock %}
+
+        {% endembed %}
+      {% endif %}
+
+      {% if profile_phone %}
+        {% include "@molecules/icon-with-text/icon-with-text.twig" with {
+          icon_with_text_icon_name: 'phone',
+          icon_with_text_label: profile_phone,
+          icon_with_text_modifiers: ['stacked']
+        } %}
+      {% endif %}
+
+      {% if profile_website %}
+        {% embed "@molecules/icon-with-text/icon-with-text.twig" with {
+          icon_with_text_icon_name: 'browser',
+          icon_with_text_modifiers: ['stacked']
+        } %}
+
+          {% block text %}
+            {% include '@atoms/01-links/link/link.twig' with {
+              link_url: profile_website,
+              link_content: 'Website',
+              link_blockname: 'icon-with-text',
+              link_attributes: {
+                'target': '_blank'
+              }
+            } %}
+          {% endblock %}
+
+        {% endembed %}
+      {% endif %}
+
+      {% if profile_cv_path %}
+        {% embed "@molecules/icon-with-text/icon-with-text.twig" with {
+          icon_with_text_icon_name: 'download',
+          icon_with_text_label: profile_cv_path,
+          icon_with_text_modifiers: ['stacked']
+        } %}
+
+          {% block text %}
+            {% include '@atoms/01-links/link/link.twig' with {
+              link_url: profile_cv_path,
+              link_content: 'Download CV',
+              link_blockname: 'icon-with-text'
+            } %}
+          {% endblock %}
+
+        {% endembed %}
+      {% endif %}
+    </div>
+  </div>
+
+  <div {{ bem('bio', [], profile_base_class)}}>
+    {% block profile_bio %}
+      {% include '@atoms/02-text/text/_text.twig' with {
+        text_content: profile_bio
+      } %}
+    {% endblock %}
+  </div>
+
+  {% if publications %}
+    <div {{ bem('publications', [], profile_base_class) }}>
+      {% include '@atoms/02-text/00-headings/_heading.twig' with {
+        heading: 'Selected Publications',
+        heading_level: 2,
+        heading_blockname: 'publications'
+      } %}
+      {% block profile_publications %}
+        {% include '@atoms/02-text/text/_text.twig' with {
+          text_content: profile_publications
+        } %}
+      {% endblock %}
+    </div>
+  {% endif %}
+
+</div>

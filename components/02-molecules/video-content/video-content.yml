@@ -1,0 +1,6 @@
+video_content_modifiers:
+  - 'pl'
+video_content_title: 'Component-Based Theming Video One'
+video_content: "<iframe title='Test Video' width='854' height='480' frameborder='0' allowfullscreen='allowfullscreen' src='https://www.youtube.com/embed/YRnVnlhjOBs?autoplay=0&amp;start=0'></iframe>"
+video_content_description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore."
+video_content_transcript_url: "#"

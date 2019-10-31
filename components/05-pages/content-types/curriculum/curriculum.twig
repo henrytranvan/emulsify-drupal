@@ -1,0 +1,139 @@
+{% embed "@templates/_default.twig" with {
+  menu_items: header.menu_items,
+  footer_menu_items: footer.menu_items,
+  page: {
+    hero: TRUE,
+    pre_content: TRUE
+  },
+  layout_modifiers: ['basic-page'],
+} %}
+
+  {% block hero %}
+    {% embed "@molecules/btn-hero/_btn-hero.twig" with {
+      btn_hero_title: "Art MA, Teaching Art, Grades K-12 Initial Certification",
+      btn_hero_btn_1_text: "Apply Now",
+      btn_hero_btn_1_url: "#",
+      btn_hero_btn_2_text: "Info Session",
+      btn_hero_btn_2_url: "#"
+    } %}
+
+      {% block breadcrumb %}
+        {% include "@molecules/menus/breadcrumbs/breadcrumbs.twig" with {
+          breadcrumb: {
+            "1": {
+              text: 'Home',
+              url: '#'
+            },
+            "2": {
+              text: 'Programs & Degrees',
+              url: '#'
+            }
+          }
+        } %}
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
+
+  {% block pre_content %}
+    {% include "@molecules/menus/secondary-nav/secondary-nav.twig" %}
+  {% endblock %}
+
+  {% block page_content %}
+    {% embed "@organisms/curriculum/_curriculum.twig" with {
+      curriculum_title: "Core Required Courses",
+      curriculum_description: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor.",
+      curriculum_block_heading: "Lorem Ipsum Subhead",
+      curriculum_block_intro: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis."
+    } %}
+
+    {% block curriculum_blocks %}
+      {% include "@organisms/curriculum/curriculum-block.twig" with {
+        courses: {
+          "1": {
+            number: 'ABCD-1234-EF',
+            title: 'Learning ABCS and 123s',
+            url: "#",
+            credits: '3',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+          },
+          "2": {
+            number: 'ABCD-1234-EF',
+            title: 'Learning ABCS and 123s',
+            url: '#',
+            credits: '3',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+          },
+          "3": {
+            number: 'ABCD-1234-EF',
+            title: 'Learning ABCS and 123s',
+            url: '#',
+            credits: '3',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+          }
+        }
+      } %}
+      {% include "@organisms/curriculum/curriculum-block.twig" with {
+        courses: {
+          "1": {
+            number: 'ABCD-1234-EF',
+            title: 'Learning ABCS and 123s',
+            url: '#',
+            credits: '3',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+          },
+          "2": {
+            number: 'ABCD-1234-EF',
+            title: 'Learning ABCS and 123s',
+            url: '#',
+            credits: '3',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+          },
+          "3": {
+            number: 'ABCD-1234-EF',
+            title: 'Learning ABCS and 123s',
+            url: '#',
+            credits: '3',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+          }
+        }
+      } %}
+      {% include "@organisms/curriculum/curriculum-block.twig" with {
+        courses: {
+          "1": {
+            number: 'ABCD-1234-EF',
+            title: 'Learning ABCS and 123s',
+            url: '#',
+            credits: '3',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+          },
+          "2": {
+            number: 'ABCD-1234-EF',
+            title: 'Learning ABCS and 123s',
+            url: '#',
+            credits: '3',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+          },
+          "3": {
+            number: 'ABCD-1234-EF',
+            title: 'Learning ABCS and 123s',
+            url: '#',
+            credits: '3',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+          }
+        }
+      } %}
+    {% endblock %}
+
+    {% endembed %}
+
+    {% include "@molecules/cta/cta.twig" with {
+      cta_bg_color: 'gray',
+      cta_title: 'Apply now',
+      cta_text: 'Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.',
+      cta_link_text: 'Button',
+      cta_link_url: '#',
+    } %}
+
+  {% endblock %}
+
+{% endembed %}

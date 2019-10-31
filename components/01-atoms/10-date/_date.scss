@@ -1,0 +1,35 @@
+.date {
+  background: $purple;
+  border-radius: 3px;
+  box-shadow: 0 0 2px $white;
+  color: $white;
+  display: inline-block;
+  font-weight: 700;
+  padding: $space-one-half 0.75rem;
+  text-align: center;
+  text-transform: uppercase;
+
+  &--white {
+    background: $white;
+    color: $purple;
+  }
+
+  &__month,
+  &__day {
+    display: block;
+    line-height: 1;
+
+    &--large {
+      line-height: 0.8;
+    }
+  }
+}
+
+.date__month {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.date__day {
+  font-size: 2rem;
+}

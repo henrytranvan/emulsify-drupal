@@ -1,0 +1,24 @@
+sbs_bg_color: 'purple'
+
+sbs_pre_title: true
+sbs_pre_title_1: "Professional Licensure or Certification"
+sbs_pre_title_1_icon: "star"
+
+sbs_title: "What's Special About NYU"
+
+sbs_text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+
+sbs_link_url: "#"
+sbs_link_text: "Degree Details"
+
+sbs_link_url_2: "#"
+sbs_link_text_2: "How to Apply"
+
+sbs_extra_link: "#"
+sbs_extra_link_icon: "wifi"
+sbs_extra_link_text: "Study Online Details"
+sbs_extra_link_post_text: "This degree offers an online option."
+
+video_content:
+  "<iframe title='Test Video' width='854' height='480' frameborder='0' allowfullscreen='allowfullscreen' src='https://www.youtube.com/embed/YRnVnlhjOBs?autoplay=0&amp;start=0'></iframe>"
+

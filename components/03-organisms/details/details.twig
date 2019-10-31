@@ -1,0 +1,115 @@
+{% set details_base_class = details_base_class|default('degree-details') %}
+
+{% set stats_description_content %}
+  {% block stats_grid_content %}
+    <div>
+      <span class="stat__label">Term: </span>{{ details_term }} | <span class="stat__label">Application Deadline: </span>{{ details_deadline }}
+    </div>
+    <div>
+      <span class="stat__label">Term: </span>{{ details_term_2 }} | <span class="stat__label">Application Deadline: </span>{{ details_deadline_2 }}
+    </div>
+  {% endblock %}
+{% endset %}
+
+<div {{ bem(details_base_class, details_modifiers, details_blockname) }}>
+  <div {{ bem('inner', details_modifiers, details_base_class) }}>
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      heading_level: 2,
+      heading: details_title,
+      heading_blockname: details_base_class,
+      heading_base_class: 'title',
+    } %}
+
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      heading_level: 3,
+      heading: 'Official Degree Title',
+      heading_blockname: details_base_class,
+      heading_base_class: 'subtitle',
+    } %}
+
+    {% block detail_text %}
+      {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+        paragraph_content: detail_text,
+        paragraph_blockname: details_base_class,
+        paragraph_base_class: 'text',
+      } %}
+    {% endblock %}
+
+    {% if licensure %}
+      <span {{ bem('licensure', [], details_base_class) }}>
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          icon_name: 'star',
+          icon_blockname: details_base_class,
+          icon_base_class: 'licensure-star',
+        } %}
+        <span>Professional Licensure or Certification</span>
+      </span>
+    {% endif %}
+
+    {% embed "@base/layouts/grid/00-grid.twig" with {
+      grid_heading_blockname: details_grid_base_class,
+      grid_heading_modifiers: details_grid_heading_modifiers,
+      grid_modifiers: details_grid_modifiers,
+      grid_blockname: details_grid_base_class,
+    } %}
+
+      {% block grid_content %}
+        {% include "@organisms/stats-grid/_stat.twig" with {
+          stats_modifiers: ['small'],
+          stats_value: 'Format',
+          stats_description: details_format,
+          stats_description_modifiers: ['alt']
+        } %}
+        {% include "@organisms/stats-grid/_stat.twig" with {
+          stats_modifiers: ['small'],
+          stats_value: 'Credits',
+          stats_description: details_credits,
+          stats_description_modifiers: ['alt']
+        } %}
+        {{ stats_description_content }}
+      {% endblock %}
+
+    {% endembed %}
+
+    <div {{ bem('bottom', [], details_base_class) }}>
+      {% if online %}
+        <span {{ bem('online', [], details_base_class) }}>
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_name: 'wifi',
+            icon_blockname: details_base_class,
+            icon_base_class: 'wifi-icon',
+          } %}
+          {% include "@atoms/02-text/00-headings/_heading.twig" with {
+            heading_level: 5,
+            heading: 'Want to Study Online?',
+            heading_blockname: details_base_class,
+            heading_base_class: 'online-text',
+          } %}
+          {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+            paragraph_content: 'This degree offers an online option.',
+            paragraph_blockname: details_base_class,
+            paragraph_base_class: 'online-subtext',
+          } %}
+        </span>
+
+        {% embed "@atoms/01-links/link/link.twig" with {
+          link_url: details_link_url,
+          link_blockname: details_base_class,
+          link_attributes: {
+            target: '_blank',
+          },
+        } %}
+          {% block link_content %}
+            {{ details_link_text }}
+            {% include "@atoms/04-images/icons/_icon.twig" with {
+              icon_name: 'external-link',
+              icon_blockname: details_base_class,
+              icon_base_class: 'external-icon',
+            } %}
+          {% endblock %}
+        {% endembed %}
+      {% endif %}
+    </div>
+
+  </div>
+</div>

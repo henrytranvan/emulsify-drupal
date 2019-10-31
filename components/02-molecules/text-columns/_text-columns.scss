@@ -1,0 +1,42 @@
+.text-columns {
+  @include wrapper;
+  @include margin($top-large: $space-triple);
+
+  &--pl {
+    margin-top: $space-triple;
+  }
+}
+
+.text-columns__h1 {
+  @include heading-xl($margin: 0 0 $space-double);
+
+  text-align: center;
+
+  @include medium {
+    padding: 0 4%;
+  }
+}
+
+.text-columns__content {
+  @include medium {
+    @include grid;
+  }
+}
+
+.text-columns__column {
+  @include medium {
+    @include grid-item(2);
+  }
+
+  @include large {
+    @include grid-item(3);
+  }
+
+  @include large {
+    margin-bottom: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+}

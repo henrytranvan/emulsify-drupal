@@ -1,0 +1,295 @@
+$secondary-nav-breakpoint: 500px;
+
+%nav-item-bg {
+  @include border-radius;
+
+  background: $gray-lighter;
+}
+
+@mixin nav-dropdown {
+  @include border-radius;
+
+  z-index: 5;
+  background: $white;
+  display: block;
+  position: absolute;
+  top: 100%;
+  right: -$space;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px $gray-lightest;
+  padding: 5px;
+  width: 400px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    margin-left: -20px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    z-index: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid $white;
+  }
+
+  li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  a {
+    display: block;
+
+    &:hover {
+      background: $gray-lighter;
+    }
+  }
+
+  .hover-down-btn {
+    position: absolute;
+    top: 13px;
+  }
+
+  li:last-child a {
+    border-bottom: none;
+  }
+}
+
+.js #secondary-nav-heading {
+  display: none;
+}
+
+.secondary-nav {
+  margin: $space-double 0 0 0;
+  font-size: 18px;
+  white-space: normal;
+
+  @include breakpoint($secondary-nav-breakpoint) {
+    border-bottom: 1px solid $gray-lightest;
+  }
+
+  .hover-down-btn {
+    display: inline-block;
+    position: absolute;
+    top: 13px;
+    right: 0;
+
+    @include breakpoint($secondary-nav-breakpoint) {
+      position: relative;
+      top: 5px;
+    }
+  }
+
+  .hover-down__icon {
+    display: block;
+    fill: $purple;
+  }
+
+  // Top level list items
+  > ul > li {
+    position: relative;
+    margin-right: $space;
+
+    &:hover {
+      @extend %nav-item-bg;
+
+      // Sub menu
+      ul {
+        @include nav-dropdown;
+
+        li:hover a {
+          background: $gray-lighter;
+        }
+      }
+    }
+  }
+
+  > ul > li:first-child ul,
+  > ul > li ul.left {
+    right: auto;
+    left: 0;
+
+    &::after {
+      left: 30px;
+    }
+  }
+
+  &__menu__link {
+    display: inline-block;
+    font-weight: 500;
+    width: 100%;
+    color: $purple-dark;
+    text-decoration: none;
+    padding: 10px 0;
+
+    @include breakpoint($secondary-nav-breakpoint) {
+      border-bottom: 0;
+      padding: 5px;
+      width: auto;
+    }
+
+    &--active {
+      color: $gray-dark;
+    }
+  }
+
+  &__menu {
+    @include list-reset;
+
+    &--sub {
+      @include list-reset;
+
+      display: none;
+    }
+  }
+
+  // Inside the more menu & mobile
+  .priority-nav {
+    &__dropdown-toggle {
+      display: none;
+
+      @include breakpoint($secondary-nav-breakpoint) {
+        font-size: 18px;
+        background: none;
+        border: none;
+        font-weight: 500;
+        display: inline-block;
+        margin-left: $space;
+        color: $gray-dark;
+      }
+
+      &.is-open {
+        @extend %nav-item-bg;
+      }
+    }
+
+    &__dropdown {
+      @include list-reset;
+
+      position: static;
+      visibility: visible;
+
+      @include breakpoint($secondary-nav-breakpoint) {
+        position: absolute;
+        visibility: hidden;
+      }
+
+      .hover-down__icon {
+        transform: rotate(-90deg);
+      }
+
+      .submenu-open .hover-down__icon {
+        transform: rotate(0);
+      }
+    }
+  }
+
+  .priority-nav__wrapper {
+    li.secondary-nav__menu__item {
+      border-bottom: 1px solid $gray-lightest;
+      position: relative;
+      z-index: 2;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    li.secondary-nav__menu__item--with-sub {
+      position: relative;
+
+      .menu-container {
+        display: none;
+
+        @include breakpoint($secondary-nav-breakpoint) {
+          position: absolute;
+          right: 100%;
+          top: 0;
+          z-index: 2;
+          padding: 5px 12px 5px;
+        }
+      }
+
+      ul.secondary-nav__menu--sub {
+        padding: 0 5px 5px 5px;
+        display: block;
+
+        @include breakpoint($secondary-nav-breakpoint) {
+          background: $white;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+
+          &::after {
+            content: '';
+            position: absolute;
+            right: 7px;
+            top: 20px;
+            width: 10px;
+            height: 10px;
+            background: $white;
+            border-top: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            transform: rotate(45deg);
+          }
+        }
+      }
+
+      &:hover .menu-container {
+        display: block;
+      }
+    }
+  }
+
+  &.is-open {
+    .priority-nav__dropdown {
+      @include nav-dropdown;
+
+      visibility: visible;
+      top: 115%;
+
+      li:hover > a {
+        border-color: $black;
+      }
+    }
+  }
+
+  .expand-sub {
+    position: absolute;
+    right: 15px;
+    top: 25px;
+    color: $purple;
+
+    &::after {
+      border-width: 8px;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      right: 0;
+    }
+
+    @include breakpoint($secondary-nav-breakpoint) {
+      display: none;
+    }
+  }
+}
+
+.tab-toggle--open > .menu-container {
+  display: block !important;
+
+  ul {
+    @include breakpoint($secondary-nav-breakpoint) {
+      @include nav-dropdown;
+    }
+  }
+
+  .show & {
+    ul {
+      position: static;
+    }
+  }
+}

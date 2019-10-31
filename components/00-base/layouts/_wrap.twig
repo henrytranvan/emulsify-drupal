@@ -1,0 +1,8 @@
+{% set wrap_base_class = wrap_base_class|default('wrap') %}
+
+<div {{ bem(wrap_base_class, wrap_modifiers, wrap_blockname, wrap_extra_classes) }}>
+  {% if wrap_inner_modifiers %}<div {{ bem('inner', wrap_inner_modifiers, wrap_base_class) }}>{% endif %}
+    {% block wrap_content %}
+    {% endblock %}
+  {% if wrap_inner_modifiers %}</div>{% endif %}
+</div>

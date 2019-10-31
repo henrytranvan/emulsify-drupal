@@ -1,0 +1,144 @@
+// With Image background
+.btn-hero__outer {
+  position: relative;
+
+  .media {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    &::after {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+      content: "";
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    picture,
+    img {
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  .btn-hero .breadcrumb__item,
+  .btn-hero .breadcrumb__link,
+  .btn-hero .breadcrumb__link:focus,
+  .btn-hero .breadcrumb__link:link,
+  .btn-hero .breadcrumb__link:visited {
+    color: $white;
+
+    .breadcrumb__link-icon {
+      fill: $white;
+    }
+  }
+
+  .btn-hero__h1 {
+    position: relative;
+  }
+}
+
+.btn-hero {
+  @include wrapper($v-padding: 2rem);
+
+  background: $purple;
+  color: $white;
+
+  @include medium {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  @include large {
+    padding-bottom: 50px;
+    height: 400px;
+  }
+
+  &__inner {
+    @include medium {
+      display: flex;
+      align-items: flex-end;
+
+      &--full {
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &__title {
+    flex-basis: 50%;
+
+    @include large {
+      flex-basis: 53%;
+    }
+  }
+
+  &__subtitle {
+    @include heading-large($color: $white, $font-size-mobile: 1rem, $margin-mobile: 0.4rem 0 0, $margin: 0.4rem 0 0, $font-weight: 500);
+
+    position: relative;
+  }
+
+  &__btns {
+    margin-top: $space-double;
+    position: relative;
+
+    @include medium {
+      flex-grow: 1;
+      margin-top: 0;
+      text-align: right;
+    }
+  }
+
+  &__h1 {
+    @include heading-xl($color: $white, $font-size: 55px, $margin-mobile: 0, $margin: 0, $line-height: 1);
+
+    &--small {
+      @include heading-large($color: $white, $font-size: 45px, $margin-mobile: 0, $margin: 0, $line-height: 1);
+    }
+  }
+
+  &__link {
+    @include button-gray;
+    @include button-small;
+
+    margin-bottom: $space;
+
+    @include large {
+      @include button-medium;
+
+      margin-bottom: 0;
+      margin-right: $space;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  // Breadcrumbs
+  .breadcrumb__item,
+  .breadcrumb__link,
+  .breadcrumb__link:focus,
+  .breadcrumb__link:link,
+  .breadcrumb__link:visited,
+  .breadcrumb__link-icon {
+    color: $purple-light;
+    fill: $purple-light;
+
+    &:hover {
+      color: $white;
+
+      .breadcrumb__link-icon {
+        fill: $white;
+      }
+    }
+  }
+}

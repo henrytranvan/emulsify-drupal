@@ -1,0 +1,75 @@
+//  Empty
+.site-menu {
+  background-color: $purple-dark;
+  position: relative;
+  z-index: 12;
+
+  .h1--large {
+    @include heading-xl($font-weight: 600);
+
+    align-items: center;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    color: $white;
+    display: flex;
+    height: 100%;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    span {
+      @include wrapper($h-padding-med: $space-double, $h-padding-max: $space-one-half);
+
+      display: block;
+
+      @include breakpoint($main-menu-medium) {
+        position: relative;
+        top: -20px;
+      }
+    }
+  }
+}
+
+.site-menu img {
+  object-fit: cover;
+  max-height: 300px;
+  width: 100%;
+}
+
+.site-menu__inner-img {
+  &--img-bg {
+    background-color: rgba(61, 5, 99, 0.65);
+    bottom: 0;
+    left: 0;
+    max-width: none;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.site-menu__inner {
+  @include wrapper($h-padding-med: $space-double, $h-padding-max: 0);
+
+  &--img-bg {
+    bottom: 0;
+    left: 0;
+    max-width: none;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+// Mobile menu.
+.menu-open {
+  .site-menu {
+    .site-menu__inner-img,
+    & {
+      position: static;
+    }
+
+    .h1--large {
+      display: none;
+    }
+  }
+}

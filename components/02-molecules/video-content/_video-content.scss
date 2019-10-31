@@ -1,0 +1,59 @@
+.video-content {
+  @include wrapper;
+  @include margin;
+
+  &--pl {
+    margin-top: $space-triple;
+  }
+}
+
+.video-content__title {
+  @include heading-xl($margin: $space-triple);
+
+  text-align: center;
+}
+
+.video-content__info {
+  margin-top: $space-one-half;
+
+  @include large {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  // Captures Drupal and PL easily
+  p {
+    margin-top: 0;
+  }
+}
+
+.video-content__description {
+  @include caption;
+}
+
+.video-content__transcript {
+  color: $purple;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  @include large {
+    margin-left: $space;
+    min-width: 300px;
+    text-align: right;
+  }
+
+  &:hover {
+    color: $purple-dark;
+    text-decoration: underline;
+  }
+}
+
+.video-content__icon {
+  fill: $purple;
+  height: 22px;
+  width: 28px;
+  position: relative;
+  top: 4px;
+}

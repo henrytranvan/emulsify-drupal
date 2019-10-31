@@ -1,0 +1,184 @@
+{#
+/**
+ * Available variables:
+ * - sbs_base_class - base classname of the wrapper
+ * - sbs_modifiers - array of modifiers to add to the base classname of the wrapper
+ * - sbs_blockname - blockname prepended to the base classname of the wrapper(s) and each component
+ *
+ */
+#}
+{% set sbs_base_class = 'sbs' %}
+
+{% if not sbs_modifiers %}
+  {% set sbs_modifiers = [] %}
+{% endif %}
+
+{% if not sbs_inner_modifiers %}
+  {% set sbs_inner_modifiers = [] %}
+{% endif %}
+
+{% if not sbs_icon_modifiers %}
+  {% set sbs_icon_modifiers = [] %}
+{% endif %}
+
+{% if not sbs_heading_modifiers %}
+  {% set sbs_heading_modifiers = [] %}
+{% endif %}
+
+{% if not sbs_text_modifiers %}
+  {% set sbs_text_modifiers = [] %}
+{% endif %}
+
+{% if not sbs_link_modifiers %}
+  {% set sbs_link_modifiers = [] %}
+{% endif %}
+
+{% if not sbs_pre_title_modifiers %}
+  {% set sbs_pre_title_modifiers = [] %}
+{% endif %}
+
+{% if not sbs_extra_link_modifiers %}
+  {% set sbs_extra_link_modifiers = [] %}
+{% endif %}
+
+{% if not sbs_media_modifiers %}
+  {% set sbs_media_modifiers = [] %}
+{% endif %}
+
+{% set sbs_modifiers = sbs_modifiers|merge([sbs_bg_color]) %}
+
+{% if sbs_bg_color == 'purple' %}
+  {% set sbs_heading_modifiers = sbs_heading_modifiers|merge(['white']) %}
+  {% set sbs_icon_modifiers = sbs_icon_modifiers|merge(['white']) %}
+  {% set sbs_pre_title_modifiers = sbs_pre_title_modifiers|merge(['purple']) %}
+  {% set sbs_text_modifiers = sbs_text_modifiers|merge(['white']) %}
+  {% set sbs_link_modifiers = sbs_link_modifiers|merge(['gray']) %}
+  {% set sbs_extra_link_modifiers = sbs_extra_link_modifiers|merge(['white']) %}
+{% endif %}
+
+{% if sbs_bg_color == 'gray' %}
+  {% set sbs_heading_modifiers = sbs_heading_modifiers|merge(['gray']) %}
+  {% set sbs_icon_modifiers = sbs_icon_modifiers|merge(['gray']) %}
+  {% set sbs_pre_title_modifiers = sbs_pre_title_modifiers|merge(['gray']) %}
+  {% set sbs_text_modifiers = sbs_text_modifiers|merge(['gray']) %}
+  {% set sbs_link_modifiers = sbs_link_modifiers|merge(['purple']) %}
+  {% set sbs_extra_link_modifiers = sbs_extra_link_modifiers|merge(['gray']) %}
+{% endif %}
+
+{% if 'form' in sbs_modifiers %}
+  {% set sbs_media_modifiers = sbs_media_modifiers|merge(['form']) %}
+  {% set sbs_inner_modifiers = sbs_inner_modifiers|merge(['default-order']) %}
+{% endif %}
+
+<div {{ bem(sbs_base_class, (sbs_modifiers), sbs_blockname, ['has-bg']) }}>
+  <div {{ bem('inner', (sbs_inner_modifiers), sbs_base_class) }}>
+    <div {{ bem('copy', (sbs_inner_modifiers), sbs_base_class) }}>
+      {% block sbs_copy %}
+        {% if sbs_pre_title %}
+        <div {{ bem('pre-title', sbs_pre_title_modifiers, sbs_base_class) }}>
+          {% if sbs_pre_title_1 %}
+            <span {{ bem('pre-title-1', [], sbs_base_class) }}>
+              {% if sbs_pre_title_1_icon %}
+                {% include "@atoms/04-images/icons/_icon.twig" with {
+                  icon_name: sbs_pre_title_1_icon,
+                  icon_blockname: sbs_base_class,
+                  icon_modifiers: sbs_icon_modifiers,
+                } %}
+              {% endif %}
+              {{ sbs_pre_title_1 }}
+            </span>
+          {% endif %}
+          {% if sbs_pre_title_2 %}
+            <span {{ bem('pre-title-2', [], sbs_base_class) }}>
+              {% if sbs_pre_title_2_icon %}
+                {% include "@atoms/04-images/icons/_icon.twig" with {
+                  icon_name: sbs_pre_title_2_icon,
+                  icon_blockname: sbs_base_class,
+                  icon_modifiers: sbs_icon_modifiers,
+                } %}
+              {% endif %}
+              {{ sbs_pre_title_2 }}
+            </span>
+          {% endif %}
+        </div>
+        {% endif %}
+        {% if sbs_title %}
+          {% include "@atoms/02-text/00-headings/_heading.twig" with {
+            heading_level: 2,
+            heading: sbs_title,
+            heading_url: sbs_title_url,
+            heading_blockname: sbs_heading_blockname|default(sbs_base_class),
+            heading_link_blockname: sbs_heading_blockname|default(sbs_base_class),
+            heading_link_base_class: 'h2-link',
+            heading_modifiers: sbs_heading_modifiers,
+          } %}
+        {% endif %}
+        {% block sbs_pre_text %}
+          {% if sbs_pre_text %}
+            {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+              paragraph_content: sbs_pre_text,
+              paragraph_blockname: sbs_text_base_class|default(sbs_base_class),
+              paragraph_base_class: sbs_text_base_class|default('pre-text'),
+              paragraph_modifiers: sbs_text_modifiers,
+            } %}
+          {% endif %}
+        {% endblock %}
+        {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+          paragraph_content: sbs_text,
+          paragraph_blockname: sbs_text_base_class|default(sbs_base_class),
+          paragraph_base_class: sbs_text_base_class|default('text'),
+          paragraph_modifiers: sbs_text_modifiers,
+        } %}
+        {% if sbs_link_url_2 %}
+          <div {{ bem('links', (sbs_media_modifiers), sbs_base_class) }}>
+        {% endif %}
+          {% if sbs_link_url %}
+            {% include "@atoms/01-links/link/link.twig" with {
+              link_content: sbs_link_text,
+              link_url: sbs_link_url,
+              link_blockname: sbs_link_blockname|default(sbs_base_class),
+              link_modifiers: sbs_link_modifiers,
+              link_attributes: sbs_link_attributes,
+            } %}
+          {% endif %}
+        {% if sbs_link_url_2 %}
+            {% include "@atoms/01-links/link/link.twig" with {
+              link_content: sbs_link_text_2,
+              link_url: sbs_link_url_2,
+              link_blockname: sbs_link_blockname|default(sbs_base_class),
+              link_modifiers: sbs_link_modifiers,
+              link_attributes: sbs_link_attributes,
+            } %}
+          </div>
+        {% endif %}
+        {% if sbs_extra_link %}
+          {% embed "@atoms/01-links/link/link.twig" with {
+            link_url: sbs_extra_link,
+            link_blockname: sbs_link_blockname|default(sbs_base_class),
+            link_modifiers: sbs_extra_link_modifiers,
+            link_base_class: 'extra-link',
+            link_attributes: sbs_link_attributes,
+          } %}
+            {% block link_content %}
+              {% if sbs_extra_link_icon %}
+                {% include "@atoms/04-images/icons/_icon.twig" with {
+                  icon_name: sbs_extra_link_icon,
+                  icon_blockname: sbs_base_class,
+                  icon_base_class: 'extra-link-icon'
+                } %}
+              {% endif %}
+              <span>{{ sbs_extra_link_text }}</span>
+            {% endblock %}
+          {% endembed %}
+          {% if sbs_extra_link_post_text %}<span>{{ sbs_extra_link_post_text }}</span>{% endif %}
+        {% endif %}
+      {% endblock %}
+    </div>
+
+    <div {{ bem('media', (sbs_media_modifiers), sbs_base_class) }}>
+    {% block sbs_media %}
+      {% include "@molecules/video-content/_video-media.twig" %}
+    {% endblock %}
+    </div>
+  </div>
+</div>

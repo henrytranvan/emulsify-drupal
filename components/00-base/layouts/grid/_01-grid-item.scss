@@ -1,0 +1,52 @@
+@mixin grid-item($columns: '', $margin: 2%, $margin-bottom: $margin, $breakPoint: $medium, $width: 49%) {
+  flex-grow: 1;
+  margin-bottom: 1em;
+
+  @include breakpoint($breakPoint) {
+    margin: 0 $margin $margin-bottom 0;
+
+    &:nth-child(#{$columns}n) {
+      margin-right: 0;
+    }
+
+    &:not(:nth-child(#{$columns}n)) {
+      margin-right: $margin;
+    }
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @if $columns == 2 {
+    width: $width;
+  }
+
+  @if $columns == 3 {
+    width: 31.9999999999999%;
+
+    &:nth-child(#{$columns}n) {
+      margin-right: 0;
+    }
+  }
+}
+
+// Just Examples (preferably use mixins vs. classes).
+.grid__item {
+  @include grid-item;
+
+  // With Columns
+  .grid--columns-2 & {
+    @include grid-item(2);
+  }
+
+  .grid--columns-3 & {
+    @include grid-item(3);
+  }
+
+  // Pattern Lab Specific
+  .grid--pl & {
+    background-color: rgba(0, 0, 0, 0.2);
+    min-height: 100px;
+  }
+}

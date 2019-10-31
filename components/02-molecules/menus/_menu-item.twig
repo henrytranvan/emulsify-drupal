@@ -1,6 +1,9 @@
 {% if not item_modifiers %}
   {% set item_modifiers = [] %}
 {% endif %}
+{% if not item_extra_classes %}
+  {% set item_extra_classes = [] %}
+{% endif %}
 {# Pass original item modifiers down to children #}
 {% set original_item_modifiers = item_modifiers %}
 {% if item.in_active_trail == TRUE %}
@@ -12,27 +15,62 @@
 {% if item.below %}
   {% set item_modifiers = item_modifiers|merge(['with-sub']) %}
 {% endif %}
+{% if menu_level == 0 and item.below %}
+  {% set item_extra_classes = item_extra_classes|merge(['menu-toggleable']) %}
+{% endif %}
 {# below could maybe be done without a loop? #}
 {% for modifier in item.modifiers %}
   {% set item_modifiers = item_modifiers|merge([modifier]) %}
 {% endfor %}
 
-{% embed "@atoms/lists/_list-item.twig" with {
-  "list_item_label": item_label,
-  "li_base_class": item_base_class|default(menu_class ~ '__item'),
-  "li_modifiers": item_modifiers,
-  "li_blockname": item_blockname,
+{% set parent_item = item.title %}
+
+{# Set Twig block for the ITEM to a variable to inherit the special content passed into the menu file. #}
+{% set pre_menu_item %}
+  {% set item_modifiers = item_modifiers|merge(['special-content']) %}
+  {% block menu_item_content %}
+  {% endblock %}
+{% endset %}
+
+{% embed "@atoms/03-lists/_list-item.twig" with {
+  list_item_label: item_label,
+  li_base_class: item_base_class|default(menu_class ~ '__item'),
+  li_modifiers: item_modifiers,
+  li_blockname: item_blockname,
+  li_extra_classes: item_extra_classes,
 } %}
+  {% block list_item_pre_content %}
+    {# Only pass in special content to the 2nd (dropdown) menu level. #}
+    {% if menu_level == 1 %}
+      {# Only pass in special content to the first item. #}
+      {% if li_key == 1 %}
+        {{ pre_menu_item }}
+      {% endif %}
+    {% endif %}
+  {% endblock %}
   {% block list_item_content %}
-    {% include "@atoms/links/link/link.twig" with {
+    {% include "@atoms/01-links/link/link.twig" with {
       "link_content": item.title,
       "link_url": item.url,
       "link_base_class": item_base_class|default(menu_class ~ '__link'),
       "link_modifiers": item_modifiers,
+      "link_span": TRUE
     } %}
     {% if item.below %}
-      <span class="expand-sub"></span>
-      {{ menus.menu_links(item.below, attributes, menu_level + 1, menu_class, menu_modifiers, menu_blockname, item_base_class, original_item_modifiers, item_blockname) }}
+      <button {{ bem('hover-down-btn') }} aria-expanded="true" aria-label="expand {{ item.title|lower }} sub-menu" title="expand {{ item.title|lower }} sub-menu">
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_name: "caret-down",
+        icon_blockname: "hover-down",
+      } %}
+      </button>
+      <span class="expand-sub">
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          icon_name: "caret-down",
+          icon_base_class: "down",
+          icon_blockname: "expand-sub",
+        } %}
+      </span>
+      {{ menus.menu_links(item.below, attributes, menu_level + 1, menu_class, menu_modifiers, menu_blockname, item_base_class, original_item_modifiers, item_blockname, pre_menu, pre_menu_item, li_key, icon_url, parent_item) }}
     {% endif %}
   {% endblock %}
 {% endembed %}

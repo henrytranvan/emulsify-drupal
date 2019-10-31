@@ -1,0 +1,52 @@
+{% embed "@templates/_default.twig" with {
+  menu_items: header.menu_items,
+  footer_menu_items: footer.menu_items,
+  page: {
+    hero: FALSE,
+    pre_content: FALSE,
+  },
+} %}
+
+  {% block page_content %}
+
+    {% embed "@organisms/user/profile.twig" with {
+      profile_name: 'Elaine Benice',
+      profile_job_title: 'Assistant to Mr. Pitt, Copy Writer for J. Peterman',
+      profile_department: 'Editor at Pendant Publishing',
+      profile_email: 'test@test.com',
+      profile_phone: '555-123-4567',
+      profile_cv_path: '#',
+      profile_website: 'http://www.google.com',
+      profile_image_src: 'https://placeimg.com/350/350/people',
+      profile_publications: true
+
+    } %}
+
+    {% block breadcrumb %}
+      {# Breadcrumb #}
+      {% include "@molecules/menus/breadcrumbs/breadcrumbs.twig" with {
+        breadcrumb: {
+          "1": {
+            text: 'Home',
+            url: '#'
+          },
+          "2": {
+            text: 'About',
+            url: '#'
+          },
+          "3": {
+            text: 'Events',
+            url: '#'
+          }
+        }
+      } %}
+    {% endblock %}
+
+    {% block profile_bio %}
+      {{ profile_bio }}
+    {% endblock %}
+
+    {% endembed %}
+
+  {% endblock %}
+{% endembed %}

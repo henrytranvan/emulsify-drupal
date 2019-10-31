@@ -1,0 +1,34 @@
+{% set site_menu_base_class = "site-menu" %}
+
+{% if not site_menu_inner_img_modifiers %}
+  {% set site_menu_inner_img_modifiers = [] %}
+{% endif %}
+
+{% if site_menu_img %}
+  {% set site_menu_inner_img_modifiers = site_menu_inner_img_modifiers|merge(['img-bg']) %}
+{% endif %}
+
+<div {{ bem(site_menu_base_class) }}>
+  {% if site_menu_img %}
+    {% block site_menu_img_render %}
+      {% include "@atoms/04-images/00-image/_image.twig" with {
+        img_src: site_menu_img,
+        image_blockname: site_menu_base_class
+      } %}
+    {% endblock %}
+    {% block site_title %}
+    {% endblock %}
+    <div {{ bem('inner-img', site_menu_inner_img_modifiers, site_menu_base_class) }}>
+  {% endif %}
+    <div {{ bem('inner', [], site_menu_base_class) }}>
+      {% block site_menu_content %}
+        {% embed "@molecules/menus/main-menu/primary-menu.twig" %}
+          {% block microsite_menu %}
+          {% endblock %}
+        {% endembed %}  
+      {% endblock %}
+    </div>
+  {% if site_menu_img %}
+  </div>
+  {% endif %}
+</div>

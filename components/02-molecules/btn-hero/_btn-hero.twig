@@ -1,0 +1,67 @@
+{% set btn_hero_base_class = btn_hero_base_class|default('btn-hero') %}
+
+{% if not btn_hero_title_modifiers %}
+  {% set btn_hero_title_modifiers = [] %}
+{% endif %}
+
+{% if btn_hero_title|length > 50 %}
+  {% set btn_hero_title_modifiers = btn_hero_title_modifiers|merge(['small']) %}
+{% endif %}
+
+{% if btn_hero_image %}
+<div {{ bem('outer', btn_hero_modifiers, btn_hero_base_class) }}>
+{% block btn_hero_image_block %}
+{% endblock %}
+{% endif %}
+  <div {{ bem(btn_hero_base_class, btn_hero_modifiers, btn_hero_blockname) }}>
+    <div {{ bem('inner', btn_hero_inner_modifiers, btn_hero_base_class) }}>
+      <div {{ bem('title', [], btn_hero_base_class) }}>
+        {% block breadcrumb %}
+        {% endblock %}
+
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading: btn_hero_title,
+          heading_level: 1,
+          heading_blockname: btn_hero_base_class,
+          heading_modifiers: btn_hero_title_modifiers,
+        } %}
+        {% if btn_hero_subtitle %}
+          {% include "@atoms/02-text/00-headings/_heading.twig" with {
+            heading_level: 2,
+            heading: btn_hero_subtitle,
+            heading_blockname: btn_hero_base_class,
+            heading_base_class: 'subtitle',
+          } %}
+        {% endif %}
+      </div>
+      {% if btn_hero_btn_1_text or btn_hero_btn_2_text %}
+        <div {{ bem('btns', [], btn_hero_base_class) }}>
+          {% if btn_hero_btn_1_text %}
+            {% include "@atoms/01-links/link/link.twig" with {
+              link_content: btn_hero_btn_1_text,
+              link_url: btn_hero_btn_1_url,
+              link_blockname: btn_hero_base_class
+            } %}
+          {% endif %}
+          {% if btn_hero_btn_2_text %}
+            {% include "@atoms/01-links/link/link.twig" with {
+              link_content: btn_hero_btn_2_text,
+              link_url: btn_hero_btn_2_url,
+              link_blockname: btn_hero_base_class
+            } %}
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if btn_hero_custom_link_url or btn_hero_custom_link_url_2 %}
+        {% include "@molecules/button-group/_button-group.twig" with {
+          btn_group_label_text: 'Request Info',
+          btn_group_text: btn_hero_custom_link_text,
+          btn_group_url: btn_hero_custom_link_url,
+          btn_group_text_2: btn_hero_custom_link_text_2,
+          btn_group_url_2: btn_hero_custom_link_url_2,
+        } %}
+      {% endif %}
+    </div>
+
+  </div>
+{% if btn_hero_image %}</div>{% endif %}

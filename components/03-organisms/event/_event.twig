@@ -1,0 +1,78 @@
+{% set event_base_class = event_base_class|default('event') %}
+
+{% if event_lat is not empty and event_lng is not empty %}
+  {% set event_map_link = 'http://www.google.com/maps/place/' ~ event_lat ~ ',' ~  event_lng %}
+{% endif %}
+
+<div {{ bem(event_base_class, event_modifiers, event_blockname) }}>
+  <div {{ bem('dashboard', [], event_base_class) }}>
+    <div {{ bem('image', [], event_base_class) }}>
+      {% block event_image %}
+        {% include "@atoms/04-images/00-image/responsive-image.twig" with {
+          img_src: event_image_src,
+          img_alt: "Event image",
+          image_blockname: event_image_base_class,
+        } %}
+      {% endblock %}
+    </div>
+    <div {{ bem('info', [], event_base_class) }}>
+      <div {{ bem('info__top', [], event_base_class) }}>
+        <div>
+          <div {{ bem('times', [], event_base_class) }}>
+            <div {{ bem('startend', [], event_base_class) }}>{{ event_start_time }}{% if event_end_time != event_start_time %}-{{ event_end_time }}{% endif %}</div>
+            {% if event_duration %}
+              <div {{ bem('duration', [], event_base_class)}}>({{ event_duration }})</div>
+            {% endif %}
+          </div>
+          <div {{ bem('cost', [], event_base_class) }}>
+            <div {{ bem('cost__label', [], event_base_class) }}>Cost{% if not event_cost %}:{% endif %}</div>
+            <div {{ bem('cost__value', [], event_base_class) }}>
+              {% if event_cost_dollar %}{% include "@atoms/04-images/icons/_icon.twig" with {
+                icon_name: 'dollar-sign',
+                icon_blockname: event_base_class,
+                icon_modifiers: ['dollar'],
+              } %}{% endif %}{{ event_cost|default('Free') }}
+            </div>
+          </div>
+        </div>
+        <div>
+          <div {{ bem('date', [], event_base_class) }}>
+            <div {{ bem('date__month', [], event_base_class) }}>{{ event_date_month }}</div>
+            <div {{ bem('date__day', [], event_base_class) }}>{{ event_date_day }}</div>
+          </div>
+        </div>
+      </div>
+      <div {{ bem('info__bottom', [], event_base_class)}}>
+        <div {{ bem('location', [], event_base_class) }}>
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_name: 'map-marker',
+            icon_blockname: event_base_class,
+            icon_modifiers: ['location'],
+          } %}
+          <div {{ bem('address', [], event_base_class) }}>
+            {% if event_map_link %}<a target="blank" href={{ event_map_link }}>{% endif %}
+              {% block event_address %}
+                Room 201<br />
+                1234 Fake Street<br />
+                New York, NY, 12345
+              {% endblock %}
+            {% if event_map_link %}</a>{% endif %}
+          </div>
+        </div>
+        {% if event_contact_email is not empty %}
+          <div {{ bem('contact', [], event_base_class) }}>
+            {% include "@atoms/04-images/icons/_icon.twig" with {
+              icon_name: 'comments',
+              icon_blockname: event_base_class,
+              icon_modifiers: ['contact'],
+            } %}
+            <div>
+              <a href="mailto:{{ event_contact_email }}" target="_blank">Contact Us</a>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% block event_description %}{% endblock %}
+</div>

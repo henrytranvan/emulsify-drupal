@@ -1,9 +1,10 @@
-$color-breadcrumb: $gray-dark;
-$color-breadcrumb-hover: $gray-darker;
-$color-breadcrumb-active: $gray;
+$breadcrumb-active: #bbb;
 
 .breadcrumb {
   @include list-reset;
+
+  position: relative;
+  margin: $space-one-half 0;
 }
 
 .breadcrumb__item,
@@ -11,12 +12,27 @@ $color-breadcrumb-active: $gray;
 .breadcrumb__link:link,
 .breadcrumb__link:visited,
 .breadcrumb__link:focus {
-  color: $color-breadcrumb;
+  color: $gray-dark;
+  font-weight: 500;
   text-decoration: none;
 }
 
-.breadcrumb__link:hover {
-  color: $color-breadcrumb-hover;
+.breadcrumb__link {
+  &:hover {
+    color: $gray;
+
+    .breadcrumb__item:not(:first-child) & {
+      text-decoration: underline;
+    }
+
+    .breadcrumb__link-icon {
+      fill: $gray;
+    }
+  }
+
+  &-content {
+    @include visually-hidden;
+  }
 }
 
 .breadcrumb__item {
@@ -24,18 +40,27 @@ $color-breadcrumb-active: $gray;
   font-size: 0.75rem;
 
   &::after {
-    content: "/";
+    content: '/';
   }
 
   &:last-child {
-    color: $color-breadcrumb-active;
+    color: $breadcrumb-active;
 
     &::after {
-      content: "";
+      content: '';
     }
   }
 }
 
 .breadcrumb_link:active {
-  color: $color-breadcrumb-active;
+  color: $breadcrumb-active;
+}
+
+// Home
+.breadcrumb__link-icon {
+  height: 20px;
+  fill: $gray-dark;
+  position: relative;
+  top: 4px;
+  width: 20px;
 }

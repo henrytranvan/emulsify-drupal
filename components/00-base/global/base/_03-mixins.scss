@@ -1,11 +1,9 @@
-/*
- * General Mixins (put specific ones in component files where applicable)
-*/
+/////////////////////
+// General Mixins (put specific ones in component files where applicable)
 
-/* Mixin - Clearfix.
- * Adds clearfix based on http://bourbon.io/docs/#clearfix
- * use example =   @include cleafix
-*/
+/// Mixin - Clearfix.
+/// Adds clearfix based on http://bourbon.io/docs/#clearfix
+/// use example =   @include cleafix
 
 @mixin clearfix {
   &::after {
@@ -15,37 +13,76 @@
   }
 }
 
-$outer-container-break: $small;
-
 /// Mixin - Wrapper
 /// Outer container mixin for large screens
-@mixin wrapper($container-max-width: $max-width, $outer-container-break: $small, $v-margin: 0, $v-padding: 0, $h-padding: $space, $h-padding-large: $h-padding) {
+@mixin wrapper($container-max-width: $max-width, $v-margin: 0, $v-padding: 0, $v-padding-btm: $v-padding, $v-padding-max-btm: $v-padding, $h-padding: $space, $h-padding-med: $space-triple, $h-padding-max: $space-sextuple) {
   max-width: #{$container-max-width};
   width: 100%;
   margin: #{$v-margin} auto;
-  padding: #{$v-padding} #{$h-padding};
+  padding: #{$v-padding} #{$h-padding} #{$v-padding-btm};
 
-  @include breakpoint($outer-container-break) {
-    padding: #{$v-padding} #{$h-padding-large};
+  @include medium {
+    padding: #{$v-padding} #{$h-padding-med} #{$v-padding-btm};
   }
 
-  @include breakpoint($container-max-width) {
-    padding-left: calc(#{$h-padding-large} + calc(-50vw + calc(#{$container-max-width} / 2)));
-    padding-right: calc(#{$h-padding-large} + calc(-50vw + calc(#{$container-max-width} / 2)));
+  @include max-width {
+    padding: #{$v-padding} #{$h-padding-max} #{$v-padding-max-btm};
   }
 }
 
-// Mixin - Standard Margin
-@mixin margin {
-  margin-bottom: 1em;
+/// Mixin - Standard Margin
+@mixin margin($top: $space-triple, $top-large: $space-quadruple) {
+  margin-top: $top;
+
+  @include medium {
+    margin-top: $top-large;
+  }
 }
 
 @mixin no-bottom {
   margin-bottom: 0;
 }
 
-@mixin list-reset {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+@mixin border-radius($topleft: 3px, $topright: 3px, $bottomleft: 0, $bottomright: 0) {
+  border-top-left-radius: $topleft;
+  border-top-right-radius: $topright;
+  border-bottom-left-radius: $bottomleft;
+  border-bottom-right-radius: $bottomright;
+}
+
+@mixin caption {
+  font-size: 0.9rem;
+  margin-bottom: 0.15rem;
+}
+
+@mixin border-bottom($color: $purple-light) {
+  background-color: $color;
+  content: "";
+  display: block;
+  height: 4px;
+  margin: $space auto;
+  width: 50%;
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
+  word-wrap: normal;
+}
+
+/// Link
+$color-link: $blue;
+$color-link--hover: $gray-dark;
+
+@mixin link {
+  color: $color-link;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-link--hover;
+    text-decoration: underline;
+  }
 }

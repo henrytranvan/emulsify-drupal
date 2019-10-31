@@ -1,0 +1,13 @@
+stats_grid_label: "Stats Grid"
+stats_grid_blockname: 'stats-grid'
+stats:
+  - stats_value: '200+'
+    stats_description: 'Degree Programs'
+  - stats_value: '#7'
+    stats_description: "U.S News and World Report's Best Graduate Schools in Education"
+  - stats_value: '6,848'
+    stats_description: 'Students'
+  - stats_value: '295'
+    stats_description: 'Full-time Faculty'
+
+

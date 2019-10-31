@@ -1,0 +1,57 @@
+.wrap {
+  &--pl {
+    margin-top: $space-quadruple;
+  }
+
+  &--contained {
+    @include wrapper;
+    @include margin;
+  }
+
+  // For things with background colors only.
+  &--space {
+    @include margin(0, 0);
+
+    @include medium {
+      padding-bottom: $space-double;
+      padding-top: $space-double;
+    }
+
+    @include large {
+      padding-bottom: $space-quadruple;
+      padding-top: $space-quadruple;
+    }
+  }
+
+  &--space-top {
+    padding-top: $space-double;
+
+    @include large {
+      padding-top: $space-quadruple;
+    }
+  }
+
+  &--margin {
+    @include margin;
+  }
+
+  &--gray {
+    background-color: $gray-lighter;
+    padding: $space-quadruple 0;
+  }
+
+  &__inner {
+    &--contained {
+      @include wrapper;
+    }
+
+    &--contained-no-top {
+      @include wrapper($v-padding: 0);
+    }
+
+    &--gray {
+      background-color: $gray-lightest;
+      padding: $space $space-double;
+    }
+  }
+}

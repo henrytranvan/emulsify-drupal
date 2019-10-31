@@ -1,8 +1,112 @@
+// CTA Styles
 .cta {
-  background-color: #cde9f4;
-  transform: scale(1);
-  transition: transform 0.5s ease;
-  padding: 3em;
+  @include margin;
+
   text-align: center;
-  text-transform: uppercase;
+
+  &--gray {
+    background-color: $gray-lighter;
+  }
+
+  &--purple {
+    background-color: $purple;
+  }
+
+  &--no-top-margin {
+    @include margin(0, 0);
+  }
+}
+
+// CTA in listings.
+.has-bg + .cta {
+  @include margin(0, 0);
+}
+
+.cta__inline {
+  @include medium {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta__h2 {
+    max-width: 100%;
+
+    @include medium {
+      max-width: 65%;
+      margin-bottom: 0;
+      margin-right: $space-double;
+    }
+  }
+}
+
+.cta__h2 {
+  color: $purple;
+  font-size: 2.3rem;
+  font-weight: 800;
+  line-height: 1;
+  margin: 0 0 $space-one-half;
+
+  .cta--purple & {
+    color: $white;
+  }
+}
+
+.cta__text {
+  color: $gray-dark;
+  margin-bottom: 2.1rem;
+
+  .cta--purple & {
+    color: $white;
+  }
+}
+
+.cta__link {
+  @include button;
+  @include button-big;
+
+  .cta--purple & {
+    @include button-gray;
+    @include button-big;
+  }
+
+  .cta--purple .cta__inner--small & {
+    @include button-gray;
+  }
+}
+
+.cta__inner {
+  @include wrapper($v-padding: $space-quadruple);
+
+  max-width: 90%;
+  padding: 4.9rem 1.4rem;
+
+  .cta__link {
+    display: block;
+
+    @include breakpoint($medium) {
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    & + .cta__link {
+      margin: 1rem 0 0;
+
+      @include breakpoint($medium) {
+        margin-left: 0.45rem;
+      }
+    }
+  }
+
+  &--small {
+    padding: $space-triple 0;
+
+    @include medium {
+      padding: 1.4rem 0;
+    }
+
+    .cta__link {
+      @include button;
+    }
+  }
 }

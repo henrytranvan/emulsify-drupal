@@ -1,0 +1,118 @@
+{% embed "@templates/_default.twig" with {
+  menu_items: header.menu_items,
+  footer_menu_items: footer.menu_items,
+  page: {
+    hero: TRUE,
+    pre_content: TRUE,
+  },
+} %}
+
+  {% block hero %}
+    {% embed "@molecules/page-hero/_page-hero.twig" with {
+      page_hero_title: "NYU Steinhardt News",
+      page_hero_image_src: "https://placeimg.com/600/406"
+    } %}
+
+      {% block breadcrumb %}
+        {% include "@molecules/menus/breadcrumbs/breadcrumbs.twig" with {
+          breadcrumb: {
+            "1": {
+              text: 'Home',
+              url: '#'
+            },
+            "2": {
+              text: 'About',
+              url: '#'
+            }
+          }
+        } %}
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
+
+  {% block pre_content %}
+    {% include "@molecules/menus/secondary-nav/secondary-nav.twig" %}
+  {% endblock %}
+
+  {% block page_content %}
+    {% include "@molecules/news/_news-filters.twig" %}
+
+    {# NOTE: In Drupal, this wrapper is achieved via the 'wrapper' class added to the news_page view under Advanced. #}
+    {% embed "@base/layouts/_wrap.twig" with {
+      wrap_modifiers: ['contained']
+    } %}
+      {% block wrap_content %}
+        {# News Article Teaser #}
+        {% embed "@molecules/teaser/teaser.twig" with {
+          teaser_img_src: 'https://placeimg.com/352/198/nature',
+          teaser_title: 'This is a test',
+          teaser_normal_date: 'June 20, 2019',
+          teaser_text: 'Seamlessly restore just in time processes without extensible systems. Rapidiously administrate highly efficient bandwidth vis-a-vis.',
+          teaser_modifiers: ['list-item'],
+        } %}
+
+          {% block teaser_posttext %}
+            {% embed "@atoms/02-text/text/_text.twig" with {
+              text_blockname: 'teaser',
+              text_base_class: 'posttext',
+            } %}
+              {% block text_content %}
+                <div class="fields-inline">
+                  <strong class="fields-inline__label--bold">Areas of Study: </strong>
+                  <span class="fields-inline__content--inline"><a href="#" hreflang="en">Health</a></span>
+                </div>
+              {% endblock %}
+            {% endembed %}
+          {% endblock %}
+        {% endembed %}
+        {# News Article Teaser #}
+        {% embed "@molecules/teaser/teaser.twig" with {
+          teaser_img_src: 'https://placeimg.com/352/198/nature',
+          teaser_title: 'This is a test',
+          teaser_normal_date: 'June 20, 2019',
+          teaser_text: 'Seamlessly restore just in time processes without extensible systems. Rapidiously administrate highly efficient bandwidth vis-a-vis.',
+          teaser_modifiers: ['list-item'],
+        } %}
+
+          {% block teaser_posttext %}
+            {% embed "@atoms/02-text/text/_text.twig" with {
+              text_blockname: 'teaser',
+              text_base_class: 'posttext',
+            } %}
+              {% block text_content %}
+                <div class="fields-inline">
+                  <strong class="fields-inline__label--bold">Areas of Study: </strong>
+                  <span class="fields-inline__content--inline"><a href="#" hreflang="en">Health</a></span>
+                </div>
+              {% endblock %}
+            {% endembed %}
+          {% endblock %}
+        {% endembed %}
+        {# News Article Teaser #}
+        {% embed "@molecules/teaser/teaser.twig" with {
+          teaser_img_src: 'https://placeimg.com/352/198/nature',
+          teaser_title: 'This is a test',
+          teaser_normal_date: 'June 20, 2019',
+          teaser_text: 'Seamlessly restore just in time processes without extensible systems. Rapidiously administrate highly efficient bandwidth vis-a-vis.',
+          teaser_modifiers: ['list-item'],
+        } %}
+
+          {% block teaser_posttext %}
+            {% embed "@atoms/02-text/text/_text.twig" with {
+              text_blockname: 'teaser',
+              text_base_class: 'posttext',
+            } %}
+              {% block text_content %}
+                <div class="fields-inline">
+                  <strong class="fields-inline__label--bold">Areas of Study: </strong>
+                  <span class="fields-inline__content--inline"><a href="#" hreflang="en">Health</a></span>
+                </div>
+              {% endblock %}
+            {% endembed %}
+          {% endblock %}
+        {% endembed %}
+      {% endblock %}
+    {% endembed %}
+
+  {% endblock %}
+{% endembed %}

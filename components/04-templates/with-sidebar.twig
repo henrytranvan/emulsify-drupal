@@ -1,13 +1,20 @@
-{% set sidebar = true %}
+{% embed "@templates/_default.twig" with {
+  sidebar: TRUE,
+  menu_items: header.templates.menu_items,
+  footer_menu_items: footer.templates.menu_items,
+  main_inner_content_modifiers: ['pl']
+} %}
 
-{% extends "@templates/_default.twig" %}
   {% block page_content %}
-    {% include "@templates/placeholder/place-holder.twig" with {
+    {% include "@templates/_place-holder.twig" with {
       "place_holder": "Primary Content",
     } %}
   {% endblock %}
+
   {% block page_sidebar %}
-    {% include "@templates/placeholder/place-holder.twig" with {
+    {% include "@templates/_place-holder.twig" with {
       "place_holder": "Secondary Content",
     } %}
   {% endblock %}
+
+{% endembed %}

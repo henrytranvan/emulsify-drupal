@@ -7,21 +7,66 @@
  * - breadcrumb: Breadcrumb trail items.
  */
 #}
-{% set breadcrumb__base_class = 'breadcrumb' %}
-
+{% set breadcrumb_base_class = 'breadcrumb' %}
 {% if breadcrumb %}
-  <nav role='navigation' aria-labelledby='system-breadcrumb'>
-    <h2 {{ bem('visually-hidden') }} id='system-breadcrumb'>{{ 'Breadcrumb'|t }}</h2>
-    <ol {{ bem(breadcrumb__base_class) }}>
-    {% for item in breadcrumb %}
-      <li {{ bem('item', [], breadcrumb__base_class) }}>
-        {% if item.url %}
-          <a {{ bem('link', [], breadcrumb__base_class) }} href="{{ item.url }}">{{ item.text }}</a>
-        {% else %}
-          {{ item.text }}
-        {% endif %}
-      </li>
-    {% endfor %}
+  <nav role="navigation" aria-labelledby="system-breadcrumb">
+    <h2 class="visually-hidden" id="system-breadcrumb">{{ 'Breadcrumb'|t }}</h2>
+    <ol {{ bem(breadcrumb_base_class) }}>
+      {% if groups_page %}
+        <li {{ bem('item', [], breadcrumb_base_class) }}>
+          {% embed "@atoms/01-links/link/link.twig" with {
+            link_blockname: breadcrumb_base_class,
+            link_modifiers: ['home'],
+            link_url: groups_page_home_link,
+          } %}
+            {% block link_content %}
+              {% include "@atoms/04-images/icons/_icon.twig" with {
+                icon_name: 'home',
+                icon_base_class: 'link-icon',
+                icon_blockname: breadcrumb_base_class,
+              } %}
+              <span {{ bem('link-content', [], breadcrumb_base_class) }}>{{ 'Home'|t }}</span>
+            {% endblock %}
+          {% endembed %}
+        </li>
+        {% for item in breadcrumb %}
+          {% if not loop.first %}
+            <li {{ bem('item', [], breadcrumb_base_class) }}>
+              {% if item.url %}
+                <a {{ bem('link', ['home'], breadcrumb_base_class) }} href="{{ item.url }}">{{ item.text }}</a>
+              {% else %}
+                {{ item.text }}
+              {% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <li {{ bem('item', [], breadcrumb_base_class) }}>
+          {% embed "@atoms/01-links/link/link.twig" with {
+            link_blockname: breadcrumb_base_class,
+            link_modifiers: ['home'],
+            link_url: '/',
+          } %}
+            {% block link_content %}
+              {% include "@atoms/04-images/icons/_icon.twig" with {
+                icon_name: 'home',
+                icon_base_class: 'link-icon',
+                icon_blockname: breadcrumb_base_class,
+              } %}
+              <span {{ bem('link-content', [], breadcrumb_base_class) }}>{{ 'Home'|t }}</span>
+            {% endblock %}
+          {% endembed %}
+        </li>
+        {% for item in breadcrumb %}
+          <li {{ bem('item', [], breadcrumb_base_class) }}>
+            {% if item.url %}
+              <a {{ bem('link', ['home'], breadcrumb_base_class) }} href="{{ item.url }}">{{ item.text }}</a>
+            {% else %}
+              {{ item.text }}
+            {% endif %}
+          </li>
+        {% endfor %}
+      {% endif %}
     </ol>
   </nav>
 {% endif %}

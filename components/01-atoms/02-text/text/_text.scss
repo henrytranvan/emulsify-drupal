@@ -1,0 +1,113 @@
+// Create a mixin for paragraph styles that can be implemented
+// in components with other classnames.
+@mixin paragraph($margin: 0 0 $space) {
+  margin: #{$margin};
+}
+
+@mixin body-copy {
+  font-size: 18px;
+  font-family: $font-body;
+  line-height: 1.6em;
+}
+
+html {
+  color: $gray;
+
+  @include body-copy;
+}
+
+.paragraph {
+  @include paragraph;
+}
+
+.paragraph--lead {
+  font-size: 1.7rem;
+  line-height: 1.2;
+}
+
+.blockquote {
+  font-style: italic;
+  margin-left: 1em;
+  padding-left: 1em;
+
+  .icon {
+    height: 27px;
+    width: 25px;
+  }
+}
+
+.hr {
+  border-style: solid;
+  border-width: 1px 0 0;
+  color: currentColor;
+}
+
+pre {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+// TODO: BEM selectors should be applied to wysiwyg-created content
+
+.text-long {
+  p {
+    @extend .paragraph;
+
+    &.lead {
+      @extend .paragraph--lead;
+    }
+  }
+
+  blockquote {
+    @extend .blockquote;
+  }
+
+  hr {
+    @extend .hr;
+  }
+
+  pre {
+    @extend pre;
+  }
+}
+
+// General field styles
+.fields-inline {
+  line-height: 1.3;
+}
+
+.fields-inline__label {
+  &--bold {
+    color: $gray-darker;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+}
+
+.fields-inline__content {
+  &--inline {
+    a {
+      @include link;
+
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.field--commas {
+  *:not(:last-child)::after {
+    content: ", ";
+  }
+
+  // Rare exception for when dates are in commas.
+  time {
+    display: table-cell;
+  }
+}
+
+.field--comma-separated {
+  &:last-child span {
+    display: none;
+  }
+}

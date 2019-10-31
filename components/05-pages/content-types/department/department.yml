@@ -1,0 +1,40 @@
+# Hero
+page_hero_title: "Department Title"
+page_hero_image_src: "https://placeimg.com/600/406"
+# Card Grid
+card_grid_label: "This is a Card Grid Title"
+card_grid_blockname: "card"
+card_grid_modifiers: 
+  - 'small'
+cards:
+  - card_modifiers: 
+      - "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is the first featured item"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+    card_link_url: "#"
+    card_link_text: "Read More"
+  - card_modifiers: 
+      - "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is the second"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+    card_link_url: "#"
+    card_link_text: "Read More"
+  - card_modifiers: 
+      - "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "The Final"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+    card_link_url: "#"
+    card_link_text: "Read More"
+
+# Final CTA
+cta_3_bg_color: "purple"
+cta_3_title: "Call to Action"
+cta_3_text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+cta_3_link_text: "Learn More"
+cta_3_link_url: "#"

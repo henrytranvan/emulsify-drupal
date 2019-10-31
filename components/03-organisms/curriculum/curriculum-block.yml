@@ -1,0 +1,18 @@
+curriculum_block_heading: "Lorem Ipsum Subhead"
+curriculum_block_intro: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
+courses:
+  1:
+    number: "APSY-GE 1234"
+    title: "Lorem Ipsum Course Title"
+    credits: "3"
+    description: "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
+  2:
+    number: "APSY-GE 1234"
+    title: "Lorem Ipsum Course Title a Little Longer"
+    credits: "3"
+    description: "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
+  3:
+    number: "APSY-GE 1234"
+    title: "Lorem Ipsum Course Title"
+    credits: "5"
+    description: "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."

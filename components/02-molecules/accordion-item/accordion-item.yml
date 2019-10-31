@@ -1,0 +1,16 @@
+accordion_item_heading_title: 'Item 1'
+accordion_item_secondary: 'BA, MA'
+accordion_online: TRUE
+accordion_certification: TRUE
+
+accordion_content_img_src: 'https://placeimg.com/680/420/nature'
+accordion_content_body:
+  Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla quis lorem ut libero malesuada feugiat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+
+accordion_content_btn_group_url: '#'
+accordion_content_btn_group_text: 'On-Campus'
+accordion_content_btn_group_url_2: '#'
+accordion_content_btn_group_text_2: 'Online'
+
+accordion_content_link_text: 'View Program'
+accordion_content_link_url: '#'

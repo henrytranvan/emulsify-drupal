@@ -1,0 +1,24 @@
+{% set text_columns_base_class = 'text-columns' %}
+
+<div {{ bem(text_columns_base_class, (text_columns_modifiers), text_columns_blockname) }}>
+  {% if text_columns_heading %}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      heading: text_columns_heading,
+      heading_level: 1,
+      heading_blockname: text_columns_base_class,
+    } %}
+  {% endif %}
+
+  <div {{ bem('content', [], text_columns_base_class) }}>
+    {% block text_columns_content %}
+      {% for item in text_columns_items %}
+        {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+          paragraph_content: "id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.",
+          paragraph_blockname: text_columns_base_class,
+          paragraph_base_class: 'column',
+        } %}
+      {% endfor %}
+    {% endblock %}
+  </div>
+  
+</div>

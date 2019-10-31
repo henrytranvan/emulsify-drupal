@@ -1,0 +1,66 @@
+.tabs {
+  @include wrapper;
+  @include margin;
+
+  &--pl {
+    @include large {
+      padding: 0 $space-triple;
+    }
+  }
+}
+
+// Tab Navigation
+.tabs__nav {
+  @include list-reset;
+
+  @include large {
+    display: flex;
+  }
+}
+
+// Tab Content (hidden only in full #tabs js version)
+.tabs__tab {
+  border: 1px solid $gray;
+  border-top: none;
+  display: none;
+
+  @include large {
+    border-radius: 0 3px 3px 3px;
+    border-top: 1px solid $gray;
+  }
+
+  &.is-active {
+    display: block;
+  }
+}
+
+.tabs__content {
+  padding: $space-triple $space-double $space-double;
+
+  p,
+  .wrap {
+    margin-top: 0;
+  }
+
+  .wrap__inner {
+    padding: 0;
+  }
+}
+
+// No-js fallback
+.tabs.no-js {
+  .tabs__tab.is-active {
+    display: block;
+  }
+}
+
+// Drupal Local Tasks variant
+.tabs__nav--local-tasks {
+  border-bottom: 1px solid;
+  margin-bottom: $space-double;
+  margin-top: $space-double;
+}
+
+.tabs__link--local-tasks {
+  padding: 0.3em 1.5em;
+}

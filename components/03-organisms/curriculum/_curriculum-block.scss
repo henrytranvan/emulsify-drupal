@@ -1,0 +1,27 @@
+.curriculum-block {
+  @include margin;
+
+  @include large {
+    display: flex;
+
+    > div:first-child {
+      flex-basis: 45%;
+    }
+
+    > div:nth-child(2) {
+      flex: 1 1 55%;
+    }
+  }
+
+  &__intro {
+    margin-bottom: $space-double;
+
+    @include large {
+      padding-right: $space-quadruple;
+    }
+  }
+
+  h2.pl {
+    margin-top: 0;
+  }
+}

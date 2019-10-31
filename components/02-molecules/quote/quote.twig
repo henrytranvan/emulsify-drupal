@@ -1,0 +1,27 @@
+{% set quote_base_class = 'quote' %}
+{% if quote_image %}
+  {% set quote_modifiers = ['has-image'] %}
+  {% set quote_icon_modifiers = ['has-image'] %}
+{% endif %}
+
+<div {{ bem(quote_base_class, (quote_modifiers), quote_blockname) }}>
+  <div {{ bem('quote', [], quote_base_class) }}>
+    {% if quote_image %}
+      <div {{ bem('image', [], quote_base_class) }}>
+        {% block image %}
+          {% include "@atoms/04-images/00-image/_image.twig" with {
+            img_src: quote_image,
+            img_alt: quote_author
+          } %}
+        {% endblock %}
+      </div>
+    {% endif %}
+
+    {% include "@atoms/02-text/text/_blockquote.twig" with {
+      blockquote_content: quote_text,
+      blockquote_blockname: quote_base_class,
+      blockquote_author: quote_author,
+      blockquote_icon_modifiers: quote_icon_modifiers,
+    } %}
+  </div>
+</div>

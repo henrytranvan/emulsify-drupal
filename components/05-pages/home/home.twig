@@ -1,0 +1,83 @@
+{% embed "@templates/_default.twig" with {
+  menu_items: header.menu_items,
+  footer_menu_items: footer.menu_items,
+  page: {
+    pre_content: TRUE
+  }
+} %}
+
+  {% block pre_content %}
+    {% include "@molecules/menus/secondary-nav/secondary-nav.twig" %}
+  {% endblock %}
+
+  {% block page_content %}
+
+    {% if site_title %}
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        "heading_level": 1,
+        "heading": "Home",
+        "heading_modifiers": ["margin"],
+      } %}
+    {% endif %}
+
+    {% include "@organisms/card-grid/card-grid.twig" with {
+      "grid_blockname": "card",
+      "grid_modifiers": ["divider", "columns-3"],
+      "cards": {
+        1: {
+          "card_modifiers": ["grid-item", "divider-3"],
+          "card_img_src": "https://placeimg.com/480/480/people",
+          "card_image_output_image_tag": TRUE,
+          "card_title": "This is the first featured item",
+          "card_link_url": "#",
+          "card_subtitle": "About this thing",
+          "card_body": "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus. Nulla quis lorem ut libero malesuada feugiat. Nulla quis lorem ut libero malesuada feugiat.",
+        },
+        2: {
+          "card_modifiers": ["grid-item","divider-3"],
+          "card_img_src": "https://placeimg.com/480/480/people",
+          "card_image_output_image_tag": TRUE,
+          "card_title": "This is the second",
+          "card_link_url": "#",
+          "card_subtitle": "About this other thing",
+          "card_body": "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus. Nulla quis lorem ut libero malesuada feugiat. Nulla quis lorem ut libero malesuada feugiat.",
+        },
+        3: {
+          "card_modifiers": ["grid-item","divider-3"],
+          "card_img_src": "https://placeimg.com/480/480/people",
+          "card_image_output_image_tag": TRUE,
+          "card_title": "The Final",
+          "card_link_url": "#",
+          "card_subtitle": "Is the most interesting",
+          "card_body": "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus. Nulla quis lorem ut libero malesuada feugiat. Nulla quis lorem ut libero malesuada feugiat.",
+        },
+      }
+    } %}
+
+    {# Guide Table Example #}
+    {% embed "@molecules/guide-table/guide-table.twig" with {
+      guide_table_title: "Here is a Guide Table Example"
+    } %}
+      {% block guide_table_items %}
+        {% include "@molecules/guide-table/_guide-table-item.twig" with {
+          guide_table_item_legend: "Resume/CV",
+          guide_table_item_definition: "Cras mattis consectetur purus sit amet fermentum. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla."
+        } %}
+        {% include "@molecules/guide-table/_guide-table-item.twig" with {
+          guide_table_item_legend: "Resume/CV",
+          guide_table_item_definition: "Cras mattis consectetur purus sit amet fermentum. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla."
+        } %}
+        {% include "@molecules/guide-table/_guide-table-item.twig" with {
+          guide_table_item_legend: "Resume/CV",
+          guide_table_item_definition: "Cras mattis consectetur purus sit amet fermentum. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla."
+        } %}
+        {% include "@molecules/guide-table/_guide-table-item.twig" with {
+          guide_table_item_legend: "Resume/CV",
+          guide_table_item_definition: "Cras mattis consectetur purus sit amet fermentum. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla."
+        } %}
+      {% endblock %}
+    {% endembed %}
+    
+  {% endblock %}
+
+{% endembed %}

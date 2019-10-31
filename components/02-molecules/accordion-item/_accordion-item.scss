@@ -1,0 +1,197 @@
+$accordion-bp: 575px;
+
+/// Mixin - Accordion Breakpoint
+/// Allows easier @include $accordion-bp {} syntax
+@mixin accordion-bp {
+  @include breakpoint($accordion-bp) {
+    @content;
+  }
+}
+
+.accordion {
+  border-bottom: 1px solid $gray-lighter;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding: 0;
+
+  @include accordion-bp {
+    margin: 0 $space-double;
+  }
+}
+
+// Top
+.accordion-term {
+  border-top: 1px solid $gray-lightest;
+  color: $black;
+  cursor: pointer;
+  display: block;
+  font-weight: 600;
+  position: relative;
+
+  &:first-child {
+    border: none;
+  }
+
+  &.is-active {
+    .accordion-heading__icon {
+      transform: rotate(180deg);
+    }
+
+    & + dd {
+      height: auto;
+      overflow: visible;
+      padding: 1.2rem;
+    }
+  }
+}
+
+.accordion-term__btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  padding: $space $space-one-half;
+  width: 100%;
+
+  &:focus,
+  &:hover {
+    background-color: darken($near-white, 3%);
+  }
+}
+
+// Heading
+.accordion-heading {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 50px;
+
+  @include accordion-bp {
+    padding-right: 65px;
+  }
+}
+
+.accordion-heading__h2 {
+  font-size: 1.2rem;
+
+  // Only the top level one (there are nested ones too).
+  & + .accordion-heading__secondary {
+    margin-left: $space;
+    max-width: 62%;
+    text-align: right;
+  }
+}
+
+.accordion-heading__secondary {
+  display: inline-block;
+  font-size: 0.8rem;
+  line-height: 1.3;
+
+  .accordion-heading__secondary {
+    &::after {
+      color: $black;
+      content: ",";
+      margin-left: 0;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+  }
+}
+
+.accordion-heading__h2,
+.accordion-heading__paragraph,
+.accordion-heading__cert {
+  margin: 0;
+}
+
+.accordion-heading__online-icon {
+  height: 15px;
+  fill: $purple;
+  position: relative;
+  top: 2px;
+  width: 15px;
+
+  & + span {
+    margin-left: -4px;
+  }
+}
+
+.accordion-heading__icon {
+  fill: $purple;
+  height: 50px;
+  margin-left: 1.2rem;
+  margin-top: -14px;
+  position: absolute;
+  right: 0;
+  top: 18px;
+  width: 50px;
+}
+
+// Bottom
+.accordion-def {
+  background-color: $near-white;
+  margin: 0;
+
+  &.closed {
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}
+
+.accordion-content {
+  @include accordion-bp {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.accordion-content__image {
+  flex: 0 1 40%;
+  margin-bottom: $space;
+  margin-right: 2%;
+
+  @include accordion-bp {
+    margin-bottom: 0;
+  }
+
+  @include large {
+    flex: 0 1 25%;
+  }
+}
+
+.accordion-content__paragraph {
+  color: $black;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.accordion-content__link {
+  @include button;
+  @include button-small;
+
+  padding: 0.55rem $space;
+
+  @include medium {
+    margin-left: $space;
+  }
+}
+
+.accordion-content__copy {
+  display: flex;
+  flex: 0 1 60%;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include large {
+    flex: 0 1 75%;
+  }
+}
+
+.accordion-content__copy-btm {
+  margin-top: 1rem;
+}

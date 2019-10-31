@@ -1,0 +1,14 @@
+{% set dl_term_base_class = dl_term_base_class|default('dl-term') %}
+{% set dl_def_base_class = dl_def_base_class|default('dl-def') %}
+
+{% set dl_term_btn_attributes = {
+  class: bem('btn', [], dl_term_base_class),
+  "aria-label": dl_term_btn_aria_label,
+} %}
+
+<dt {{ bem(dl_term_base_class, (dl_term_modifiers), dl_term_blockname) }}>
+  {% if dl_button %}<button {{ add_attributes(dl_term_btn_attributes) }}>{% endif %}
+    {{ dl_term }}
+  {% if dl_button %}</button>{% endif %}
+</dt>
+<dd {{ bem(dl_def_base_class, (dl_def_modifiers), dl_def_blockname) }}>{{ dl_def }}</dd>

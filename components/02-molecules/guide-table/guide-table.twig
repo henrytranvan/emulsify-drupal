@@ -1,0 +1,19 @@
+{% set guide_table_base_class = 'guide-table' %}
+
+<div {{ bem(guide_table_base_class, (guide_table_modifiers), guide_table_blockname) }}>
+
+  {% include "@atoms/02-text/00-headings/_heading.twig" with {
+    heading: guide_table_title,
+    heading_level: 2,
+    heading_blockname: guide_table_base_class
+  } %}
+  
+  {% block guide_table_items %}
+    {% for item in guide_table_items %}
+      {% include "@molecules/guide-table/_guide-table-item.twig" with {
+        guide_table_item_legend: item.guide_table_item_legend,
+        guide_table_item_definition: item.guide_table_item_definition
+      } %}
+    {% endfor %}
+  {% endblock %}
+</div>

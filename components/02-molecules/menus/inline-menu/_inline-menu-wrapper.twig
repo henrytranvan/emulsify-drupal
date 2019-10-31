@@ -1,0 +1,29 @@
+{% set inline_menu_wrapper_base_class = 'inline-menu-wrapper' %}
+{% set heading_id = attributes.id ~ '-menu'|clean_id %}
+
+{% set inline_menu_wrapper_attributes = {
+  "class": bem(inline_menu_wrapper_base_class, inline_menu_wrapper_modifiers),
+  "role": 'navigation',
+  "aria-labelledby": heading_id
+} %}
+
+
+{% set title_all_attributes = {
+  class: bem('title', [], inline_menu_wrapper_base_class),
+  id: heading_id,
+} %}
+
+<nav {{ add_attributes(inline_menu_wrapper_attributes) }}>
+  {# Label. If not displayed, we still provide it for screen readers. #}
+  {% if not configuration.label_display %}
+    {% set title_attributes = title_attributes.addClass('visually-hidden') %}
+  {% endif %}
+  {{ title_prefix }}
+  <h2 {{ add_attributes(title_all_attributes) }}>{{ inline_menu_wrapper_title }}</h2>
+  {{ title_suffix }}
+
+  {# Menu. #}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</nav>

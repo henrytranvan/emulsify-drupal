@@ -1,25 +1,20 @@
-/* Toggle */
+// Toggle
 .toggle-expand {
   @include link;
 
-  @include medium {
-    display: none;
-  }
-
   display: inline-block;
-  padding: $space;
+  margin: 0.65rem 0 0.2rem;
   text-decoration: none;
-  width: 100%;
 
-  /* See main-menu.js */
-  &--open {
-    background-color: $gray-dark;
+  @include breakpoint($main-menu-medium) {
+    display: none;
   }
 }
 
 .toggle-expand__text {
+  color: $white;
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: bold;
 
   .toggle-expand--open & {
@@ -27,11 +22,21 @@
   }
 }
 
-/* SVG icon */
+// SVG icon
 .toggle-expand__icon {
-  height: 3rem;
-  width: 3rem;
+  fill: $white;
+  height: 2rem;
+  width: 2rem;
   margin: 0 auto;
+}
+
+.toggle-expand__icon-close {
+  background: $white;
+  border-radius: 20px;
+  fill: $purple;
+  height: 1.75rem;
+  padding: $space-one-fourth;
+  width: 1.75rem;
 }
 
 .toggle-expand__open {
@@ -47,15 +52,8 @@
   display: none;
   text-align: center;
 
-  &::before {
-    color: $white;
-    content: "X";
-    display: block;
-    font-size: 2.5rem;
-    line-height: 2;
-  }
-
   .toggle-expand--open & {
     display: inline-block;
+    padding: 0.1rem;
   }
 }

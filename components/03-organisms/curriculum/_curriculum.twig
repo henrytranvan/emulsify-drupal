@@ -1,0 +1,29 @@
+{% set curriculum_base_class = curriculum_base_class|default('curriculum') %}
+
+<div {{ bem(curriculum_base_class, curriculum_modifiers, curriculum_blockname, ['wrapper']) }}>
+
+  {% block curriculum_intro %}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      heading: "Core Required Courses",
+      heading_level: 2
+    }%}
+
+    {% embed "@atoms/02-text/text/paragraphs/_paragraph.twig" %}
+
+      {% block paragraph_content %}
+        {{ curriculum_description }}
+      {% endblock %}
+
+    {% endembed %}
+
+  {% endblock %}
+  
+  {% block curriculum_blocks %}
+
+    {% for block in curriculum_blocks %}
+      {% include "@organisms/curriculum/curriculum-block.twig" %}
+    {% endfor %}
+
+  {% endblock %}
+
+</div>

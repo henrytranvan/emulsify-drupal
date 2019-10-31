@@ -1,0 +1,64 @@
+$break-text-with-media: 640px;
+
+@mixin text-with-media-float {
+  @include breakpoint($break-text-with-media) {
+    &--right {
+      float: right;
+      margin-left: $space-triple;
+      max-width: 48.78%;
+    }
+
+    &--left {
+      float: left;
+      margin-right: $space-triple;
+      max-width: 48.78%;
+    }
+  }
+}
+
+.text-with-media {
+  @include wrapper;
+  @include margin;
+
+  &__media {
+    @include text-with-media-float;
+
+    margin-bottom: $space;
+  }
+
+  &__img {
+    margin-bottom: $space-one-half;
+  }
+
+  // Drupal specific - Image container.
+  .blazy {
+    margin-bottom: $space-one-half;
+  }
+
+  // Drupal specific - Video container size.
+  .video-embed-field-responsive-video::after {
+    width: 480px;
+    margin-bottom: $space-one-half;
+  }
+
+  // Drupal specific - This is the video caption.
+  .video-content__info {
+    @include caption;
+  }
+
+  &-clear {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.text-with-media__caption {
+  @include caption;
+}
+
+.text-with-media__text {
+  p:first-child {
+    margin-top: 0;
+  }
+}

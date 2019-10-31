@@ -1,0 +1,68 @@
+{{ attach_library('nyusteinhardt/primary-menu') }}
+
+{% set main_nav_wrapper_base_class = 'main-nav-wrapper' %}
+
+<nav {{ bem(main_nav_wrapper_base_class, main_nav_wrapper_modifiers) }}>
+  <div id="main-nav" class="main-nav">
+    {% block main_menu %}
+      {% embed "@molecules/menus/_menu.twig" with {
+        menu_class: "main-menu",
+        item_modifiers: ['primary'],
+        items: header.menu_items,
+      } %}
+        {% block menu_special_content %}
+          {% include "@atoms/02-text/00-headings/_heading.twig" with {
+            heading_level: 2,
+            heading: "Browse Programs",
+            heading_blockname: "menu-special-item",
+            heading_url: '/programs',
+          } %}
+          <form class="menu-form">
+            <label class="form-item__label form-item__label--textfield">Find Program or Degree</label>
+            <input autocorrect="none" autocapitalize="none" spellcheck="false" type="text" name="degree" size="60" maxlength="60" class="form-item__textfield" placeholder="Search...">
+            <button type="submit" value="Search" class="form-item__submit">
+              {% include "@atoms/04-images/icons/_icon.twig" with {
+                icon_name: "search",
+              } %}
+            </button>
+          </form>
+        {% endblock %}
+      {% endembed %}
+    {% endblock %}
+    {% block utility_menu %}
+      {% embed "@molecules/menus/inline-menu/_inline-menu-wrapper.twig" with {
+        inline_menu_wrapper_title: 'For',
+      } %}
+        {% block content %}
+          {% include "@molecules/menus/inline-menu/inline-menu.twig" with {
+            inline_menu_item_modifiers: ['light'],
+            items: header.utility_nav_items,
+          } %}
+        {% endblock %}
+      {% endembed %}
+    {% endblock %}
+    {% block microsite_menu %}
+      {% embed "@molecules/menus/_menu.twig" with {
+        menu_class: "main-menu",
+        items: header.menu_items,
+      } %}
+      {% endembed %}
+    {% endblock %}
+    {% embed "@atoms/01-links/link/link.twig" with {
+      link_content: "All NYU",
+      link_url: "#",
+      link_attributes: {
+        id: "all-nyu-link",
+      },
+      link_blockname: 'all-nyu',
+    } %}
+      {% block link_content %}
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          icon_name: "globe",
+          icon_blockname: "all-nyu",
+        } %}
+        <span class="all-nyu__span">All NYU</span>
+      {% endblock %}
+    {% endembed %}
+  </div>
+</nav>

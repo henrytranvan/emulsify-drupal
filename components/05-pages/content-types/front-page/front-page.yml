@@ -1,0 +1,123 @@
+# Hero
+hero_modifiers:
+  - 'large'
+hero_title: "Lorem ipsum dolor sit amet, consetetur sadipscing elit."
+hero_subtitle: "Lorem ipsum dolor sit amet, consetetur sadipscing elit lorem ipsum dolor sit amet, consetetur sadipscing elit"
+hero_img_src: "https://placeimg.com/400/400"
+hero_img_alt: "Filler"
+hero_img_src_large: "https://placeimg.com/1200/800/nature"
+
+# Featured
+featured_title: 'Culture'
+featured_subtitle: 'At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
+featured_link_text: 'See Culture Programs and Degrees'
+featured_link_url: '#'
+card_grid_blockname: 'card-grid'
+card_grid_modifiers:
+  - 'small'
+  - 'no-bg'
+cards:
+  - card_modifiers:
+      1: "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is a title too"
+    card_title_modifiers:
+      1: "no-space"
+    card_link_url: "#"
+    card_link_text: "Read More"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus."
+  - card_modifiers:
+      1: "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is a title too"
+    card_title_modifiers:
+      1: 'no-space'
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat."
+  - card_modifiers:
+      1: "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is a title too"
+    card_title_modifiers:
+      1: 'no-space'
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada."
+
+# Featured 2
+featured_modifiers_2: 'left'
+featured_title_2: 'Education'
+featured_subtitle_2: 'Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat.'
+featured_link_text_2: 'See Education Programs and Degrees'
+
+# Featured 3
+featured_title_3: 'Human Development'
+featured_subtitle_3: 'At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
+featured_link_text_3: 'See Human Development Programs and Degrees'
+
+# Stats
+stats_grid_label: "Stats Grid"
+stats_grid_blockname: 'stats-grid'
+stats:
+  - stats_value: '200+'
+    stats_description: 'Degree Programs'
+  - stats_value: '#7'
+    stats_description: "U.S News and World Report's Best Graduate Schools in Education"
+  - stats_value: '6,848'
+    stats_description: 'Students'
+  - stats_value: '295'
+    stats_description: 'Full-time Faculty'
+
+# Event Cards
+card_grid_label_2: "Upcoming Events"
+card_grid_modifiers_2:
+  - 'small'
+  - 'white'
+cards_2:
+  - card_modifiers:
+      1: "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_date_modifiers: 
+      - 'white'
+    card_date_month: 'July'
+    card_date_day: '31'
+    card_title: "This is a title too"
+    card_title_modifiers:
+      1: "no-space"
+    card_link_url: "#"
+    card_link_text: "Read More"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus."
+  - card_modifiers:
+      1: "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_date_month: 'Aug'
+    card_date_day: '16'
+    card_date_modifiers: 
+      - 'white'
+    card_title: "This is a title too"
+    card_title_modifiers:
+      1: 'no-space'
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat."
+  - card_modifiers:
+      1: "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_date_month: 'May'
+    card_date_day: '1'
+    card_date_modifiers: 
+      - 'white'
+    card_title: "This is a title too"
+    card_title_modifiers:
+      1: 'no-space'
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada."
+
+# CTA
+cta_modifiers:
+  - "purple"
+  - 'no-top-margin'
+cta_title: "Call to Action"
+cta_text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+cta_link_text: "Learn More"
+cta_link_url: "#"

@@ -1,7 +1,24 @@
-{% set cta__base_class = 'cta' %}
-<div {{ bem(cta__base_class, cta__modifiers, cta__blockname, cta__extra_classes) }}>
-  <h2>{{ cta__heading }}</h2>
-  {% include "@atoms/buttons/twig/button.twig" with {
-    button_content: cta__button_text,
-  } %}
+{#
+/**
+ * Available variables:
+ * - cta_base_class - base classname of the wrapper
+ * - cta_modifiers - array of modifiers to add to the base classname of the wrapper
+ * - cta_blockname - blockname prepended to the base classname of the wrapper(s) and each component
+ *
+ */
+#}
+{% set cta_base_class = 'cta' %}
+
+{% if not cta_modifiers %}
+  {% set cta_modifiers = [] %}
+{% endif %}
+
+{% if cta_bg_color %}
+  {% set cta_modifiers = cta_modifiers|merge([cta_bg_color]) %}
+{% endif %}
+
+<div {{ bem(cta_base_class, (cta_modifiers), cta_blockname, ['has-bg']) }}>
+  {% block cta_inner %}
+    {% include "@molecules/cta/_cta-inner.twig" %}
+  {% endblock %}
 </div>

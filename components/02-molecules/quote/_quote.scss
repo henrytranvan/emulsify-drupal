@@ -1,0 +1,120 @@
+$quote_breakpoint: 768px;
+
+@mixin quote-symbol($width, $height, $top, $left) {
+  width: $width;
+  height: $height;
+  top: $top;
+  left: $left;
+}
+
+.quote {
+  @include wrapper($v-padding: $space-double, $h-padding-med: 12rem, $h-padding-max: 14rem);
+  @include margin;
+
+  @include breakpoint($quote_breakpoint) {
+    align-items: center;
+  }
+
+  // Spacing of NEXT component.
+  & + div:not(.has-bg) {
+    @include margin($space, $space-double);
+  }
+
+  &__image {
+    float: right;
+    margin-left: $space;
+
+    @include breakpoint($quote_breakpoint) {
+      float: left;
+      margin-right: $space-double;
+      margin-left: 0;
+    }
+
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+
+      @include breakpoint($quote_breakpoint) {
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+
+  &__blockquote {
+    margin: 0 0 $space $space-double;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    position: relative;
+
+    @include breakpoint($quote_breakpoint) {
+      font-size: 1.5rem;
+      margin: 0 0 $space;
+    }
+  }
+
+  &__author {
+    margin: $space-one-half 0;
+    font-size: 1rem;
+
+    &::before {
+      content: '—';
+      display: inline;
+      margin-right: 5px;
+    }
+  }
+
+  // Some adjustments if the quote has an image.
+  &--has-image {
+    @include wrapper($v-padding: $space-double, $h-padding-med: $space-sextuple, $h-padding-max: 10rem);
+    @include margin;
+
+    overflow: hidden;
+
+    .quote__blockquote {
+      @include breakpoint($quote_breakpoint) {
+        margin-left: 220px; // Width of image plus some space
+      }
+    }
+  }
+}
+
+.quote__quote {
+  flex: 0 1 100%;
+}
+
+.quote__content {
+  display: flex;
+}
+
+.quote__icon {
+  height: 27px;
+  width: 25px;
+  position: absolute;
+  left: -33px;
+  margin-right: $space-one-half;
+
+  @include medium {
+    height: 43px;
+    width: 63px;
+    left: -70px;
+    top: -15px;
+  }
+
+  @include large {
+    margin-right: $space;
+  }
+
+  &--has-image {
+    left: -30px;
+    top: 0;
+
+    @include medium {
+      height: 22px;
+      left: -35px;
+      top: -8px;
+      width: 31px;
+    }
+  }
+}

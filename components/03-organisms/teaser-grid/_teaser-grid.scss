@@ -1,0 +1,63 @@
+.teaser-grid__wrap {
+  @include wrapper;
+  @include margin($top-large: $space-triple);
+
+  &--pl {
+    padding-top: $space-triple;
+  }
+
+  &--pl-no-wrap {
+    padding: 0;
+  }
+
+  &--no-wrap {
+    margin: 0;
+    padding: 0;
+    width: auto;
+  }
+}
+
+.teaser-grid__h2 {
+  @include heading-xl($margin-mobile: 0 0 $space-triple, $margin: 0 0 $space-triple);
+
+  @include medium {
+    text-align: center;
+  }
+
+  &--small-list {
+    @include heading-xl($font-size: 1.8rem, $font-weight: 700);
+
+    text-align: left;
+    text-transform: uppercase;
+  }
+}
+
+.teaser-grid__grid {
+  &--flex {
+    @include grid;
+
+    .teaser {
+      @include large {
+        @include grid-item(2, 6%, 4%);
+
+        flex-grow: initial;
+        width: 47%;
+      }
+    }
+  }
+}
+
+.teaser {
+  &--list-item {
+    @include margin;
+  }
+
+  &--grid-item {
+    @include large {
+      @include grid-item(2, 6%, 4%);
+
+      flex-grow: initial;
+      width: 46%;
+    }
+  }
+}

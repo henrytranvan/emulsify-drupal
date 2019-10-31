@@ -1,0 +1,40 @@
+{% set accordion_base_class = 'accordion' %}
+
+{% set accordion_term %}
+  {% block accordion_term_content %}
+    {% include "@molecules/accordion-item/_accordion-item-heading.twig" with {
+      accordion_heading_title: accordion_item_heading_title,
+      accordion_secondary: accordion_item_secondary,
+    } %}
+  {% endblock %}
+{% endset %}
+
+{% set accordion_content_image %}
+  {% block accordion_image %}
+    {% include "@atoms/04-images/00-image/responsive-image.twig" with {
+      img_src: accordion_content_img_src,
+      img_alt: 'Test',
+    } %}
+  {% endblock %}
+{% endset %}
+
+{% set accordion_def %}
+  {% block accordion_def_content %}
+    {% embed "@molecules/accordion-item/_accordion-item-content.twig" %}
+      {% block accordion_content_img %}
+        {{ accordion_content_image }}
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
+{% endset %}
+
+<div {{ bem(accordion_base_class) }}>
+  {% include "@atoms/03-lists/_list-item-definition.twig" with {
+    dl_term_base_class: 'accordion-term',
+    dl_def_base_class: 'accordion-def',
+    dl_term_btn_aria_label: accordion_term_aria_label,
+    dl_term: accordion_term,
+    dl_def: accordion_def,
+    dl_button: true,
+  } %}
+</div>

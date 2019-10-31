@@ -1,0 +1,37 @@
+teaser_grid_label: "Teaser Grid"
+teaser_grid_blockname: 'teaser-grid'
+teaser_grid_modifiers:
+  1: 'pl'
+teasers:
+  1:
+    teaser_modifiers: 
+      1: 'list-item'
+    teaser_img_src: "https://placeimg.com/320/200/nature"
+    teaser_img_alt: "filler"
+    teaser_title: "J. Lawrence Abner"
+    teaser_text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+    teaser_link_url: "#"
+    teaser_button_url: "#"
+    teaser_button_text: "Read Article"
+  2:
+    teaser_modifiers: 
+      1: 'list-item'
+    teaser_img_src: "https://placeimg.com/320/200/nature"
+    teaser_img_alt: "filler"
+    teaser_title: "J. Lawrence Abner"
+    teaser_text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+    teaser_link_url: "#"
+    teaser_button_url: "#"
+    teaser_button_text: "Read Article"
+  3:
+    teaser_modifiers: 
+      1: 'list-item'
+    teaser_img_src: "https://placeimg.com/320/200/nature"
+    teaser_img_alt: "filler"
+    teaser_title: "J. Lawrence Abner"
+    teaser_text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+    teaser_link_url: "#"
+    teaser_button_url: "#"
+    teaser_button_text: "Read Article"
+
+

@@ -1,0 +1,74 @@
+{% embed "@templates/_default.twig" with {
+  menu_items: header.menu_items,
+  footer_menu_items: footer.menu_items,
+  page: {
+    hero: TRUE,
+  },
+} %}
+
+  {% block hero %}
+    {% include "@molecules/hero/hero.twig" %}
+  {% endblock %}
+
+  {% block page_content %}
+    {% embed "@base/layouts/_wrap.twig" with {
+      wrap_modifiers: text_modifiers,
+      wrap_inner_modifiers: text_inner_modifiers,
+      wrap_extra_classes: text_extra_classes,
+    } %}
+      {% block wrap_content %}
+        {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+          paragraph_modifiers: paragraph1_modifiers,
+          paragraph_content: paragraph1,
+        } %}
+        {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+          paragraph_content: paragraph2,
+        } %}
+      {% endblock %}
+    {% endembed %}
+
+    {% include "@organisms/card-grid/card-grid.twig" %}
+
+    {% include "@molecules/cta/cta.twig" %}
+
+    {% include "@molecules/text-columns/text-columns.twig" %}
+
+    {% include "@molecules/cta/cta.twig" with {
+      cta_modifiers: cta_2_modifiers,
+      cta_bg_color: cta_2_bg_color,
+      cta_title: cta_2_title,
+      cta_text: cta_2_text,
+      cta_link_text: cta_2_link_text,
+      cta_link_url: cta_2_link_url,
+    } %}
+
+    {% embed "@base/layouts/_wrap.twig" with {
+      wrap_modifiers: ['contained']
+    } %}
+      {% block wrap_content %}
+        {% include "@atoms/04-images/00-image/figure.twig" %}
+      {% endblock %}
+    {% endembed %}
+
+    {% include "@molecules/text-with-media/text-with-media.twig" %}
+
+    {% include "@molecules/video-content/video-content.twig" %}
+
+    {% include "@organisms/side-by-side/side-by-side.twig" with {
+      video_content: sbs_video_content,
+      video_content_description: sbs_video_content_description,
+      video_content_transcript_url: sbs_video_content_transcript_url
+    } %}
+
+    {% include "@molecules/cta/cta.twig" with {
+      cta_bg_color: cta_3_bg_color,
+      cta_modifiers: cta_3_modifiers,
+      cta_title: cta_3_title,
+      cta_text: cta_3_text,
+      cta_link_text: cta_3_link_text,
+      cta_link_url: cta_3_link_url,
+    } %}
+
+  {% endblock %}
+
+{% endembed %}

@@ -1,0 +1,59 @@
+{% set cta_base_class = 'cta' %}
+
+{% if not cta_inner_modifiers %}
+  {% set cta_inner_modifiers = [] %}
+{% endif %}
+
+{% if not cta_text %}
+  {% set cta_inner_modifiers = cta_inner_modifiers|merge(['small']) %}
+{% endif %}
+
+<div {{ bem('inner', (cta_inner_modifiers), cta_base_class) }}>
+  {% if not cta_text %}
+    <div {{ bem('inline', [], cta_base_class) }}>
+  {% endif %}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      heading_level: 2,
+      heading: cta_title,
+      heading_blockname: cta_heading_blockname|default(cta_base_class),
+      heading_modifiers: cta_heading_modifiers,
+    } %}
+    {% if cta_text %}
+      {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+        paragraph_content: cta_text,
+        paragraph_blockname: cta_text_base_class|default(cta_base_class),
+        paragraph_base_class: cta_text_base_class|default('text'),
+        paragraph_modifiers: cta_text_modifiers,
+      } %}
+    {% endif %}
+    {% if cta_link_text_0 %}
+      {% include "@atoms/01-links/link/link.twig" with {
+        link_content: cta_link_text_0,
+        link_url: cta_link_url_0,
+        link_blockname: cta_link_blockname|default(cta_base_class),
+        link_modifiers: cta_link_modifiers,
+        link_attributes: cta_link_attributes_0,
+      } %}
+    {% endif %}
+    {% if cta_link_text_1 %}
+      {% include "@atoms/01-links/link/link.twig" with {
+        link_content: cta_link_text_1,
+        link_url: cta_link_url_1,
+        link_blockname: cta_link_blockname|default(cta_base_class),
+        link_modifiers: cta_link_modifiers,
+        link_attributes: cta_link_attributes_1,
+      } %}
+    {% endif %}
+    {% if cta_link_text_2 %}
+      {% include "@atoms/01-links/link/link.twig" with {
+        link_content: cta_link_text_2,
+        link_url: cta_link_url_2,
+        link_blockname: cta_link_blockname|default(cta_base_class),
+        link_modifiers: cta_link_modifiers,
+        link_attributes: cta_link_attributes_2,
+      } %}
+    {% endif %}
+  {% if not cta_text %}
+    </div>
+  {% endif %}
+</div>

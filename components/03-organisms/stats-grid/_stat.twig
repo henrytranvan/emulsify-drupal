@@ -1,0 +1,26 @@
+{% set stats_base_class = stats_base_class|default('stat') %}
+
+{% if not stats_description_modifiers %}
+  {% set stats_description_modifiers = [] %}
+{% endif %}
+
+{% if stats_description|length > 20 %}
+  {% set stats_description_modifiers = stats_description_modifiers|merge(['small']) %}
+{% endif %}
+
+<div {{ bem(stats_base_class, stats_modifiers, stats_blockname) }}>
+  <div {{ bem('value', stats_modifiers, stats_base_class) }}>
+    {{ stats_value }}
+  </div>
+  <div {{ bem('description', stats_description_modifiers, stats_base_class) }}>
+    {% if 'simple' in stats_modifiers %}
+      <div {{ bem('description-grid', stats_description_modifiers, stats_base_class) }}>
+    {% endif %}
+      {% block stat_description %}
+        {{ stats_description }}
+      {% endblock %}
+    {% if 'simple' in stats_modifiers %}
+      </div>
+    {% endif %}
+  </div>
+</div>

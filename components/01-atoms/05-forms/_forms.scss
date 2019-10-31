@@ -1,0 +1,387 @@
+.form-wrap {
+  &--gray {
+    background-color: $gray-lightest;
+    padding: $space;
+  }
+
+  form {
+    @include large {
+      display: flex;
+    }
+  }
+
+  .form-item__label {
+    @include visually-hidden;
+  }
+
+  .form-item__dropdown {
+    margin-bottom: 0;
+  }
+}
+
+.form-news {
+  .form-item,
+  .form-actions {
+    @include large {
+      flex: 0 1 25%;
+      margin: 0 1rem 0 0;
+    }
+  }
+
+  .form-actions {
+    @include large {
+      margin-right: 0;
+
+      .button {
+        padding: $space-one-half;
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Event exposed form
+$event_form_medium: 825px;
+$event_form_large: 1053px;
+
+.form-events,
+.form--views-exposed-form-course-views-courses-index {
+  .form-item {
+    max-width: 100%;
+    margin-bottom: $space;
+
+    @include breakpoint($event_form_medium) {
+      margin-bottom: 0;
+      margin-right: $space;
+    }
+
+    &__textfield {
+      width: 100%;
+    }
+  }
+
+  &__filters {
+    width: 100%;
+  }
+
+  &__search {
+    @include breakpoint($event_form_medium) {
+      display: flex;
+    }
+  }
+
+  &__daterange {
+    .bef-datepicker {
+      @include breakpoint($event_form_medium) {
+        margin-bottom: $space;
+      }
+    }
+
+    @include breakpoint($event_form_medium) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__daterange-inner {
+    @include breakpoint($event_form_medium) {
+      flex-shrink: 0;
+      display: flex;
+    }
+  }
+
+  &__daterange-title {
+    @include heading-xs($font-size: 0.8rem);
+
+    margin: $space 0 $space-one-half;
+  }
+
+  .form-actions {
+    display: flex;
+
+    .button {
+      line-height: 1.15;
+      height: 43px;
+    }
+
+    #edit-reset {
+      margin-left: $space-one-half;
+    }
+  }
+}
+
+.form--views-exposed-form-course-views-courses-index {
+  .form-item {
+    @include breakpoint($event_form_medium) {
+      margin-bottom: $space;
+    }
+  }
+}
+
+// Faculty.
+#views-exposed-form-faculty-page-1 {
+  margin-bottom: $space-triple;
+}
+
+.form--views-exposed-form-faculty-page-1 {
+  position: relative;
+
+  .form-item {
+    margin-right: 2%;
+
+    &:first-child {
+      @include breakpoint($event_form_medium) {
+        width: 85%;
+      }
+    }
+  }
+
+  .form-item__textfield {
+    width: 100%;
+  }
+
+  .form-item__dropdown {
+    margin-top: 2px;
+  }
+
+  .sortby {
+    @include breakpoint($event_form_medium) {
+      margin-right: 2%;
+
+      .form-item {
+        width: 152px;
+      }
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  .button {
+    line-height: 1.15;
+    height: 43px;
+
+    & + .button {
+      margin-left: 2%;
+    }
+  }
+}
+
+.form--views-exposed-form-program-list-page-1 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  @include large {
+    flex-direction: row;
+  }
+
+  > ul {
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    @include large {
+      display: flex;
+      margin: 0 0 $space-double;
+    }
+
+    li {
+      list-style: none;
+      margin-bottom: $space;
+
+      @include large {
+        margin-bottom: 0;
+        width: 24%;
+      }
+
+      &:nth-child(2) {
+        a {
+          background-image: url(../images/programs_health.jpg);
+        }
+      }
+
+      &:nth-child(3) {
+        a {
+          background-image: url(../images/programs_mediastudies.jpg);
+        }
+      }
+
+      &:nth-child(4) {
+        a {
+          background-image: url(../images/programs_arts.jpg);
+        }
+      }
+    }
+
+    a {
+      background: url(../images/programs_education.jpg) no-repeat scroll 0 0 #57068c;
+      background-size: cover;
+      color: $white;
+      display: block;
+      font-size: 1.3rem;
+      font-weight: 500;
+      padding: $space-quadruple $space 0.4rem;
+      position: relative;
+
+      @include medium {
+        padding: 6rem $space $space;
+      }
+
+      &::before {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(130, 39, 190, 0.85) 100%);
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      &:hover,
+      &.active {
+        text-decoration: none;
+
+        &::before {
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(130, 39, 190, 0.95) 100%);
+        }
+      }
+
+      &.active {
+        &::before {
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #8227be 69%);
+        }
+      }
+
+      span {
+        position: relative;
+      }
+    }
+  }
+
+  .form-item {
+    max-width: 100%;
+
+    @include large {
+      margin-right: 2.3%;
+      width: 36.2%;
+    }
+
+    &:first-child {
+      margin-bottom: $space-double;
+      width: 100%;
+
+      .form-item__label {
+        height: auto;
+        position: static !important;
+        width: auto;
+      }
+    }
+  }
+
+  .form-item:first-child .form-item__label,
+  .image-filters {
+    color: $gray-dark;
+    font-size: 1.3rem;
+    padding: 0;
+    margin: 0 0 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .form-item__textfield {
+    width: 100%;
+  }
+
+  .form-actions {
+    align-items: baseline;
+    display: flex;
+    flex-grow: 1;
+
+    .button + .button {
+      margin-left: 5px;
+    }
+  }
+
+  .button {
+    padding: 0.5rem 1.65rem;
+  }
+}
+
+// Programs/Degrees page.
+#views-exposed-form-program-list-page-1 + .wrap--contained {
+  margin-top: $space;
+}
+
+.form-wrap--small {
+  .form-item,
+  .form-actions {
+    @include large {
+      flex: 0 1 31%;
+    }
+  }
+}
+
+.form-wrap__title {
+  @include heading-small($line-height: 1, $margin: 0 0 $space);
+
+  text-transform: uppercase;
+}
+
+// Sidebar form (vague, might need to get more specific later).
+.main-sidebar__contents {
+  h2 {
+    @include heading-small($margin: 0 0 $space-one-half);
+
+    text-transform: uppercase;
+  }
+
+  .form-item__label {
+    @include visually-hidden;
+  }
+
+  form {
+    margin-bottom: $space-double;
+  }
+
+  .facet {
+    h2 {
+      @include heading-small($margin: 0 0 $space-one-half);
+    }
+
+    & ~ .facet h2 {
+      display: none;
+    }
+  }
+}
+
+// User Login
+.user-login-form,
+.user-form {
+  @include wrapper;
+}
+
+.user-form {
+  .form-item,
+  .form-fieldset,
+  .form-wrapper {
+    margin-left: $space-one-half;
+    margin-right: $space-one-half;
+  }
+
+  .form-item__textfield {
+    width: 93%;
+  }
+
+  .form-submit {
+    width: auto;
+  }
+
+  .help-text {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: $space;
+  }
+}

@@ -1,0 +1,37 @@
+{% set teaser_grid_base_class = teaser_grid_base_class|default('teaser-grid') %}
+
+{% set teaser_grid_block_content %}
+  {% block teaser_grid_content %}
+    {% for teaser in teasers %}
+      {% include "@molecules/teaser/teaser.twig" with {
+        teaser_modifiers: teaser.teaser_modifiers,
+        teaser_img_src: teaser.teaser_img_src,
+        teaser_img_alt: 'alt',
+        teaser_title: teaser.teaser_title,
+        teaser_subtitle: teaser.teaser_subtitle,
+        teaser_text: teaser.teaser_text,
+        teaser_link_url: teaser.teaser_link_url,
+        teaser_link_2_url: teaser.teaser_link_2_url,
+        teaser_link_2_text: teaser.teaser_link_2_text,
+        teaser_button_url: teaser.teaser_button_url,
+        teaser_button_text: teaser.teaser_button_text,
+        teaser_image_output_image_tag: teaser.teaser_image_output_image_tag,
+      } %}
+    {% endfor %}
+  {% endblock %}
+{% endset %}
+
+{% embed "@base/layouts/grid/00-grid.twig" with {
+  grid_heading_blockname: teaser_grid_base_class,
+  grid_heading_modifiers: teaser_grid_heading_modifiers,
+  grid_modifiers: teaser_grid_modifiers,
+  grid_inner_modifiers: teaser_grid_inner_modifiers,
+  grid_label: teaser_grid_label,
+  grid_blockname: teaser_grid_base_class,
+} %}
+
+  {% block grid_content %}
+    {{ teaser_grid_block_content }}
+  {% endblock %}
+
+{% endembed %}

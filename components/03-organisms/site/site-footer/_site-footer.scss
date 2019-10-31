@@ -1,33 +1,119 @@
+$footer_breakpoint: 640px;
+
 .footer {
-  background-color: $gray-lightest;
-  padding: $space 0;
+  background-color: $purple-dark;
+  color: $white;
 
-  &__inner {
-    @include wrapper;
+  // All links in footer shall be white.
+  a {
+    font-weight: normal;
+    text-decoration: none;
+    color: $white;
+    font-size: 18px;
 
-    display: flex;
-    flex-flow: column nowrap;
-
-    @include large {
-      flex-direction: row;
+    &:hover {
+      text-decoration: underline;
     }
   }
-}
 
-.footer__social {
-  margin-bottom: $space;
+  &__inner {
+    align-items: top;
+    padding: $space-triple $space;
 
-  @include large {
-    flex: 0 1 30%;
-    margin-bottom: 0;
-    margin-right: $space;
+    @include breakpoint($footer_breakpoint) {
+      @include wrapper(
+        $v-padding: $space-triple
+      );
+
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
-}
 
-.footer__menu {
-  @include large {
-    flex: 1 1 100%;
-    margin-left: auto;
-    text-align: right;
+  &__left {
+    margin-right: $space-double;
+    flex-grow: 1;
+
+    li {
+      margin-right: $space;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__logo {
+    margin-bottom: 38px;
+  }
+
+  // Footer Menu
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 $space-double 0;
+
+    @include breakpoint($footer_breakpoint) {
+      margin-bottom: $space;
+    }
+
+    li {
+      margin-bottom: $space;
+
+      @include medium {
+        display: inline;
+      }
+    }
+  }
+
+  &__h2 {
+    font-size: 1.5rem;
+    margin: 0 0 $space;
+  }
+
+  &__social-icons {
+    display: flex;
+    margin-bottom: $space-quadruple;
+
+    @include breakpoint($footer_breakpoint) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__social-icon {
+    margin-right: $space;
+    background: $gray-dark;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s;
+
+    &:hover {
+      background: $gray-darker;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .icon {
+      width: 23px;
+      height: 23px;
+      fill: $white;
+    }
+
+    // Text for Accessibility
+    span {
+      @include visually-hidden;
+    }
+  }
+
+  &__copyright {
+    font-size: 0.8rem;
+    flex: 1 1 auto;
+    margin-bottom: 0;
   }
 }

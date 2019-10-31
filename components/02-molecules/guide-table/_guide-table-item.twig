@@ -1,0 +1,10 @@
+{% set guide_table_item_base_class = guide_table_item_base_class|default('guide-table-item') %}
+
+<div {{ bem(guide_table_item_base_class, guide_table_item_modifiers, guide_table_item_blockname) }}>
+  <div {{ bem('legend', guide_table_item_legend_modifiers, guide_table_item_base_class)}}>
+    {{ guide_table_item_legend }}
+  </div>
+  <div {{ bem('definition', guide_table_item_legend_modifiers, guide_table_item_base_class)}}>
+    {{ guide_table_item_definition }}
+  </div>
+</div>

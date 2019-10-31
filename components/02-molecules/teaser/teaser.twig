@@ -1,0 +1,167 @@
+{% set teaser_base_class = teaser_base_class|default('teaser') %}
+
+{% if not teaser_title_modifiers %}
+  {% set teaser_title_modifiers = [] %}
+{% endif %}
+
+{% if not teaser_title_link_modifiers %}
+  {% set teaser_title_link_modifiers = [] %}
+{% endif %}
+
+{% if not teaser_image_modifiers %}
+  {% set teaser_image_modifiers = [] %}
+{% endif %}
+
+{% if not teaser_text_modifiers %}
+  {% set teaser_text_modifiers = [] %}
+{% endif %}
+
+{% if not teaser_copy_modifiers %}
+  {% set teaser_copy_modifiers = [] %}
+{% endif %}
+
+{% if 'small' in teaser_modifiers %}
+  {% set teaser_title_modifiers = teaser_title_modifiers|merge(['purple']) %}
+  {% set teaser_title_link_modifiers = teaser_title_link_modifiers|merge(['purple']) %}
+  {% set teaser_image_modifiers = teaser_image_modifiers|merge(['small']) %}
+  {% set teaser_text_modifiers = teaser_text_modifiers|merge(['small']) %}
+  {% set teaser_copy_modifiers = teaser_copy_modifiers|merge(['bg']) %}
+{% endif %}
+
+{% if 'medium' in teaser_modifiers %}
+  {% set teaser_title_modifiers = teaser_title_modifiers|merge(['medium']) %}
+  {% set teaser_title_link_modifiers = teaser_title_link_modifiers|merge(['medium']) %}
+{% endif %}
+
+{% if teaser_date_month %}
+  {% set teaser_image_modifiers = teaser_image_modifiers|merge(['with-date']) %}
+{% endif %}
+
+{% set teaser_img_attributes = {
+  class: bem('image', teaser_image_modifiers, teaser_base_class),
+  "aria-hidden": "true",
+} %}
+
+<div {{ bem(teaser_base_class, teaser_modifiers, teaser_blockname) }}>
+  <div {{ add_attributes(teaser_img_attributes) }}>
+    {% if teaser_link_url %}<a href="{{ teaser_link_url }}" tabindex="-1">{% endif %}
+      {% block teaser_img %}
+        {% include "@atoms/04-images/00-image/responsive-image.twig" with {
+          img_src: teaser_img_src,
+          img_alt: teaser_img_alt,
+          image_blockname: teaser_base_class,
+          output_image_tag: teaser_image_output_image_tag,
+        } %}
+      {% endblock %}
+    {% if teaser_link_url %}</a>{% endif %}
+    {% if teaser_date_month %}
+      <div {{ bem('date', teaser_image_modifiers, teaser_base_class) }}>
+        {% include "@atoms/10-date/date.twig" with {
+          date_month: teaser_date_month,
+          date_day: teaser_date_day,
+        } %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div {{ bem('copy', teaser_copy_modifiers, teaser_base_class) }}>
+    {% if teaser_pre_title %}
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading_level: 3,
+        heading: teaser_pre_title,
+        heading_base_class: 'pre-title',
+        heading_blockname: teaser_base_class,
+      } %}
+    {% endif %}
+
+    {% if teaser_title %}
+      {{ title_prefix }}
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading_level: 2,
+        heading: teaser_title,
+        heading_url: teaser_link_url,
+        heading_base_class: 'title',
+        heading_blockname: teaser_base_class,
+        heading_modifiers: teaser_title_modifiers,
+        heading_link_base_class: 'title-link',
+        heading_link_blockname: teaser_base_class,
+        heading_link_modifiers: teaser_title_link_modifiers,
+      } %}
+      {{ title_suffix }}
+    {% endif %}
+  
+    {% block teaser_normal_date %}
+      {% if teaser_normal_date %}
+        {% include "@atoms/02-text/text/_text.twig" with {
+          text_blockname: teaser_base_class,
+          text_modifiers: teaser_date_modifiers,
+          text_base_class: 'normal-date',
+          text_content: teaser_normal_date
+        } %}
+      {% endif %}
+    {% endblock %}
+
+    {% block teaser_subtext %}
+      {% if teaser_subtitle %}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading_level: 3,
+          heading: teaser_subtitle,
+          heading_url: teaser_subtitle_link,
+          heading_blockname: teaser_base_class,
+          heading_modifiers: teaser_subtitle_modifiers,
+          heading_base_class: 'subtitle',
+        } %}
+        {% endif %}
+    {% endblock %}
+
+    {% block teaser_text %}
+      {% if teaser_text %}
+        {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+          paragraph_content: teaser_text,
+          paragraph_blockname: teaser_base_class,
+          paragraph_modifiers: teaser_text_modifiers,
+          paragraph_base_class: 'text',
+        } %}
+      {% endif %}
+    {% endblock %}
+
+    {% block teaser_posttext %}
+      {% if teaser_posttext_text %}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading_level: 3,
+          heading: teaser_posttext_text,
+          heading_url: teaser_posttext_link,
+          heading_blockname: teaser_base_class,
+          heading_modifiers: teaser_subtitle_modifiers,
+          heading_base_class: 'subtitle',
+        } %}
+        {% endif %}
+    {% endblock %}
+
+    {% if teaser_button_url %}
+      {% include "@atoms/01-links/link/link.twig" with {
+        link_url: teaser_button_url,
+        link_blockname: teaser_base_class,
+        link_base_class: 'button',
+        link_content: teaser_button_text,
+        link_attributes: teaser_button_attributes,
+      } %}
+    {% endif %}
+
+    {% if teaser_link_2_url %}
+      {% embed "@atoms/01-links/link/link.twig" with {
+        link_url: teaser_link_2_url,
+        link_blockname: teaser_base_class,
+      } %}
+        {% block link_content %}
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_name: 'mail',
+            icon_blockname: teaser_base_class,
+            icon_base_class: 'link-icon',
+          } %}
+          {{ teaser_link_2_text }}
+        {% endblock %}
+      {% endembed %}
+    {% endif %}
+  </div>
+</div>

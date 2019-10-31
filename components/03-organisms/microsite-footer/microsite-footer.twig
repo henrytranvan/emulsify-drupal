@@ -1,0 +1,10 @@
+{% set microsite_footer__base_class = 'microsite-footer' %}
+<div {{ bem(microsite_footer__base_class) }}>
+  <div {{ bem('links', [], microsite_footer__base_class) }}>
+    <a href="https://www.nyu.edu/footer/copyright-and-fair-use/digital-privacy-statement.html" {{ bem('link', [], microsite_footer__base_class) }}>Privacy Policy</a>
+    <a href="https://www.nyu.edu/footer/accessibility.html" {{ bem('link', [], microsite_footer__base_class) }}>Accessibility</a>
+  </div>
+  <div {{ bem('copy', [], microsite_footer__base_class) }}>
+    This site, and all its contents, are Copyright &copy; {{ "now"|date("Y") }} by New York University. All rights reserved
+  </div>
+</div>

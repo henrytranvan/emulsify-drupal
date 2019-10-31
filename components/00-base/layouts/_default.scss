@@ -1,0 +1,139 @@
+//
+// General Layout
+//
+
+$sidebar-width: 33%;
+$gutter: $space-double;
+$main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
+
+//
+// Layout Using Flexbox (IE11+).
+// Remove this and uncomment Grid code below to use CSS Grid.
+//
+
+.main {
+  display: block; // Fix for older IE weirdness.
+
+  @include medium {
+    background: $gray-dark url('../images/bg-lines.png') repeat-x;
+  }
+
+  @include breakpoint(1200px) {
+    padding: 1.2rem 0;
+  }
+
+  &__hero {
+    @include max-width {
+      @include wrapper($max-width, $v-padding: 0, $v-padding-max-btm: 0, $h-padding-max: 0);
+    }
+  }
+
+  &__inner {
+    @include max-width {
+      @include wrapper($max-width, $v-padding-max-btm: 0, $h-padding-max: 0);
+    }
+
+    background: $white;
+
+    &--contained {
+      padding-top: $space-double;
+    }
+
+    &--space-top {
+      @include large {
+        padding-top: $space-quadruple;
+      }
+    }
+  }
+}
+
+.main__inner .pre-content {
+  @include wrapper;
+
+  &--open {
+    max-width: none;
+    padding: 0;
+  }
+}
+
+.main__inner-content {
+  @include large {
+    display: flex;
+  }
+
+  &--contained {
+    @include wrapper($v-padding: $space-triple);
+  }
+
+  &--pl {
+    margin: 0 $space-double;
+    padding: $space-double 0;
+  }
+}
+
+.main-sidebar {
+  margin-bottom: $space-double;
+
+  @include large {
+    margin-bottom: 0;
+    margin-right: $gutter;
+    width: $sidebar-width;
+  }
+
+  &__contents {
+    background: $gray-lightest;
+    padding: $space;
+  }
+}
+
+.main-content {
+  width: 100%;
+
+  @include large {
+    &--with-sidebar {
+      width: $main-width;
+    }
+  }
+}
+
+// These elements are different between Pattern Lab and Drupal.
+.main-content,
+.node-content {
+  & > .has-bg:first-child {
+    @include margin(0, 0);
+  }
+
+  & > *:last-child:not(.has-bg):not(article) {
+    margin-bottom: $space-triple;
+  }
+}
+
+.has-bg + .has-bg {
+  @include margin(0, 0);
+}
+
+//
+// Layout Using CSS Grid (NO IE11 support)
+// Remove Flexbox code above and uncomment this section to use CSS Grid.
+//
+
+// .main {
+//   &--with-sidebar {
+//     @include large {
+//       display: grid;
+//       grid-gap: $gutter;
+//       grid-template-areas: "content sidebar";
+//       grid-template-columns: $main-width #{$sidebar-width};
+//     }
+//   }
+// }
+//
+// .main-sidebar {
+//   grid-area: sidebar;
+//   margin-bottom: $space-double;
+// }
+//
+// .main-content {
+//   grid-area: content;
+//   width: 100%;
+// }

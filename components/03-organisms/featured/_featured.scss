@@ -1,0 +1,80 @@
+.featured {
+  background: url('../images/home_sm_culture.jpg') no-repeat scroll 0 0 $purple;
+  background-size: contain;
+
+  @include medium {
+    background-image: url('../images/home_med_culture.jpg');
+  }
+
+  @include large {
+    background-image: url('../images/home_lg_culture.jpg');
+  }
+
+  & + .featured {
+    background-image: url('../images/home_sm_education.jpg');
+
+    @include medium {
+      background-image: url('../images/home_med_education.jpg');
+    }
+
+    @include large {
+      background-image: url('../images/home_lg_education.jpg');
+    }
+  }
+
+  & + .featured + .featured {
+    background-image: url('../images/home_sm_human-development.jpg');
+
+    @include medium {
+      background-image: url('../images/home_med_human-development.jpg');
+    }
+
+    @include large {
+      background-image: url('../images/home_lg_human-development.jpg');
+    }
+  }
+
+  &__inner {
+    @include wrapper($v-padding: 62%, $v-padding-btm: 1.6rem, $h-padding-max: $space-double);
+
+    @include xl {
+      @include wrapper($v-padding: $space-quadruple, $v-padding-btm: 1.6rem, $h-padding-max: $space-double);
+    }
+  }
+
+  .card-grid__wrap-inner {
+    padding: 0;
+  }
+}
+
+.featured__copy {
+  margin-bottom: 2.5rem;
+
+  @include xl {
+    max-width: 62%;
+
+    &--right {
+      float: right;
+    }
+  }
+
+  @include max-width {
+    max-width: 53%;
+  }
+}
+
+.featured__h2 {
+  @include heading-xl($color: $white, $font-size-mobile: 2.5rem, $font-size-medium: 3rem, $font-size: 5rem, $line-height: 0.9);
+}
+
+.featured__h3 {
+  @include heading-large($color: $white, $margin-mobile: 0 0 $space-double, $margin: 0 0 $space-double);
+}
+
+.featured__link {
+  @include button($bg: $white, $color: $purple);
+}
+
+.featured__content {
+  clear: both;
+}

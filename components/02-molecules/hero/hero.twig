@@ -1,0 +1,56 @@
+{#
+/**
+ * Available variables:
+ * - hero_base_class - base classname of the wrapper
+ * - hero_modifiers - array of modifiers to add to the base classname of the wrapper
+ * - hero_blockname - blockname prepended to the base classname of the wrapper(s) and each component
+ *
+ */
+#}
+{% set hero_base_class = 'hero' %}
+
+{% if not hero_copy_modifiers %}
+  {% set hero_copy_modifiers = [] %}
+{% endif %}
+
+{% if 'large' in hero_modifiers %}
+  {% set hero_copy_modifiers = hero_copy_modifiers|merge(['large']) %}
+{% endif %}
+
+{% if 'no-img' in hero_modifiers %}
+  {% set hero_copy_modifiers = hero_copy_modifiers|merge(['full']) %}
+{% endif %}
+
+<div {{ bem(hero_base_class, hero_modifiers, hero_blockname) }}>
+  <div {{ bem('image', hero_modifiers, hero_base_class) }}>
+    {% block hero_img %}
+      {% include "@atoms/04-images/00-image/responsive-image.twig" with {
+        img_src: hero_img_src,
+        img_alt: hero_img_alt,
+        image_blockname: hero_base_class,
+        output_image_tag: hero_image_output_image_tag,
+      } %}
+
+      {% include "@atoms/04-images/00-image/responsive-image.twig" with {
+        img_src: hero_img_src_large,
+        img_alt: hero_img_alt,
+        image_blockname: hero_base_class,
+        output_image_tag: hero_image_output_image_tag,
+      } %}
+    {% endblock %}
+  </div>
+  <div {{ bem('copy', hero_copy_modifiers, hero_base_class) }}>
+  {% block hero_title_block %}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      heading_level: 1,
+      heading: hero_title,
+      heading_blockname: hero_heading_blockname|default(hero_base_class),
+    } %}
+  {% endblock %}
+  {% include "@atoms/02-text/00-headings/_heading.twig" with {
+    heading_level: 2,
+    heading: hero_subtitle,
+    heading_blockname: hero_heading_blockname|default(hero_base_class),
+  } %}
+  </div>
+</div>

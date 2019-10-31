@@ -1,0 +1,68 @@
+.menu-special-item__h2 {
+  display: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+  padding: 0 $space;
+  position: relative;
+
+  @include breakpoint($main-menu-medium) {
+    display: block;
+  }
+}
+
+// Programs Form
+.main-menu__item {
+  .menu-form {
+    display: none;
+    margin-bottom: $space;
+    position: relative;
+
+    @include breakpoint($main-menu-medium) {
+      display: block;
+    }
+  }
+
+  .form-item {
+    margin-bottom: 0;
+  }
+
+  .form-item__label {
+    @include heading-medium($font-size: 0.8rem, $font-weight: 700, $color: white);
+
+    font-size: 0.85rem;
+    margin-bottom: 0;
+    padding: 0 $space;
+  }
+
+  .form-item__textfield {
+    border-radius: 3px;
+    box-shadow: none;
+    margin: 0 $space;
+    padding: 0.65rem 2.3rem 0.65rem 0.65rem;
+    width: 88%;
+  }
+
+  .form-item__submit {
+    background: none;
+    border: none;
+    bottom: 1px;
+    position: absolute;
+    right: 13px;
+
+    .icon {
+      cursor: pointer;
+      height: 23px;
+      fill: $purple-dark;
+      margin-bottom: 7px;
+      width: 23px;
+    }
+
+    &:hover {
+      .icon {
+        fill: $purple-light;
+      }
+    }
+  }
+}

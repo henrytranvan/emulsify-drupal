@@ -1,0 +1,75 @@
+{% embed "@templates/_default.twig" with {
+  menu_items: header.menu_items,
+  footer_menu_items: footer.menu_items,
+  page: {
+    hero: FALSE,
+    pre_content: FALSE,
+  },
+} %}
+
+  {% block page_content %}
+    <div class="pl-page-title">
+      {# Breadcrumb #}
+      {% include "@molecules/menus/breadcrumbs/breadcrumbs.twig" with {
+        breadcrumb: {
+          "1": {
+            text: 'Home',
+            url: '#'
+          },
+          "2": {
+            text: 'About',
+            url: '#'
+          },
+          "3": {
+            text: 'Events',
+            url: '#'
+          }
+        }
+      } %}
+
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading_level: 1,
+        heading: 'Lorem Ipsum Amazing Event Title',
+        heading_modifiers: ['large'],
+        heading_has_flag: TRUE,
+        heading_flag_text: 'Private',
+        heading_base_class: event_base_class
+      } %}
+    </div>
+    {# Event  #}
+    {% embed "@organisms/event/_event.twig" with {
+      event_title: "Dean's Distinguished Lecture: Toward Educational Justice - A Conversation with John B. King Jr.",
+      event_is_private: TRUE,
+      event_image_src: "https://placeimg.com/635/406/nature",
+      event_start_time: "12:30pm",
+      event_end_time: "2:30pm",
+      event_duration: "2 Hours",
+      event_cost: "120.00",
+      event_date_month: "May",
+      event_date_day: "21"
+    } %}
+
+      {% block event_description %}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis luctus libero, a pretium eros.",
+          heading_level: 2
+        } %}
+        {% embed "@atoms/02-text/text/paragraphs/_paragraph.twig" %}
+          {% block paragraph_content %}
+            Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+          {% endblock %}
+        {% endembed %}
+      {% endblock %}
+    {% endembed %}
+
+    {% include "@molecules/cta/cta.twig" with {
+      cta_bg_color: 'gray',
+      cta_title: 'RSVP',
+      cta_text: 'Morbi leo risus, porta ac consectetur ac, vestibulum at eros.',
+      cta_link_text: 'RSVP Today',
+      cta_link_url: '#',
+    } %}
+
+  {% endblock %}
+
+{% endembed %}

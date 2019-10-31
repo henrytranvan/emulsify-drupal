@@ -1,0 +1,17 @@
+.compact-user {
+  display: flex;
+  align-items: center;
+
+  &__image {
+    margin-right: $space;
+
+    img {
+      border-radius: 2px;
+    }
+  }
+
+  &__name {
+    font-weight: bold;
+    color: $gray-dark;
+  }
+}

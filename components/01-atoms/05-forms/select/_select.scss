@@ -1,0 +1,120 @@
+// CSS-only select styling (from https://github.com/filamentgroup/select-css)
+
+.form-item__dropdown,
+.facets-widget-dropdown {
+  background-color: $gray-lighter;
+  border: 2px solid $gray-dark;
+  border-radius: 2px;
+  display: block;
+  position: relative;
+  margin-bottom: $space;
+
+  &::after {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-radius: 3px;
+    border-top: 9px solid $purple;
+    content: " ";
+    position: absolute;
+    top: 40%;
+    right: 1em;
+    z-index: 2;
+
+    /* These hacks make the select behind the arrow clickable in some browsers */
+    pointer-events: none;
+    display: none;
+  }
+
+  &:hover {
+    border-color: $black;
+  }
+
+  &--default {
+    border: none;
+  }
+}
+
+.form-item__select,
+.facets-dropdown {
+  border: 1px solid $gray-lightest;
+  height: 41px; // set height required for discrepancy between .form-item__dropdown border and the select :focus border
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0;
+  outline: none;
+  padding: 0.6em 0.8em 0.5em;
+  width: 100%;
+
+  :focus {
+    outline: none;
+    color: #222;
+  }
+}
+
+@supports ( -webkit-appearance: none ) or ( appearance: none ) or ( ( -moz-appearance: none ) and ( mask-type: alpha ) ) {
+  /* Show custom arrow */
+  .form-item__dropdown,
+  .facets-widget-dropdown {
+    &::after {
+      display: block;
+    }
+  }
+
+  /* Remove select styling */
+  .form-item__select,
+  .facets-dropdown {
+    padding-right: 2.5em; /* Match-01 */
+
+    /* inside @supports so that iOS <= 8 display the native arrow */
+    background: none; /* Match-04 */
+
+    /* inside @supports so that Android <= 4.3 display the native arrow */
+    border: 1px solid transparent; /* Match-05 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:focus {
+      border-color: $gray;
+      border-radius: 0;
+    }
+  }
+}
+
+.facet-empty {
+  display: none;
+}
+
+// Select 2 styling
+.select2-container {
+  .select2-selection {
+    background-color: $gray-lighter;
+    border: none;
+    border-radius: 2px;
+    display: block;
+    position: relative;
+    height: 41px;
+    padding: 5px 20px 5px 5px;
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    &__arrow {
+      display: none;
+    }
+  }
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: $black;
+  font-size: 0.85rem;
+  font-weight: 500;
+  height: 41px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: $black;
+}
+
+.facet .form-item {
+  max-width: 100%;
+}

@@ -1,0 +1,204 @@
+# Hero
+page_hero_title: "About NYU Steinhardt"
+page_hero_subtitle: "The heart of a movement—education for social change."
+page_hero_image_src: "https://placeimg.com/600/406"
+
+# Text Section
+text_modifiers:
+  - "gray"
+  - "space"
+  - "margin"
+text_inner_modifiers:
+  - "contained"
+text_extra_classes:
+  - "has-bg"
+paragraph1_modifiers:
+  - "lead"
+paragraph1:
+  "Gain the skills, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+paragraph2:
+  "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+
+# Text With Media
+text_with_media_src: "https://placeimg.com/1200/640"
+text_with_media_alt: "Filler"
+text_with_media_caption: "This is the media caption"
+text_with_media_text: "<p>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p><p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.</p><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>"
+text_with_media_direction:
+  - "left"
+
+# Quote 1
+quote_text: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor."
+quote_author: "Jerry Seinfeld"
+quote_image: "https://placeimg.com/180/180"
+
+# CTA
+cta_modifiers:
+  - "gray"
+cta_title: "Call to Action"
+cta_link_text: "Learn More"
+cta_link_url: "#"
+
+# Text Columns
+text_columns_heading: "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis."
+text_columns_items:
+  -
+  -
+  -
+
+# Card Grid
+card_grid_label: "This is a Card Grid Title"
+card_grid_blockname: "card"
+card_grid_modifiers: 
+  - 'small'
+  - 'purple'
+cards:
+  - card_modifiers: 
+      - "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is the first featured item"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+    card_link_url: "#"
+    card_link_text: "Read More"
+  - card_modifiers: 
+      - "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is the second"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+    card_link_url: "#"
+    card_link_text: "Read More"
+  - card_modifiers: 
+      - "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "The Final"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+    card_link_url: "#"
+    card_link_text: "Read More"
+
+# Quote 2
+quote_2_image: ""
+
+# Text With Media 2
+text_with_media_2_direction:
+  - "right"
+
+# Image
+img_src: "https://placeimg.com/1200/800"
+img_caption: "This is an Image Caption"
+img_alt: "filler"
+
+# CTA 2
+cta_2_bg_color: "purple"
+cta_2_title: "Call to Action"
+cta_2_link_text: "Learn More"
+cta_2_link_url: "#"
+
+# Teaser Grid 
+teaser_grid_label: "This is an Enhanced List"
+teasers:
+  - teaser_img_src: "https://placeimg.com/320/220/nature"
+    teaser_img_alt: "filler"
+    teaser_title: "This is a teaser title"
+    teaser_text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+    teaser_link_url: "#"
+    teaser_button_url: "#"
+    teaser_button_text: "Read Article"
+  - teaser_img_src: "https://placeimg.com/320/220/nature"
+    teaser_img_alt: "filler"
+    teaser_title: "This is a teaser title"
+    teaser_text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+    teaser_link_url: "#"
+    teaser_button_url: "#"
+    teaser_button_text: "Read Article"
+  - teaser_img_src: "https://placeimg.com/320/220/nature"
+    teaser_img_alt: "filler"
+    teaser_title: "This is a teaser title"
+    teaser_text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+    teaser_link_url: "#"
+    teaser_button_url: "#"
+    teaser_button_text: "Read Article"
+
+# Gallery
+gallery_title: 'This is a Gallery Title'
+
+# Guide Table
+guide_table_title: "Here is a Guide Table Example"
+guide_table_items:
+  - guide_table_item_legend: "Resume/CV"
+    guide_table_item_definition: "Cras mattis consectetur purus sit amet fermentum. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla."
+  - guide_table_item_legend: "Resume/CV"
+    guide_table_item_definition: "Cras mattis consectetur purus sit amet fermentum. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla."
+  - guide_table_item_legend: "Resume/CV"
+    guide_table_item_definition: "Cras mattis consectetur purus sit amet fermentum. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla."
+
+# Teaser Grid 
+teaser_grid_2_label: "Professors"
+teaser_grid_2_blockname: 'teaser-grid'
+grid_inner_2_modifiers: 
+  - 'flex'
+teasers_2:
+  - teaser_modifiers:
+    - 'grid-item'
+    teaser_img_src: "https://placeimg.com/402/531/people"
+    teaser_img_alt: "filler"
+    teaser_title: "J. Lawrence Abner"
+    teaser_subtitle: "Willner Family Professor of Psychology and Public Policy and University Professor"
+    teaser_text: "Applied Psychology"
+    teaser_link_url: "#"
+    teaser_link_2_url: "#"
+    teaser_link_2_text: "lawrence.aber@nyu.edu"
+  - teaser_modifiers:
+    - 'grid-item'
+    teaser_img_src: "https://placeimg.com/402/531/people"
+    teaser_img_alt: "filler"
+    teaser_title: "J. Lawrence Abner"
+    teaser_subtitle: "Willner Family Professor of Psychology and Public Policy and University Professor"
+    teaser_text: "Applied Psychology"
+    teaser_link_url: "#"
+    teaser_link_2_url: "#"
+    teaser_link_2_text: "lawrence.aber@nyu.edu"
+  - teaser_modifiers:
+    - 'grid-item'
+    teaser_img_src: "https://placeimg.com/402/531/people"
+    teaser_img_alt: "filler"
+    teaser_title: "J. Lawrence Abner"
+    teaser_subtitle: "Willner Family Professor of Psychology and Public Policy and University Professor"
+    teaser_text: "Applied Psychology"
+    teaser_link_url: "#"
+    teaser_link_2_url: "#"
+    teaser_link_2_text: "lawrence.aber@nyu.edu"
+
+# Cards 2
+cards2:
+  - card_modifiers: 
+      - "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is the first featured item"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+    card_link_url: "#"
+    card_link_text: "Read More"
+  - card_modifiers: 
+      - "grid-item"
+    card_img_src: "https://placeimg.com/740/500/people"
+    card_image_output_image_tag: TRUE
+    card_title: "This is the second"
+    card_body: "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+    card_link_url: "#"
+    card_link_text: "Read More"
+
+# Video
+video_content_title: 'Component-Based Theming Video One'
+video_content: "<iframe title='Test Video' width='854' height='480' frameborder='0' allowfullscreen='allowfullscreen' src='https://www.youtube.com/embed/YRnVnlhjOBs?autoplay=0&amp;start=0'></iframe>"
+video_content_description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore."
+video_content_transcript_url: "#"
+
+# Final CTA
+cta_3_bg_color: "gray"
+cta_3_title: "Call to Action"
+cta_3_text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+cta_3_link_text: "Learn More"
+cta_3_link_url: "#"

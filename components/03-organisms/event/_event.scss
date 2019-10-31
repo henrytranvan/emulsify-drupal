@@ -1,0 +1,149 @@
+.event {
+  @include wrapper;
+  @include margin($top: $space, $top-large: $space-triple);
+
+  &__dashboard {
+    background: $purple;
+    color: $white;
+    overflow: hidden;
+    margin-bottom: $space-triple;
+
+    @include large {
+      display: flex;
+    }
+  }
+
+  a {
+    color: $white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__image {
+    padding: $space;
+
+    img {
+      margin: 0 auto;
+    }
+
+    @include large {
+      flex-basis: 55%;
+      flex-shrink: 0;
+      padding: 0;
+
+      img {
+        margin: 0;
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    flex-grow: 1;
+
+    &__top {
+      display: flex;
+      margin-bottom: $space;
+
+      > div:last-child {
+        flex-grow: 1;
+        text-align: right;
+      }
+    }
+
+    &__bottom {
+      margin-top: auto;
+    }
+  }
+
+  &__times {
+    margin-bottom: $space;
+  }
+
+  &__startend {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  &__duration {
+    color: $purple-light;
+    font-size: 0.9rem;
+
+    @include medium {
+      font-size: 1.1rem;
+    }
+  }
+
+  &__cost {
+    margin-bottom: $space;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    &__label {
+      font-size: 1.1rem;
+    }
+
+    &__value {
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__date {
+    display: inline-block;
+    background: $white;
+    color: $purple;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 3px;
+    line-height: 1;
+
+    &__month {
+      font-size: 0.9rem;
+
+      @include medium {
+        font-size: 1.3rem;
+      }
+    }
+
+    &__day {
+      font-size: 1.8rem;
+
+      @include medium {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  &__location {
+    display: flex;
+  }
+
+  &__contact {
+    margin-top: $space-double;
+    display: flex;
+  }
+
+  &__icon {
+    display: block;
+    width: 31px;
+    height: 28px;
+    margin-right: $space-one-half;
+    flex: 0 0 31px;
+
+    &--dollar {
+      color: $purple-light;
+      display: inline-block;
+      width: 14px;
+      margin-right: 2px;
+    }
+  }
+}

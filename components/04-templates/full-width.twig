@@ -1,6 +1,13 @@
-{% extends "@templates/_default.twig" %}
+{% embed "@templates/_default.twig" with {
+  menu_items: header.templates.menu_items,
+  footer_menu_items: footer.templates.menu_items,
+  main_inner_content_modifiers: ['pl']
+} %}
+
   {% block page_content %}
-    {% include "@templates/placeholder/place-holder.twig" with {
+    {% include "@templates/_place-holder.twig" with {
       "place_holder": "Primary Content",
     } %}
   {% endblock %}
+
+{% endembed %}

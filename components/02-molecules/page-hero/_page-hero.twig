@@ -1,0 +1,58 @@
+{% set page_hero_base_class = page_hero_base_class|default('page-hero') %}
+{% set page_hero_has_image = page_hero_has_image|default(true) %}
+
+{% if (node.getType() == 'research' and not content.field_header_media['#items']) %}
+  {% set page_hero_modifiers = ['no-image'] %}
+  {% set page_hero_has_image = false %}
+{% endif %}
+
+<div {{ bem(page_hero_base_class, page_hero_modifiers, page_hero_blockname) }}>
+
+  {% if page_hero_has_image %}
+    <div {{ bem('image', [], page_hero_base_class) }}>
+      {% block hero_image %}
+        {% include "@atoms/04-images/00-image/responsive-image.twig" with {
+          img_src: page_hero_image_src,
+          img_alt: page_hero_image_alt,
+          image_blockname: page_hero_base_class,
+        } %}
+      {% endblock %}
+    </div>
+  {% endif %}
+
+  <div {{ bem('info', page_hero_modifiers, page_hero_base_class) }}>
+    <div {{ bem('breadcrumb', [], page_hero_base_class) }}>
+      {% block breadcrumb %}
+        {% include "@molecules/menus/breadcrumbs/breadcrumbs.twig" with {
+          breadcrumb_modifiers: ['light'],
+          breadcrumb: {
+            1: {
+              text: "First Item",
+              url: "#"
+            },
+            2: {
+              text: "Second Item",
+              url: "#"
+            }
+          }
+        } %}
+      {% endblock %}
+    </div>
+    <div {{ bem('title', page_hero_modifiers, page_hero_base_class) }}>
+      {% include '@atoms/02-text/00-headings/_heading.twig' with {
+        heading: page_hero_title,
+        heading_level: 1,
+      } %}
+    </div>
+
+    {% if page_hero_subtitle  %}
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading_level: 2,
+        heading: page_hero_subtitle,
+        heading_base_class: 'subtitle',
+        heading_blockname: page_hero_base_class,
+      } %}
+    {% endif %}
+  </div>
+
+</div>

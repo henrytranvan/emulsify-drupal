@@ -1,0 +1,95 @@
+// Wrapper
+.inline-menu-wrapper {
+  display: block;
+  padding: 1.5rem $space;
+
+  @include medium {
+    padding: 1.5rem $space-triple;
+  }
+
+  @include large {
+    display: none;
+    padding: 0;
+  }
+
+  &--desktop {
+    display: none;
+
+    @include large {
+      display: flex;
+    }
+  }
+}
+
+.inline-menu-wrapper__title {
+  color: $gray-light;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 0 $space-one-half $space-one-half 0;
+  position: relative;
+  text-transform: uppercase;
+
+  @include large {
+    color: $purple-light;
+    font-size: 0.75rem;
+    font-weight: normal;
+    margin: 0 0.75rem 0 0;
+    text-transform: none;
+    top: 1px;
+  }
+
+  &::after {
+    content: ":";
+  }
+}
+
+// Inline menu
+.inline-menu {
+  @include list-reset;
+
+  line-height: 1;
+}
+
+.inline-menu__item {
+  margin: 0 $space-one-half $space-one-half 0;
+
+  @include large {
+    display: inline;
+    margin: 0 0.45rem $space 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+}
+
+.inline-menu__link {
+  @include link;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+
+  &--light {
+    color: $gray-dark;
+    font-weight: 500;
+
+    &:hover {
+      color: $purple;
+      text-decoration: underline;
+    }
+
+    @include large {
+      color: $purple-light;
+      font-size: 0.75rem;
+      font-weight: 400;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}

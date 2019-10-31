@@ -1,0 +1,26 @@
+{% set stats_grid_base_class = stats_grid_base_class|default('stats-grid') %}
+
+{% set stats_grid_block_content %}
+  {% block stats_grid_content %}
+    {% for stat in stats %}
+      {% include "@organisms/stats-grid/_stat.twig" with {
+        stats_value: stat.stats_value,
+        stats_description: stat.stats_description,
+      } %}
+    {% endfor %}
+  {% endblock %}
+{% endset %}
+
+{% embed "@base/layouts/grid/00-grid.twig" with {
+  grid_heading_blockname: stats_grid_base_class,
+  grid_heading_modifiers: stats_grid_heading_modifiers,
+  grid_modifiers: stats_grid_modifiers,
+  grid_label: stats_grid_label,
+  grid_blockname: stats_grid_base_class,
+} %}
+
+  {% block grid_content %}
+    {{ stats_grid_block_content }}
+  {% endblock %}
+
+{% endembed %}

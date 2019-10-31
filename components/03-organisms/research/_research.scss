@@ -1,0 +1,33 @@
+.research {
+  &__attachments {
+    background: $gray-lighter;
+    text-align: center;
+    padding: $space-double 0;
+
+    &__container {
+      padding: $space-one-half;
+
+      > div {
+        margin-bottom: $space-one-half;
+        margin-right: 0;
+        justify-content: center;
+      }
+
+      @include medium {
+        justify-content: center;
+        display: flex;
+
+        > div {
+          margin-right: $space;
+        }
+      }
+    }
+  }
+
+  &__doi {
+    @include wrapper;
+    @include margin($top: $space, $top-large: $space);
+
+    font-style: italic;
+  }
+}

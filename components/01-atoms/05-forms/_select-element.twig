@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Theme override for a select element.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the select tag.
+ * - options: The option element children.
+ *
+ * @see template_preprocess_select()
+ */
+#}
+{% set select_class = '' %}
+
+{% for option in options %}
+  {% if (option.value == defaultValue or option.value == 'All') and option.selected %}
+    {% set select_class = ' form-item__dropdown--default' %}
+  {% endif %}
+{% endfor %}
+
+{% spaceless %}
+  <div class="form-item__dropdown{{ select_class }}">
+    <select{{ attributes.addClass('form-item__select').setAttribute('data-placeholder', select2placeholder) }}>
+      {% for option in options %}
+        {% if option.type == 'optgroup' %}
+          <optgroup label="{{ option.label }}">
+            {% for sub_option in option.options %}
+              <option value="{{ sub_option.value }}"{{ sub_option.selected ? ' selected="selected"' }}>{{ sub_option.label }}</option>
+            {% endfor %}
+          </optgroup>
+        {% elseif option.type == 'option' %}
+          <option value="{{ option.value }}"{{ option.selected ? ' selected="selected"' }}>{{ option.label }}</option>
+        {% endif %}
+      {% endfor %}
+    </select>
+  </div>
+{% endspaceless %}

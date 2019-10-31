@@ -1,0 +1,29 @@
+{% set accordion_content_base_class = 'accordion-content' %}
+
+<div {{ bem(accordion_content_base_class) }}>
+  <div {{ bem('image', [], accordion_content_base_class) }}>
+    {% block accordion_content_img %}
+    {% endblock %}
+  </div>
+  <div {{ bem('copy', [], accordion_content_base_class) }}>
+    {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+      paragraph_content: accordion_content_body,
+      paragraph_blockname: accordion_content_base_class,
+    } %}
+    <div {{ bem('copy-btm', [], accordion_content_base_class) }}>
+      {% include "@molecules/button-group/_button-group.twig" with {
+        btn_group_modifiers: ['light'],
+        btn_group_label_text: 'Request Info',
+        btn_group_url: accordion_content_btn_group_url,
+        btn_group_text: accordion_content_btn_group_text,
+        btn_group_url_2: accordion_content_btn_group_url_2,
+        btn_group_text_2: accordion_content_btn_group_text_2,
+      } %}
+      {% include "@atoms/01-links/link/link.twig" with {
+        link_content: accordion_content_link_text,
+        link_url: accordion_content_link_url,
+        link_blockname: accordion_content_base_class,
+      } %}
+    </div>
+  </div>
+</div>

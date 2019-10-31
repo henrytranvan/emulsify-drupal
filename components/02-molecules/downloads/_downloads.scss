@@ -1,0 +1,48 @@
+.downloads {
+  background-color: $purple;
+  color: $white;
+  display: inline-block;
+  margin-bottom: $space-triple;
+  padding: 1.5rem;
+  width: 100%;
+
+  @include large {
+    width: auto;
+    min-width: 300px;
+  }
+
+  &--top-space {
+    @include large {
+      margin-top: 3.5rem;
+    }
+  }
+}
+
+.downloads__title {
+  @include heading-medium($color: $white, $font-weight: 500, $line-height: 1.2, $margin: 0 0 0.7em);
+}
+
+.downloads-file {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.downloads-file__link {
+  color: $white;
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    color: $purple-light;
+    text-decoration: underline;
+  }
+}
+
+.downloads-file__icon {
+  height: 18px;
+  fill: $white;
+  margin-left: 6px;
+  position: relative;
+  top: 2px;
+  width: 18px;
+}

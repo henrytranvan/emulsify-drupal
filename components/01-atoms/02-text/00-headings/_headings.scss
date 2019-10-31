@@ -1,0 +1,270 @@
+//
+// Generic header styles:
+// All arguments are optional. If not defined, the defaults below will be used
+//
+
+$color-heading: $gray-darker;
+
+@mixin heading-xl($font-family: $font-heading, $font-size-mobile: 1.7rem, $font-size-xs: $font-size-mobile, $font-size-small: $font-size-mobile, $font-size-medium: 2rem, $font-size: 2.2rem, $line-height: 1.2, $color: $purple, $color-link: inherit, $color-link-hover: $color-heading, $font-weight: 800, $margin-mobile: 0 0 $space, $margin: 0 0 1.4rem) {
+  color: #{$color};
+  font-family: #{$font-family};
+  font-weight: #{$font-weight};
+  font-style: normal;
+  font-size: #{$font-size-mobile};
+  line-height: #{$line-height};
+  margin: #{$margin-mobile};
+  width: auto;
+
+  @include xs {
+    font-size: #{$font-size-xs};
+  }
+
+  @include small {
+    font-size: #{$font-size-small};
+  }
+
+  @include medium {
+    font-size: #{$font-size-medium};
+    margin: #{$margin};
+  }
+
+  @include large {
+    font-size: #{$font-size};
+  }
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+
+  &__flag {
+    display: inline-block;
+    background: #598131;
+    color: $white;
+    padding: 0 10px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    font-weight: 500;
+    vertical-align: top;
+    margin: 5px 0 0 5px;
+    font-size: 0.6rem;
+    line-height: 2.2;
+
+    @include medium {
+      margin-top: 8px;
+      padding: 0 15px;
+      font-size: 0.7rem;
+    }
+
+    @include large {
+      font-size: 1rem;
+      margin-top: 5px;
+      line-height: 2;
+    }
+  }
+}
+
+@mixin heading-large($font-family: $font-heading, $font-size-mobile: 1.4rem, $font-size-small: $font-size-mobile, $font-size-medium: 1.6rem, $font-size: 1.8rem, $line-height: 1.2, $color: $color-heading, $color-link: inherit, $color-link-hover: inherit, $font-weight: 700, $margin-mobile: 0 0 0.4rem, $margin: 0 0 0.9rem) {
+  color: #{$color};
+  font-family: #{$font-family};
+  font-weight: #{$font-weight};
+  font-style: normal;
+  font-size: #{$font-size-mobile};
+  line-height: #{$line-height};
+  margin: #{$margin-mobile};
+  width: auto;
+
+  @include small {
+    font-size: #{$font-size-small};
+  }
+
+  @include medium {
+    font-size: #{$font-size-medium};
+    margin: #{$margin};
+  }
+
+  @include large {
+    font-size: #{$font-size};
+  }
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+@mixin heading-medium($font-family: $font-heading, $font-size: 1.5rem, $line-height: 1.6, $color: $color-heading, $color-link: inherit, $color-link-hover: inherit, $font-weight: 700, $margin: 0 0 0.4em) {
+  color: #{$color};
+  font-family: #{$font-family};
+  font-weight: #{$font-weight};
+  font-style: normal;
+  font-size: #{$font-size};
+  line-height: #{$line-height};
+  margin: #{$margin};
+  width: auto;
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+@mixin heading-small($font-family: $font-heading, $font-size: 1.3rem, $line-height: 1.6, $color: $color-heading, $color-link: inherit, $color-link-hover: inherit, $font-weight: 600, $margin: 0 0 0.4em) {
+  color: #{$color};
+  font-family: #{$font-family};
+  font-weight: #{$font-weight};
+  font-style: normal;
+  font-size: #{$font-size};
+  line-height: #{$line-height};
+  margin: #{$margin};
+  width: auto;
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+@mixin heading-xs($font-family: $font-heading, $font-size: 1.1rem, $line-height: 2, $color: $color-heading, $color-link: inherit, $color-link-hover: inherit, $font-weight: 600, $margin: 0 0 0.4em) {
+  color: #{$color};
+  font-family: #{$font-family};
+  font-weight: #{$font-weight};
+  font-style: normal;
+  font-size: #{$font-size};
+  line-height: #{$line-height};
+  margin: #{$margin};
+  width: auto;
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+@mixin heading-xxs($font-family: $font-heading, $font-size: 1rem, $line-height: 2, $color: $color-heading, $color-link: inherit, $color-link-hover: inherit, $font-weight: 600, $margin: 0 0 0.4em) {
+  color: #{$color};
+  font-family: #{$font-family};
+  font-weight: #{$font-weight};
+  font-style: normal;
+  font-size: #{$font-size};
+  line-height: #{$line-height};
+  margin: #{$margin};
+  width: auto;
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+.h1 {
+  @include heading-xl();
+
+  &--large {
+    @include heading-xl($font-size-mobile: 1.7rem, $font-size-medium: 2.2rem, $font-size: 2.6rem, $margin: 0 0 0.75rem, $line-height: 1);
+
+    @include large {
+      $line-height: 1.1;
+    }
+  }
+
+  &--has-flag {
+    display: inline;
+  }
+}
+
+.h2 {
+  @include heading-large();
+
+  &--subtitle {
+    margin: $space-triple 0 0;
+  }
+}
+
+h2.purple {
+  @include heading-large($color: $purple);
+}
+
+.h3 {
+  @include heading-medium();
+}
+
+h3.purple {
+  @include heading-medium($color: $purple);
+}
+
+.h4 {
+  @include heading-small();
+}
+
+.h5 {
+  @include heading-xs();
+}
+
+.h6 {
+  @include heading-xxs();
+}
+
+.section-heading {
+  @include heading-xl($margin-mobile: 0 auto $space-double, $margin: $space-triple auto);
+
+  text-align: center;
+
+  @include medium {
+    max-width: 80%;
+  }
+}
+
+// TODO: BEM selectors should be applied to wysiwyg-created content
+
+.text-long {
+  h1 {
+    @extend .h1;
+  }
+
+  h2 {
+    @extend .h2;
+  }
+
+  h2.purple {
+    @extend h2.purple;
+  }
+
+  h3 {
+    @extend .h3;
+  }
+
+  h3.purple {
+    @extend h3.purple;
+  }
+
+  h4 {
+    @extend .h4;
+  }
+
+  h5 {
+    @extend .h5;
+  }
+
+  h6 {
+    @extend .h6;
+  }
+}

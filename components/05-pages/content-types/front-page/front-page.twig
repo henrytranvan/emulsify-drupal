@@ -1,0 +1,40 @@
+{% embed "@templates/_default.twig" with {
+  menu_items: header.menu_items,
+  footer_menu_items: footer.menu_items,
+  page: {
+    hero: TRUE,
+  },
+} %}
+
+  {% block hero %}
+    {% include "@molecules/hero/hero.twig" %}
+  {% endblock %}
+
+  {% block page_content %}
+    {% include "@organisms/featured/featured.twig" %}
+
+    {% include "@organisms/featured/featured.twig" with {
+      featured_modifiers: featured_modifiers_2,
+      featured_title: featured_title_2,
+      featured_subtitle: featured_subtitle_2,
+      featured_link_text: featured_link_text_2,
+    } %}
+
+    {% include "@organisms/featured/featured.twig" with {
+      featured_title: featured_title_3,
+      featured_subtitle: featured_subtitle_3,
+      featured_link_text: featured_link_text_3,
+    } %}
+
+    {% include "@organisms/stats-grid/stats-grid.twig" %}
+
+    {% include "@organisms/card-grid/card-grid.twig" with {
+      card_grid_label: card_grid_label_2,
+      card_grid_modifiers: card_grid_modifiers_2,
+      cards: cards_2,
+    } %}
+
+    {% include "@molecules/cta/cta.twig" %}
+  {% endblock %}
+
+{% endembed %}

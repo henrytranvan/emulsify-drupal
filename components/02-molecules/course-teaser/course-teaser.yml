@@ -1,0 +1,12 @@
+course_teaser_modifiers:
+  - 'pl'
+
+course_teaser_title: 'Internship in Counseling for Mental Health and Wellness I'
+course_teaser_text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'
+course_teaser_number: 'APPSY-GE 2895'
+course_teaser_hours: '1500 min'
+course_teaser_units: '2/3 (alt)'
+course_teaser_term: 'Spring'
+course_teaser_faculty: 'Arts'
+course_teaser_dept: 'Department Name'
+course_teaser_libarts: true

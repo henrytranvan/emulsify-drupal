@@ -1,0 +1,14 @@
+guide_table_title: "This is the Guide Table Component"
+guide_table_items:
+  1:
+    guide_table_item_legend: "Resume / CV"
+    guide_table_item_definition: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
+  2:
+    guide_table_item_legend: "Statement of Purpose"
+    guide_table_item_definition: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
+  3:
+    guide_table_item_legend: "Letters of Recommendation"
+    guide_table_item_definition: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
+  4:
+    guide_table_item_legend: "Transcripts"
+    guide_table_item_definition: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."

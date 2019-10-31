@@ -1,0 +1,26 @@
+{% set gallery_base_class = gallery_base_class|default('gallery') %}
+
+<div {{ bem(gallery_base_class, gallery_modifiers) }}>
+  {% if gallery_title %}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      heading_level: 2,
+      heading: gallery_title,
+      heading_blockname: gallery_base_class,
+      heading_base_class: 'title',
+    } %}
+  {% endif %}
+  {% block gallery %}
+    <div class="gallery-example">
+      {% include "@molecules/gallery/_gallery-arrows.twig" %}
+      <div class="gallery-slick">
+        <img src="https://placeimg.com/800/500/people" alt="filler" />
+        <img src="https://placeimg.com/800/500/animals" alt="filler" />
+        <img src="https://placeimg.com/800/500/architecture" alt="filler" />
+        <img src="https://placeimg.com/800/500/nature" alt="filler" />
+        <img src="https://placeimg.com/800/500/tech" alt="filler" />
+        <img src="https://placeimg.com/800/500/any/grayscale" alt="filler" />
+        <img src="https://placeimg.com/800/500/any/sepia" alt="filler" />
+      </div>
+    </div>
+  {% endblock %}
+</div>

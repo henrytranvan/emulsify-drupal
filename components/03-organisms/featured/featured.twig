@@ -1,0 +1,62 @@
+{% set featured_base_class = featured_base_class|default('featured') %}
+
+{% if not featured_copy_modifiers %}
+  {% set featured_copy_modifiers = [] %}
+{% endif %}
+
+{% if 'right' in featured_modifiers %}
+  {% set featured_copy_modifiers = featured_copy_modifiers|merge(['right']) %}
+{% endif %}
+
+<div {{ bem(featured_base_class, featured_modifiers, featured_blockname) }}>
+  <div {{ bem('inner', featured_modifiers, featured_base_class) }}>
+    <div {{ bem('copy', featured_copy_modifiers, featured_base_class) }}>
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading_level: 2,
+        heading: featured_title,
+        heading_blockname: featured_base_class,
+      } %}
+
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading_level: 3,
+        heading: featured_subtitle,
+        heading_blockname: featured_base_class,
+      } %}
+
+      {% include "@atoms/01-links/link/link.twig" with {
+        link_content: featured_link_text,
+        link_url: featured_link_url,
+        link_blockname: featured_base_class,
+        link_attributes: featured_link_attributes,
+      } %}
+    </div>
+
+    <div {{ bem('content', featured_modifiers, featured_base_class) }}>
+      {% block featured_content %}
+        {% embed "@base/layouts/grid/00-grid.twig" with {
+          grid_modifiers: card_grid_modifiers,
+          grid_blockname: card_grid_blockname,
+        } %}
+
+          {% block grid_content %}
+            {% for card in cards %}
+              {% include "@molecules/card/01-card.twig" with {
+                card_blockname: card.blockname,
+                card_modifiers: card.card_modifiers,
+                card_img_src: card.card_img_src,
+                card_img_alt: 'alt',
+                card_title: card.card_title,
+                card_subtitle: card.card_subtitle,
+                card_body: card.card_body,
+                card_link_url: card.card_link_url,
+                card_link_text: card.card_link_text,
+                card_image_output_image_tag: card.card_image_output_image_tag,
+              } %}
+            {% endfor %}
+          {% endblock %}
+
+        {% endembed %}
+      {% endblock %}
+    </div>
+  </div>
+</div>

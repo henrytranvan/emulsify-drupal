@@ -1,0 +1,19 @@
+{% set downloads_base_class = downloads_base_class|default('downloads') %}
+
+<div {{ bem(downloads_base_class, downloads_modifiers, downloads_blockname) }}>
+  {% include "@atoms/02-text/00-headings/_heading.twig" with {
+    heading_level: 3,
+    heading: downloads_title|default('Downloads'),
+    heading_base_class: 'title',
+    heading_blockname: downloads_base_class,
+  } %}
+
+  {% block downloads_files %}
+    {% for file in downloads_files %}
+      {% include "@molecules/downloads/_file.twig" with {
+        file_name: file.file_name,
+        file_icon: file.file_icon,
+      } %}
+    {% endfor %}
+  {% endblock %}
+</div>

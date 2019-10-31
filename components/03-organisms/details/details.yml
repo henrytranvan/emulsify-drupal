@@ -1,0 +1,16 @@
+details_title: 'Degree Details'
+details_subtitle: 'This is the Official Degree Title'
+detail_text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor orem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor'
+
+licensure: true
+
+details_format: 'Full-time or Part-time'
+details_credits: "36"
+details_term: 'Fall'
+details_deadline: 'August 30'
+details_term_2: 'Spring'
+details_deadline_2: 'January 15'
+
+online: true
+details_link_text: 'Click here'
+details_link_url: '#'

@@ -1,0 +1,13 @@
+downloads_files:
+  - file_name: 'PDF File'
+    file_icon: 'pdf'
+    file_url: '#'
+  - file_name: 'Longer Named PDF File'
+    file_icon: 'pdf'
+    file_url: '#'
+  - file_name: 'Text Document'
+    file_icon: 'doc'
+    file_url: '#'
+  - file_name: 'Presentational Document'
+    file_icon: 'ppt'
+    file_url: '#'

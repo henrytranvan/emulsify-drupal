@@ -1,0 +1,50 @@
+teaser_grid_label: "Teaser Small Grid"
+teaser_grid_blockname: 'teaser-grid'
+teaser_grid_modifiers:
+  - 'pl'
+teaser_grid_heading_modifiers:
+  - 'small-list'
+grid_inner_modifiers:
+  - 'flex'
+teasers:
+  1: 
+    teaser_modifiers: 
+      1: 'grid-item'
+      2: 'small'
+    teaser_img_src: "https://placeimg.com/402/531/nature"
+    teaser_img_alt: "filler"
+    teaser_title: "J. Lawrence Abner"
+    teaser_subtitle: "Willner Family Professor of Psychology and Public Policy and University Professor"
+    teaser_text: "Applied Psychology"
+    teaser_link_url: "#"
+    teaser_link_2_url: "#"
+    teaser_link_2_text: "lawrence.aber@nyu.edu"
+    teaser_button_url: ""
+  2:
+    teaser_modifiers: 
+      1: 'grid-item'
+      2: 'small'
+    teaser_img_src: "https://placeimg.com/402/531/nature"
+    teaser_img_alt: "filler"
+    teaser_title: "J. Lawrence Abner"
+    teaser_subtitle: "Willner Family Professor of Psychology and Public Policy and University Professor"
+    teaser_text: "Applied Psychology"
+    teaser_link_url: "#"
+    teaser_link_2_url: "#"
+    teaser_link_2_text: "lawrence.aber@nyu.edu"
+    teaser_button_url: ""
+  3:
+    teaser_modifiers: 
+      1: 'grid-item'
+      2: 'small'
+    teaser_img_src: "https://placeimg.com/402/531/nature"
+    teaser_img_alt: "filler"
+    teaser_title: "J. Lawrence Abner"
+    teaser_subtitle: "Willner Family Professor of Psychology and Public Policy and University Professor"
+    teaser_text: "Applied Psychology"
+    teaser_link_url: "#"
+    teaser_link_2_url: "#"
+    teaser_link_2_text: "lawrence.aber@nyu.edu"
+    teaser_button_url: ""
+
+

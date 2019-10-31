@@ -68,6 +68,11 @@ module.exports = async ({ config }) => {
     ],
   });
 
+  config.module.rules.push({
+    test: /\.ya?ml$/,
+    loader: 'js-yaml-loader',
+  })
+
   config.plugins.push(
     new _StyleLintPlugin({
       configFile: path.resolve(__dirname, '../', 'webpack/.stylelintrc'),

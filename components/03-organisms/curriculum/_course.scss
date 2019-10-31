@@ -1,0 +1,32 @@
+.course {
+  margin-bottom: $space-double;
+  font-weight: bold;
+
+  &__container {
+    margin-bottom: $space;
+    color: $gray-darker;
+
+    @include small {
+      display: flex;
+    }
+  }
+
+  &__number {
+    @include small {
+      width: 150px;
+      flex-grow: 0;
+    }
+  }
+
+  &__title {
+    @include small {
+      margin: 0 $space-double;
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+  }
+
+  &__credits {
+    flex-shrink: 0;
+  }
+}

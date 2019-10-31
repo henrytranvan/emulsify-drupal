@@ -1,0 +1,102 @@
+{% set course_teaser_base_class = course_teaser_base_class|default('course_teaser') %}
+
+<div {{ bem(course_teaser_base_class, course_teaser_modifiers, course_teaser_blockname) }}>
+  {% if course_teaser_title %}
+    {{ title_prefix }}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      heading_level: 2,
+      heading: course_teaser_title,
+      heading_url: course_teaser_link_url,
+      heading_base_class: 'title',
+      heading_blockname: course_teaser_base_class,
+      heading_modifiers: course_teaser_title_modifiers,
+      heading_link_base_class: 'title-link',
+      heading_link_blockname: course_teaser_base_class,
+      heading_link_modifiers: course_teaser_title_link_modifiers,
+    } %}
+    {{ title_suffix }}
+  {% endif %}
+
+  {% block course_teaser_text %}
+    {% if course_teaser_text %}
+      {% include "@atoms/02-text/text/paragraphs/_paragraph.twig" with {
+        paragraph_content: course_teaser_text,
+        paragraph_blockname: course_teaser_base_class,
+        paragraph_modifiers: course_teaser_text_modifiers,
+        paragraph_base_class: 'text',
+      } %}
+    {% endif %}
+  {% endblock %}
+
+  <div {{ bem('details', course_teaser_modifiers, course_teaser_base_class) }}>
+    <div {{ bem('details-left', course_teaser_modifiers, course_teaser_base_class) }}>
+      <div {{ bem('number', [], course_teaser_base_class) }}>
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading_level: 6,
+          heading: 'Course #',
+          heading_base_class: 'label',
+          heading_blockname: course_teaser_base_class,
+        } %}
+        <span {{ bem('detail', [], course_teaser_base_class) }}>{{ course_teaser_number }}</span>
+      </div>
+
+      <div {{ bem('units', [], course_teaser_base_class) }}>
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading_level: 6,
+          heading: 'Units',
+          heading_base_class: 'label',
+          heading_blockname: course_teaser_base_class,
+        } %}
+        <span {{ bem('detail', [], course_teaser_base_class) }}>{{ course_teaser_units }}</span>
+      </div>
+
+      <div {{ bem('term', [], course_teaser_base_class) }}>
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading_level: 6,
+          heading: 'Term',
+          heading_base_class: 'label',
+          heading_blockname: course_teaser_base_class,
+        } %}
+        <span {{ bem('detail', [], course_teaser_base_class) }}>{{ course_teaser_term }}</span>
+      </div>
+
+      {% if course_teaser_faculty %}
+      <div {{ bem('faculty', [], course_teaser_base_class) }}>
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading_level: 6,
+          heading: 'Faculty',
+          heading_base_class: 'label',
+          heading_blockname: course_teaser_base_class,
+        } %}
+        <span {{ bem('detail', [], course_teaser_base_class) }}>{{ course_teaser_faculty }}</span>
+      </div>
+      {% endif %}
+
+      <div {{ bem('dept', [], course_teaser_base_class) }}>
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading_level: 6,
+          heading: 'Department',
+          heading_base_class: 'label',
+          heading_blockname: course_teaser_base_class,
+        } %}
+        <span {{ bem('detail', [], course_teaser_base_class) }}>{{ course_teaser_dept }}</span>
+      </div>
+    </div>
+
+    <div {{ bem('details-right', [], course_teaser_base_class) }}>
+    {% if course_teaser_libarts %}
+      <span {{ bem('lib-arts', [], course_teaser_base_class) }}>
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          icon_name: 'special-doc',
+          icon_blockname: course_teaser_base_class,
+        } %} Liberal Arts Core
+      </span>
+    {% endif %}
+    {% if course_teaser_old_course %}
+      <div {{ bem('old-course', [], course_teaser_base_class) }}>
+        <span>{{ course_teaser_old_course_label }}: </span><span>{{ course_teaser_old_course }}</span>
+      </div>
+    {% endif %}
+    </div>
+  </div>
+</div>
