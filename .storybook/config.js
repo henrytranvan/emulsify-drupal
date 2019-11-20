@@ -14,6 +14,9 @@ addParameters({
 // GLOBAL CSS
 import '../components/style.scss';
 
+// GLOBAL YAML
+import './data/global.yml';
+
 addDecorator(withA11y)
 
 const Twig = require('twig')
