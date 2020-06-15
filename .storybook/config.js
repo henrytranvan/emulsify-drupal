@@ -14,7 +14,15 @@ addParameters({
 // GLOBAL CSS
 import '../components/style.scss';
 
+// Global Data
+import globalData from '../components/00-base/00-data/global.yml';
+
+// If in a Drupal project, it's recommended to import a symlinked version of drupal.js.
+import './_drupal.js';
+
+// Global Emulsify decorator.
 addDecorator(storyFn => {
+  // Attach any Drupal behavior scripts.
   useEffect(() => Drupal.attachBehaviors(), []);
   return storyFn()
 });
@@ -31,9 +39,6 @@ Twig.cache();
 twigDrupal(Twig);
 twigBEM(Twig);
 twigAddAttributes(Twig);
-
-// If in a Drupal project, it's recommended to import a symlinked version of drupal.js.
-import './_drupal.js';
 
 // automatically import all files ending in *.stories.js
 configure(require.context('../components', true, /\.stories\.js$/), module);

@@ -7,7 +7,6 @@ import socialMenu from './social/social-menu.twig';
 
 import breadcrumbsData from './breadcrumbs/breadcrumbs.yml';
 import inlineMenuData from './inline/inline-menu.yml';
-import mainMenuData from './main-menu/main-menu.yml';
 import socialMenuData from './social/social-menu.yml';
 
 import './main-menu/main-menu';
@@ -24,7 +23,7 @@ export const inline = () => (
   <div dangerouslySetInnerHTML={{ __html: inlineMenu(inlineMenuData) }} />
 );
 export const main = () => (
-  <div dangerouslySetInnerHTML={{ __html: mainMenu(mainMenuData) }} />
+  <div dangerouslySetInnerHTML={{ __html: mainMenu() }} />
 );
 export const social = () => (
   <div dangerouslySetInnerHTML={{ __html: socialMenu(socialMenuData) }} />
