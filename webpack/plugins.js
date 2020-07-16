@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const _MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const _ImageminPlugin = require('imagemin-webpack-plugin').default;
 const _SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+const _BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const glob = require('glob');
 
 const imagePath = path.resolve(__dirname, '../images');
@@ -28,6 +29,11 @@ const SpriteLoaderPlugin = new _SpriteLoaderPlugin({
 
 const ProgressPlugin = new webpack.ProgressPlugin();
 
+const BrowserSyncPlugin = new _BrowserSyncPlugin({
+  host: 'localhost',
+  port: 3000,
+});
+
 module.exports = {
   ProgressPlugin,
   MiniCssExtractPlugin,
@@ -37,4 +43,5 @@ module.exports = {
     cleanOnceBeforeBuildPatterns: ['!*.{png,jpg,gif,svg}'],
     cleanAfterEveryBuildPatterns: ['remove/**', '!js', '!*.{png,jpg,gif,svg}'],
   }),
+  BrowserSyncPlugin,
 };

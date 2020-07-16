@@ -84,6 +84,8 @@
   },
   "devDependencies": {
     "babel-jest": "^26.0.1",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "chalk": "^4.0.0",
     "core-js": "3.6.5",
     "eslint-config-prettier": "^6.11.0",
